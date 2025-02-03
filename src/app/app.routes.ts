@@ -5,6 +5,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { PackageComponent } from './pages/package/package.component';
 
 export const routes: Routes = [
     {
@@ -30,5 +31,9 @@ export const routes: Routes = [
     {
         path: 'checkout',
         component: CheckoutComponent
+    },
+    {
+        path: 'package',
+        component: PackageComponent
     }
 ];
