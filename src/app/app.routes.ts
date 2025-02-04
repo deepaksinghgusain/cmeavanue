@@ -6,6 +6,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { PackageComponent } from './pages/package/package.component';
+import { CourseEnrollementComponent } from './pages/course-enrollement/course-enrollement.component';
 
 export const routes: Routes = [
     {
@@ -35,5 +36,9 @@ export const routes: Routes = [
     {
         path: 'package',
         component: PackageComponent
+    },
+    {
+        path: 'course-enrollement',
+        component: CourseEnrollementComponent
     }
 ];
