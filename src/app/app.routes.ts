@@ -7,6 +7,8 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { PackageComponent } from './pages/package/package.component';
 import { CourseEnrollementComponent } from './pages/course-enrollement/course-enrollement.component';
+import { TestimonialComponent } from './pages/testimonial/testimonial.component';
+import { FaqsComponent } from './pages/faqs/faqs.component';
 
 export const routes: Routes = [
     {
@@ -40,5 +42,13 @@ export const routes: Routes = [
     {
         path: 'course-enrollement',
         component: CourseEnrollementComponent
+    },
+    {
+        path: 'testimonial',
+        component: TestimonialComponent
+    },
+    {
+        path: 'faqs',
+        component: FaqsComponent
     }
 ];
