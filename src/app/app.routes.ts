@@ -10,6 +10,7 @@ import { CourseEnrollementComponent } from './pages/course-enrollement/course-en
 import { TestimonialComponent } from './pages/testimonial/testimonial.component';
 import { FaqsComponent } from './pages/faqs/faqs.component';
 import { SelfStudyComponent } from './pages/self-study/self-study.component';
+import { CourseCatalogComponent } from './pages/course-catalog/course-catalog.component';
 
 export const routes: Routes = [
     {
@@ -55,5 +56,9 @@ export const routes: Routes = [
     {
         path: 'self-study',
         component: SelfStudyComponent
+    },
+    {
+        path: 'course-catalog',
+        component: CourseCatalogComponent
     }
 ];
