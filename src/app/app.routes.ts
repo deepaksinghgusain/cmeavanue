@@ -11,6 +11,7 @@ import { TestimonialComponent } from './pages/testimonial/testimonial.component'
 import { FaqsComponent } from './pages/faqs/faqs.component';
 import { SelfStudyComponent } from './pages/self-study/self-study.component';
 import { CourseCatalogComponent } from './pages/course-catalog/course-catalog.component';
+import { BundleandsubscriptionComponent } from './pages/bundleandsubscription/bundleandsubscription.component';
 
 export const routes: Routes = [
     {
@@ -60,5 +61,9 @@ export const routes: Routes = [
     {
         path: 'course-catalog',
         component: CourseCatalogComponent
+    },
+    {
+        path: 'bundle-and-subscription',
+        component: BundleandsubscriptionComponent   
     }
 ];
