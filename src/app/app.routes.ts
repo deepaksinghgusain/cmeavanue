@@ -12,6 +12,7 @@ import { FaqsComponent } from './pages/faqs/faqs.component';
 import { SelfStudyComponent } from './pages/self-study/self-study.component';
 import { CourseCatalogComponent } from './pages/course-catalog/course-catalog.component';
 import { BundleandsubscriptionComponent } from './pages/bundleandsubscription/bundleandsubscription.component';
+import { EBookComponent } from './pages/e-book/e-book.component';
 
 export const routes: Routes = [
     {
@@ -65,5 +66,9 @@ export const routes: Routes = [
     {
         path: 'bundle-and-subscription',
         component: BundleandsubscriptionComponent   
+    },
+    {
+        path: 'e-book',
+        component: EBookComponent
     }
 ];
