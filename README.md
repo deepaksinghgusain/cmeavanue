@@ -60,20 +60,20 @@ For more information on using the Angular CLI, including detailed command refere
 
 
 
-home page - http://localhost:50099/ 
-about page - http://localhost:50099/about
-contact page - http://localhost:50099/contact
-login page - http://localhost:50099/login
-register page - http://localhost:50099/register
-checkout pate - http://localhost:50099/checkout
-package page - http://localhost:50099/package
-course-enrollement page - http://localhost:50099/course-enrollement
-testimonial page - http://localhost:50099/testimonial
-faqs page - http://localhost:50099/faqs
-self-study page - http://localhost:50099/self-study
-course-catalog page - http://localhost:50099/course-catalog
-bundle-and-subscription page - http://localhost:50099/bundle-and-subscription
-e-book page - http://localhost:50099/e-book
+home page - http://localhost:53066/ 
+about page - http://localhost:53066/about
+contact page - http://localhost:53066/contact
+login page - http://localhost:53066/login
+register page - http://localhost:53066/register
+checkout pate - http://localhost:53066/checkout
+package page - http://localhost:53066/package
+course-enrollement page - http://localhost:53066/course-enrollement
+testimonial page - http://localhost:53066/testimonial
+faqs page - http://localhost:53066/faqs
+self-study page - http://localhost:53066/self-study
+course-catalog page - http://localhost:53066/course-catalog
+bundle-and-subscription page - http://localhost:53066/bundle-and-subscription
+e-book page - http://localhost:53066/e-book
 
 
 
