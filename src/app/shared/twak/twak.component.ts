@@ -1,4 +1,6 @@
 import { Component, Renderer2 } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-twak',
@@ -7,7 +9,7 @@ import { Component, Renderer2 } from '@angular/core';
   styleUrl: './twak.component.css'
 })
 export class TwakComponent {
-  constructor(private renderer: Renderer2) {}
+  constructor(@Inject(DOCUMENT) private document: Document,private renderer: Renderer2) {}
 
   ngOnInit() {
     const script = `var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
@@ -21,6 +23,6 @@ export class TwakComponent {
       })();`;
     const el = this.renderer.createElement('script');
     el.text = script;
-    this.renderer.appendChild(document.body, el);
+    this.renderer.appendChild(this.document.body, el);
   }
 }
