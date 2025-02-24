@@ -1,10 +1,12 @@
 <header class="flex sticky shadow-lg px-3 py-2 top-0 bg-white z-50">
-  <nav class="container mx-auto h-20 lg:justify-start  md:justify-between sm:justify-between  items-center inline-flex">
+  <nav class="container mx-auto h-20 lg:justify-start  md:justify-between sm:justify-between xxs:justify-between items-center inline-flex">
     <div class="shrink basis-0 self-stretch flex-col justify-center items-center gap-8 inline-flex">
       <div class="self-stretch justify-start items-center gap-8 inline-flex">
         <div class="h-[42px] justify-start items-center gap-8 flex">
           <div class="w-[130px] md:w-[200px] flex items-center">
-            <img src="{{ headerlogo }}" alt="LOGO" srcset="">
+            <a href="/">
+              <img src="{{ headerlogo }}" alt="LOGO" srcset="">
+            </a>
           </div>
         </div>
       </div>
@@ -22,7 +24,7 @@
                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                     </svg>
                   </div>
-                  <input type="text" placeholder="Search for CPE courses" class="py-3 ps-10 w-[600px] bg-white rounded-lg shadow-[0px_1px_2px_0px_rgba(16,24,40,0.05)] border focus:outline-blue-500" />
+                  <input type="text" placeholder="Search for CPE courses" class="py-3 ps-10 lg:w-[600px] md:w-full bg-white rounded-lg shadow-[0px_1px_2px_0px_rgba(16,24,40,0.05)] border focus:outline-blue-500" />
                 </div>
               </div>
             </div>
@@ -31,14 +33,14 @@
         <li class="relative max-w-fit pr-3 md:pr-0 py-1 after:bg-gradient-to-r from-[#2b68e0] to-[#e710ea]  after:absolute after:h-1 after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300">
           <div class="px-4 py-2.5 rounded-lg justify-center items-center gap-1.5 flex overflow-hidden">
             <div class="px-0.5 justify-center items-center flex">
-              <div class="text-[#475467] text-lg font-semibold font-['Inter'] leading-7">Log in</div>
+              <a href="/login" class="text-[#475467] text-lg font-semibold font-['Inter'] leading-7">Log in</a>
             </div>
           </div>
         </li>
         <li class="relative max-w-fit pr-3 md:pr-0 py-1">
           <div class="px-4 py-2.5 bg-[#2970fe] rounded-[28px] shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] border-2 border-white justify-center items-center gap-1.5 flex overflow-hidden">
             <div class="px-0.5 justify-center items-center flex">
-              <button class="text-white text-lg font-semibold font-['Inter'] leading-7">Create profile</button>
+              <a href="/register" class="text-white text-lg font-semibold font-['Inter'] leading-7">Create profile</a>
             </div>
           </div>
         </li>

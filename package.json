@@ -25,6 +25,8 @@
     "@ng-icons/core": "^30.3.0",
     "@ng-icons/heroicons": "^30.3.0",
     "@ng-icons/ionicons": "^30.3.0",
+    "@tawk.to/tawk-messenger-angular": "^1.0.0",
+    "@twilio/conversations": "^2.6.1",
     "apollo-angular": "^10.0.2",
     "express": "^4.18.2",
     "graphql": "^16",
