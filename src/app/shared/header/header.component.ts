@@ -4,11 +4,15 @@ import { environment } from '../../../environments/environment';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { ionMenuOutline, ionClose } from '@ng-icons/ionicons';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
+import { CourseService } from '../../services/course.service';
+import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 
 
 @Component({
   selector: 'app-header',
-  imports: [NgIcon, CommonModule],
+  imports: [NgIcon, CommonModule, FormsModule, AutocompleteLibModule, RouterModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
   viewProviders: [provideIcons({ ionMenuOutline , ionClose })]
@@ -21,7 +25,6 @@ export class HeaderComponent implements OnInit {
   tokenCheck: any = false;
   @ViewChild('auto') auto: any;
   coursesData: any;
-  searchbox: boolean = false;
   footerData: any;
   cartQty: any = "";
   cartData: any;
@@ -32,8 +35,14 @@ export class HeaderComponent implements OnInit {
   toggleMobileIcon: boolean = true;
   toggleMobileClass: string = "left-[-100%]";
 
+  search: string = '';
 
-  constructor(private commonService: CommonService) { }
+
+  constructor(
+    private commonService: CommonService, 
+    private router: Router,
+    private courseService: CourseService
+  ) { }
 
   ngOnInit(): void {
     this.commonService.getHeader().subscribe({
@@ -49,6 +58,62 @@ export class HeaderComponent implements OnInit {
       }
     })
   }
+  
+  getCartQty() {
+    this.commonService.commanCartQtydata.subscribe((res: any) => {
+
+      this.cartQty = res;
+    });
+  }
+
+  tokenExists() {
+    const isTokenExist = localStorage.getItem('token')
+    if (isTokenExist) {
+      this.tokenCheck = true;
+    } else {
+      this.tokenCheck = false;
+    }
+  }
+
+
+  getcourses() {
+    this.courseService.getAllCourseForSearch('').subscribe((res: any) => {
+      this.data = [];
+      if (res) {
+        res.data.courses.data.forEach((element: any) => {
+          this.data.push({
+            id: element.id,
+            name: element.attributes?.title,
+            slug: element.attributes?.slug
+          })
+        });
+      }
+    });
+  }
+
+
+  selectEvent(item: any) {
+    this.router.navigate(['/course/course-detail/' + item.slug])
+    setTimeout(() => {
+      this.showhideSerachbox()
+    }, 1000);
+
+  }
+
+  onChangeSearch(val: string) {
+    this.getcourses()
+  }
+
+  onFocused(e: any) {
+    this.auto.close();
+    // if(e.target.value ==''){
+    // }
+  }
+
+  showhideSerachbox() {
+    this.activeClass = !this.activeClass
+  }
+
 
   onMenuToggle(event: any) {
     

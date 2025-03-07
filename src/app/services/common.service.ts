@@ -45,11 +45,11 @@ export class CommonService {
   }
 
   getHomePageCoursesByGql() {
+
     return this.apollo.watchQuery<any>({
       query: this.getCoursesList(),
     }).valueChanges;
   }
-
 
   gethomePagefacultymembers() {
     const _url = environment.apibaseurl + "/api/instructors?populate=deep";
@@ -138,7 +138,7 @@ export class CommonService {
     return this.http.get(_url)
 
   }
- 
+
 
   getForums() {
     const _url = environment.apibaseurl + "/api/pages?populate=deep&filters[slug][$eq]=forums";
@@ -228,13 +228,14 @@ export class CommonService {
           id
           attributes {
             title
-           startDate
+            startDate
             endDate
             timezone
             price
             keywords
             slug
             shortDesc
+            credit
             image{
               data{
                 attributes{
@@ -243,18 +244,21 @@ export class CommonService {
               }
             }
 
-
-               instructors{
-              data{
-                attributes{
-                  firstName
-                  lastName
-
-
+            instructors{
+                data{
+                  attributes{
+                    firstName
+                    lastName
+                    image {
+                      data {
+                        attributes {
+                          url
+                        }
+                      }
+                    }
+                }
               }
             }
-          }
-
           }
         }
       }

@@ -1,130 +1,79 @@
-<section class="">
-  <div class="my-16 bg-white">
-    <div class="flex px-8 justify-center items-center">
-      <div class="grow shrink basis-0 flex-col justify-start items-start ml-20">
-        <div class="flex-col justify-start items-start gap-12 flex mb-8">
-          <div class="self-stretch text-[#101828] text-5xl font-semibold font-['Inter'] leading-[60px]">Best In Class CPE for Finance Professionals</div>
-          <div class="self-stretch h-[268px] pl-4 flex-col justify-start items-start gap-5 flex">
-            <div class="self-stretch justify-start items-start gap-3 inline-flex">
-              <div class="w-7 h-7 rounded-full justify-center items-center flex overflow-hidden">
-                <div class="w-7 h-7 relative flex-col justify-start items-start flex overflow-hidden">
-                  <img src="/assets/images/check-icon.png" class="h-6 mr-2" alt="">
+
+@if (frontPageBanner) {
+  <section class="">
+    <div class="my-16 bg-white">
+      <div class="flex md:flex-col lg:flex-row md:flex-wrap flex-nowrap px-8 justify-center items-center">
+        <div class="grow shrink basis-0 flex-col justify-start items-start md:mb-20">
+          <div class="flex-col justify-start items-start gap-12 flex mb-8">
+            <div class="self-stretch text-[#101828] text-5xl font-semibold font-['Inter'] leading-[60px]">{{frontPageBanner?.title}}</div>
+            <div class="self-stretch h-[268px] pl-4 flex-col justify-start items-start gap-5 flex">
+              @for (item of frontPageBanner.list; track $index) {
+              <div class="self-stretch justify-start items-start gap-3 inline-flex">
+                <div class="w-7 h-7 rounded-full justify-center items-center flex overflow-hidden">
+                  <div class="w-7 h-7 relative flex-col justify-start items-start flex overflow-hidden">
+                    <img src="/assets/images/check-icon.png" class="h-6 mr-2" alt="">
+                  </div>
+                </div>
+                <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
+                  <div class="self-stretch text-[#475467] text-lg font-normal font-['Inter'] leading-7">
+                    {{ item.title }}
+                  </div>
                 </div>
               </div>
-              <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
-                <div class="self-stretch text-[#475467] text-lg font-normal font-['Inter'] leading-7">
-                  Practical, Relevant & Up to date
-                </div>
+              }
+            </div>
+          </div>
+          <div class="justify-start items-start gap-3 inline-flex">
+            <div class="px-[18px] py-3 bg-white rounded-lg shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] border border-[#d0d5dd] justify-center items-center gap-1.5 flex overflow-hidden">
+              <div class="px-0.5 justify-center items-center flex">
+                <div class="text-[#344054] text-base font-semibold font-['Inter'] leading-normal">View package</div>
               </div>
             </div>
-            <div class="self-stretch justify-start items-start gap-3 inline-flex">
-              <div class="w-7 h-7 rounded-full justify-center items-center flex overflow-hidden">
-                <div class="w-7 h-7 relative flex-col justify-start items-start flex ">
-                  <img src="/assets/images/check-icon.png" class="h-6 mr-2" alt="">
-                </div>
-              </div>
-              <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
-                <div class="self-stretch text-[#475467] text-lg font-normal font-['Inter'] leading-7">Personalized Dashboard, CPE Certificate, Live Q &A session</div>
-              </div>
-            </div>
-            <div class="self-stretch justify-start items-start gap-3 inline-flex">
-              <div class="w-7 h-7 rounded-full justify-center items-center flex overflow-hidden">
-                <div class="w-7 h-7 relative flex-col justify-start items-start flex overflow-hidden">
-                  <img src="/assets/images/check-icon.png" class="h-6 mr-2" alt="">
-                </div>
-              </div>
-              <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
-                <div class="self-stretch text-[#475467] text-lg font-normal font-['Inter'] leading-7">Top- rated faculty | On- Demand courses | CPE credit</div>
-              </div>
-            </div>
-            <div class="self-stretch justify-start items-start gap-3 inline-flex">
-              <div class="w-7 h-7 rounded-full justify-center items-center flex overflow-hidden">
-                <div class="w-7 h-7 relative flex-col justify-start items-start flex overflow-hidden">
-                  <img src="/assets/images/check-icon.png" class="h-6 mr-2" alt="">
-                </div>
-              </div>
-              <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
-                <div class="self-stretch text-[#475467] text-lg font-normal font-['Inter'] leading-7">Regulatory requirements at your fingertips</div>
-              </div>
-            </div>
-            <div class="self-stretch justify-start items-start gap-3 inline-flex">
-              <div class="w-7 h-7 rounded-full justify-center items-center flex overflow-hidden">
-                <div class="w-7 h-7 relative flex-col justify-start items-start flex overflow-hidden">
-                  <img src="/assets/images/check-icon.png" class="h-6 mr-2" alt="">
-                </div>
-              </div>
-              <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
-                <div class="self-stretch text-[#475467] text-lg font-normal font-['Inter'] leading-7">Easy access on mobile, tablet and desktop</div>
-              </div>
-            </div>
-            <div class="self-stretch justify-start items-start gap-3 inline-flex">
-              <div class="w-7 h-7 rounded-full justify-center items-center flex overflow-hidden">
-                <div class="w-7 h-7 relative flex-col justify-start items-start flex overflow-hidden">
-                  <img src="/assets/images/check-icon.png" class="h-6 mr-2" alt="">
-                </div>
-              </div>
-              <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
-                <div class="self-stretch text-[#475467] text-lg font-normal font-['Inter'] leading-7">Online document storage that doesn’t expire</div>
+            <div class="px-[18px] py-3 bg-[#2970fe] rounded-[28px] shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] border-2 border-white justify-center items-center gap-1.5 flex overflow-hidden">
+              <div class="px-0.5 justify-center items-center flex">
+                <a href="/" class="text-white text-base font-semibold font-['Inter'] leading-normal">View Course catalouge</a>
               </div>
             </div>
           </div>
         </div>
-        <div class="justify-start items-start gap-3 inline-flex">
-          <div class="px-[18px] py-3 bg-white rounded-lg shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] border border-[#d0d5dd] justify-center items-center gap-1.5 flex overflow-hidden">
-            <div class="px-0.5 justify-center items-center flex">
-              <div class="text-[#344054] text-base font-semibold font-['Inter'] leading-normal">View package</div>
-            </div>
-          </div>
-          <div class="px-[18px] py-3 bg-[#2970fe] rounded-[28px] shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] border-2 border-white justify-center items-center gap-1.5 flex overflow-hidden">
-            <div class="px-0.5 justify-center items-center flex">
-              <div class="text-white text-base font-semibold font-['Inter'] leading-normal">View Course catalouge</div>
-            </div>
-          </div>
+        <div class="">
+          <img class="w-full" src="{{ environmentUrl + frontPageBanner?.image?.data?.attributes?.url }}" />
         </div>
-      </div>
-      <div class="">
-        <img class="w-full" src="/assets/images/banner-3.png" />
       </div>
     </div>
-  </div>
-</section>
+  </section>
+}
 
+
+@if (highlightsimple) {
 <section class="container mx-auto">
-  <div class="h-[544px] pt-24 pb-40 bg-white flex-col justify-start items-center gap-16 inline-flex overflow-hidden">
+  <div class="h-auto py-24 bg-white flex-col justify-start items-center gap-16 inline-flex overflow-hidden">
     <div class="self-stretch justify-start items-start gap-24 inline-flex">
       <div class="grow shrink basis-0 flex-col justify-start items-start gap-5 inline-flex">
         <div class="self-stretch h-11 flex-col justify-start items-start gap-3 flex">
-          <div class="self-stretch text-[#101828] text-4xl font-semibold font-['Inter'] leading-[44px]">CPE MADE SIMPLE</div>
+          <div class="self-stretch text-[#101828] text-4xl font-semibold font-['Inter'] leading-[44px]">{{highlightsimple?.title}}</div>
         </div>
-        <div class="self-stretch text-[#475467] text-xl font-normal font-['Inter'] leading-[30px]">Asterid Group Inc's proprietary CPE Warehouse portal offers an extensive catalogue of live and on-demand courses led by top-rated instructors.</div>
+        <div class="self-stretch text-[#475467] text-xl font-normal font-['Inter'] leading-[30px]">{{highlightsimple?.description}}</div>
       </div>
       <div class="grow shrink basis-0 flex-col justify-start items-start gap-12 inline-flex">
+        @for (list of highlightsimple?.list; track $index) {
         <div class="self-stretch justify-start items-start gap-4 inline-flex">
           <div class="w-12 h-12 p-3 bg-[#6071f3] rounded-[10px] shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] border border-white justify-center items-center flex overflow-hidden">
-            <div class="w-6 h-6 relative flex-col justify-start items-start flex overflow-hidden">
-              <img src="/assets/images/thumb-icon.png" alt="">
+            <div [innerHTML]="sanitize(list?.icon)" class="w-6 h-6 relative flex-col justify-start items-start flex overflow-hidden">
             </div>
           </div>
           <div class="grow shrink basis-0 flex-col justify-start items-start gap-5 inline-flex">
             <div class="self-stretch h-[120px] pt-2.5 flex-col justify-start items-start gap-2 flex">
-              <div class="self-stretch text-[#101828] text-xl font-semibold font-['Inter'] leading-[30px]">Stay Compliant and Up-to-Date</div>
-              <div class="self-stretch text-[#475467] text-base font-normal font-['Inter'] leading-normal">Our courses are designed to fulfil both state and federal finance requirements, ensuring you stay confidently aligned with the latest industry standards and best practices.</div>
+              <div class="self-stretch text-[#101828] text-xl font-semibold font-['Inter'] leading-[30px]">
+                {{ list?.title }}
+              </div>
+              <div class="self-stretch text-[#475467] text-base font-normal font-['Inter'] leading-normal">
+                {{ list?.description }}
+              </div>
             </div>
           </div>
         </div>
-        <div class="self-stretch justify-start items-start gap-4 inline-flex">
-          <div class="w-12 h-12 p-3 bg-[#6071f3] rounded-[10px] shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] border border-[#e4e7ec] justify-center items-center flex overflow-hidden">
-            <div class="w-6 h-6 relative flex-col justify-start items-start flex overflow-hidden">
-              <img src="/assets/images/basket-icon.png" alt="">
-            </div>
-          </div>
-          <div class="grow shrink basis-0 flex-col justify-start items-start gap-5 inline-flex">
-            <div class="self-stretch h-[120px] pt-2.5 flex-col justify-start items-start gap-2 flex">
-              <div class="self-stretch text-[#101828] text-xl font-semibold font-['Inter'] leading-[30px]">Flexible Education That Fits Your Life</div>
-              <div class="self-stretch text-[#475467] text-base font-normal font-['Inter'] leading-normal">We make continuing education easy, accessible, and tailored to your schedule—supporting your career growth while improving your clients’ portfolio</div>
-            </div>
-          </div>
-        </div>
+        }
       </div>
     </div>
   </div>
@@ -132,11 +81,13 @@
 
 <section class="container mx-auto">
   <div class="w-full h-[612px] pb-24 flex-col justify-start items-center inline-flex">
-    <div class="self-stretch h-[516px] bg-white flex-col justify-start items-start flex">
-      <img class="h-[516px] w-full relative" src="/assets/images/banner-2.jpg" />
+    <div class="self-stretch h-auto bg-white flex-col justify-start items-start flex">
+      <img class="h-auto w-full relative" src="{{ environmentUrl + highlightsimple?.image?.data?.attributes?.url }}" />
     </div>
   </div>
 </section>
+
+}
 
 <section class="bg-[#f9fafb] py-24">
   <div class="container mx-auto">
@@ -151,282 +102,9 @@
       </div>
     </div>
     <div class="flex gap-8 flex-wrap border-b border-[#e4e7ec] pb-14">
-      <div class="flex flex-col w-[380px] rounded-[10px] border-[#d4d5d6] border-2">
-        <div class=" h-[132px] relative bg-gradient-to-t from-[#72edf2] to-[#5151e5] rounded-[10px] flex-col justify-start items-start inline-flex overflow-hidden">
-          <div class="h-14 w-full  flex-col justify-center items-center inline-flex">
-            <div class="self-stretch h-14 p-4 bg-white/30 border-t border-white/30 backdrop-blur-xl flex-col justify-start items-start gap-6 flex">
-              <div class="self-stretch justify-start items-start gap-6 inline-flex">
-                <div class="flex-col justify-start items-start inline-flex">
-                  <div class="text-white text-base font-bold font-['Inter'] leading-normal">Credits: 3.5 | NASBA | IRS | CFP</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="ml-4 mt-2">
-            <div class="flex">
-              <img class="w-8 h-8 rounded-[684px] ml[-10px]" src="/assets/images/person.png" />
-              <img class="w-8 h-8 rounded-[684px]" src="/assets/images/person.png" />
-              <img class="w-8 h-8 rounded-[684px]" src="/assets/images/person.png" />
-            </div>
-            <div class="w-[280px] mt-3 justify-start items-center gap-2.5 inline-flex">
-              <div class="flex-col justify-start items-start inline-flex">
-                <div class="text-white text-sm font-semibold font-['Inter'] leading-tight">Bradley Burnett | Arthur Werner | Mary Jane </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="px-5 pb-6 mt-4 flex-col justify-start items-start gap-[18px] inline-flex">
-          <div class="self-stretch justify-start items-start gap-2 inline-flex">
-            <div class="pl-2 pr-2.5 py-0.5 bg-[#ecfcf2] rounded-full border border-[#aaefc6] justify-start items-center gap-1.5 flex">
-              <div class="w-2 h-2 relative">
-                <div class="w-1.5 h-1.5 left-[1px] top-[1px] absolute bg-[#17b169] rounded-full"></div>
-              </div>
-              <div class="text-center text-[#057647] text-sm font-medium font-['Inter'] leading-tight">Live webinar</div>
-            </div>
-            <div class="px-2.5 py-0.5 bg-[#fdf1f9] rounded-full border border-[#fbceee] justify-start items-center flex">
-              <div class="text-center text-[#c01573] text-sm font-medium font-['Inter'] leading-tight">Tax</div>
-            </div>
-          </div>
-          <div class="self-stretch flex-col justify-start items-start gap-2 flex">
-            <div class="self-stretch text-[#101828] text-lg font-semibold font-['Inter'] leading-7">Mastering Charitable Remainder Trusts – Planning and Compliance with Form 5227 </div>
-            <div class="self-stretch text-[#475467] text-sm font-normal font-['Inter'] leading-normal">Tue Oct 22 2024 | 1:00 PM - 4:00 PM ET</div>
-          </div>
-          <div class="pl-1 pr-2.5 py-1 rounded-full justify-start items-center gap-3 inline-flex">
-            <div class="text-[#667084] text-sm font-semibold font-['Inter'] line-through leading-[38px]">US$199</div>
-            <div class="text-[#2970fe] text-xl font-semibold font-['Inter'] leading-[38px]">US$159</div>
-          </div>
-        </div>
-      </div>
-      <div class="flex flex-col w-[380px] rounded-[10px] border-[#d4d5d6] border-2">
-        <div class=" h-[132px] relative bg-gradient-to-t from-[#72edf2] to-[#5151e5] rounded-[10px] flex-col justify-start items-start inline-flex overflow-hidden">
-          <div class="h-14 w-full  flex-col justify-center items-center inline-flex">
-            <div class="self-stretch h-14 p-4 bg-white/30 border-t border-white/30 backdrop-blur-xl flex-col justify-start items-start gap-6 flex">
-              <div class="self-stretch justify-start items-start gap-6 inline-flex">
-                <div class="flex-col justify-start items-start inline-flex">
-                  <div class="text-white text-base font-bold font-['Inter'] leading-normal">Credits: 3.5 | NASBA | IRS | CFP</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="ml-4 mt-2">
-            <div class="flex">
-              <img class="w-8 h-8 rounded-[684px] ml[-10px]" src="/assets/images/person.png" />
-              <img class="w-8 h-8 rounded-[684px]" src="/assets/images/person.png" />
-              <img class="w-8 h-8 rounded-[684px]" src="/assets/images/person.png" />
-            </div>
-            <div class="w-[280px] mt-3 justify-start items-center gap-2.5 inline-flex">
-              <div class="flex-col justify-start items-start inline-flex">
-                <div class="text-white text-sm font-semibold font-['Inter'] leading-tight">Bradley Burnett | Arthur Werner | Mary Jane </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="px-5 pb-6 mt-4 flex-col justify-start items-start gap-[18px] inline-flex">
-          <div class="self-stretch justify-start items-start gap-2 inline-flex">
-            <div class="pl-2 pr-2.5 py-0.5 bg-[#ecfcf2] rounded-full border border-[#aaefc6] justify-start items-center gap-1.5 flex">
-              <div class="w-2 h-2 relative">
-                <div class="w-1.5 h-1.5 left-[1px] top-[1px] absolute bg-[#17b169] rounded-full"></div>
-              </div>
-              <div class="text-center text-[#057647] text-sm font-medium font-['Inter'] leading-tight">Live webinar</div>
-            </div>
-            <div class="px-2.5 py-0.5 bg-[#fdf1f9] rounded-full border border-[#fbceee] justify-start items-center flex">
-              <div class="text-center text-[#c01573] text-sm font-medium font-['Inter'] leading-tight">Tax</div>
-            </div>
-          </div>
-          <div class="self-stretch flex-col justify-start items-start gap-2 flex">
-            <div class="self-stretch text-[#101828] text-lg font-semibold font-['Inter'] leading-7">Mastering Charitable Remainder Trusts – Planning and Compliance with Form 5227 </div>
-            <div class="self-stretch text-[#475467] text-sm font-normal font-['Inter'] leading-normal">Tue Oct 22 2024 | 1:00 PM - 4:00 PM ET</div>
-          </div>
-          <div class="pl-1 pr-2.5 py-1 rounded-full justify-start items-center gap-3 inline-flex">
-            <div class="text-[#667084] text-sm font-semibold font-['Inter'] line-through leading-[38px]">US$199</div>
-            <div class="text-[#2970fe] text-xl font-semibold font-['Inter'] leading-[38px]">US$159</div>
-          </div>
-        </div>
-      </div>
-      <div class="flex flex-col w-[380px] rounded-[10px] border-[#d4d5d6] border-2">
-        <div class=" h-[132px] relative bg-gradient-to-t from-[#72edf2] to-[#5151e5] rounded-[10px] flex-col justify-start items-start inline-flex overflow-hidden">
-          <div class="h-14 w-full  flex-col justify-center items-center inline-flex">
-            <div class="self-stretch h-14 p-4 bg-white/30 border-t border-white/30 backdrop-blur-xl flex-col justify-start items-start gap-6 flex">
-              <div class="self-stretch justify-start items-start gap-6 inline-flex">
-                <div class="flex-col justify-start items-start inline-flex">
-                  <div class="text-white text-base font-bold font-['Inter'] leading-normal">Credits: 3.5 | NASBA | IRS | CFP</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="ml-4 mt-2">
-            <div class="flex">
-              <img class="w-8 h-8 rounded-[684px] ml[-10px]" src="/assets/images/person.png" />
-              <img class="w-8 h-8 rounded-[684px]" src="/assets/images/person.png" />
-              <img class="w-8 h-8 rounded-[684px]" src="/assets/images/person.png" />
-            </div>
-            <div class="w-[280px] mt-3 justify-start items-center gap-2.5 inline-flex">
-              <div class="flex-col justify-start items-start inline-flex">
-                <div class="text-white text-sm font-semibold font-['Inter'] leading-tight">Bradley Burnett | Arthur Werner | Mary Jane </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="px-5 pb-6 mt-4 flex-col justify-start items-start gap-[18px] inline-flex">
-          <div class="self-stretch justify-start items-start gap-2 inline-flex">
-            <div class="pl-2 pr-2.5 py-0.5 bg-[#ecfcf2] rounded-full border border-[#aaefc6] justify-start items-center gap-1.5 flex">
-              <div class="w-2 h-2 relative">
-                <div class="w-1.5 h-1.5 left-[1px] top-[1px] absolute bg-[#17b169] rounded-full"></div>
-              </div>
-              <div class="text-center text-[#057647] text-sm font-medium font-['Inter'] leading-tight">Live webinar</div>
-            </div>
-            <div class="px-2.5 py-0.5 bg-[#fdf1f9] rounded-full border border-[#fbceee] justify-start items-center flex">
-              <div class="text-center text-[#c01573] text-sm font-medium font-['Inter'] leading-tight">Tax</div>
-            </div>
-          </div>
-          <div class="self-stretch flex-col justify-start items-start gap-2 flex">
-            <div class="self-stretch text-[#101828] text-lg font-semibold font-['Inter'] leading-7">Mastering Charitable Remainder Trusts – Planning and Compliance with Form 5227 </div>
-            <div class="self-stretch text-[#475467] text-sm font-normal font-['Inter'] leading-normal">Tue Oct 22 2024 | 1:00 PM - 4:00 PM ET</div>
-          </div>
-          <div class="pl-1 pr-2.5 py-1 rounded-full justify-start items-center gap-3 inline-flex">
-            <div class="text-[#667084] text-sm font-semibold font-['Inter'] line-through leading-[38px]">US$199</div>
-            <div class="text-[#2970fe] text-xl font-semibold font-['Inter'] leading-[38px]">US$159</div>
-          </div>
-        </div>
-      </div>
-      <div class="flex flex-col w-[380px] rounded-[10px] border-[#d4d5d6] border-2">
-        <div class=" h-[132px] relative bg-gradient-to-t from-[#72edf2] to-[#5151e5] rounded-[10px] flex-col justify-start items-start inline-flex overflow-hidden">
-          <div class="h-14 w-full  flex-col justify-center items-center inline-flex">
-            <div class="self-stretch h-14 p-4 bg-white/30 border-t border-white/30 backdrop-blur-xl flex-col justify-start items-start gap-6 flex">
-              <div class="self-stretch justify-start items-start gap-6 inline-flex">
-                <div class="flex-col justify-start items-start inline-flex">
-                  <div class="text-white text-base font-bold font-['Inter'] leading-normal">Credits: 3.5 | NASBA | IRS | CFP</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="ml-4 mt-2">
-            <div class="flex">
-              <img class="w-8 h-8 rounded-[684px] ml[-10px]" src="/assets/images/person.png" />
-              <img class="w-8 h-8 rounded-[684px]" src="/assets/images/person.png" />
-              <img class="w-8 h-8 rounded-[684px]" src="/assets/images/person.png" />
-            </div>
-            <div class="w-[280px] mt-3 justify-start items-center gap-2.5 inline-flex">
-              <div class="flex-col justify-start items-start inline-flex">
-                <div class="text-white text-sm font-semibold font-['Inter'] leading-tight">Bradley Burnett | Arthur Werner | Mary Jane </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="px-5 pb-6 mt-4 flex-col justify-start items-start gap-[18px] inline-flex">
-          <div class="self-stretch justify-start items-start gap-2 inline-flex">
-            <div class="pl-2 pr-2.5 py-0.5 bg-[#ecfcf2] rounded-full border border-[#aaefc6] justify-start items-center gap-1.5 flex">
-              <div class="w-2 h-2 relative">
-                <div class="w-1.5 h-1.5 left-[1px] top-[1px] absolute bg-[#17b169] rounded-full"></div>
-              </div>
-              <div class="text-center text-[#057647] text-sm font-medium font-['Inter'] leading-tight">Live webinar</div>
-            </div>
-            <div class="px-2.5 py-0.5 bg-[#fdf1f9] rounded-full border border-[#fbceee] justify-start items-center flex">
-              <div class="text-center text-[#c01573] text-sm font-medium font-['Inter'] leading-tight">Tax</div>
-            </div>
-          </div>
-          <div class="self-stretch flex-col justify-start items-start gap-2 flex">
-            <div class="self-stretch text-[#101828] text-lg font-semibold font-['Inter'] leading-7">Mastering Charitable Remainder Trusts – Planning and Compliance with Form 5227 </div>
-            <div class="self-stretch text-[#475467] text-sm font-normal font-['Inter'] leading-normal">Tue Oct 22 2024 | 1:00 PM - 4:00 PM ET</div>
-          </div>
-          <div class="pl-1 pr-2.5 py-1 rounded-full justify-start items-center gap-3 inline-flex">
-            <div class="text-[#667084] text-sm font-semibold font-['Inter'] line-through leading-[38px]">US$199</div>
-            <div class="text-[#2970fe] text-xl font-semibold font-['Inter'] leading-[38px]">US$159</div>
-          </div>
-        </div>
-      </div>
-      <div class="flex flex-col w-[380px] rounded-[10px] border-[#d4d5d6] border-2">
-        <div class=" h-[132px] relative bg-gradient-to-t from-[#72edf2] to-[#5151e5] rounded-[10px] flex-col justify-start items-start inline-flex overflow-hidden">
-          <div class="h-14 w-full  flex-col justify-center items-center inline-flex">
-            <div class="self-stretch h-14 p-4 bg-white/30 border-t border-white/30 backdrop-blur-xl flex-col justify-start items-start gap-6 flex">
-              <div class="self-stretch justify-start items-start gap-6 inline-flex">
-                <div class="flex-col justify-start items-start inline-flex">
-                  <div class="text-white text-base font-bold font-['Inter'] leading-normal">Credits: 3.5 | NASBA | IRS | CFP</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="ml-4 mt-2">
-            <div class="flex">
-              <img class="w-8 h-8 rounded-[684px] ml[-10px]" src="/assets/images/person.png" />
-              <img class="w-8 h-8 rounded-[684px]" src="/assets/images/person.png" />
-              <img class="w-8 h-8 rounded-[684px]" src="/assets/images/person.png" />
-            </div>
-            <div class="w-[280px] mt-3 justify-start items-center gap-2.5 inline-flex">
-              <div class="flex-col justify-start items-start inline-flex">
-                <div class="text-white text-sm font-semibold font-['Inter'] leading-tight">Bradley Burnett | Arthur Werner | Mary Jane </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="px-5 pb-6 mt-4 flex-col justify-start items-start gap-[18px] inline-flex">
-          <div class="self-stretch justify-start items-start gap-2 inline-flex">
-            <div class="pl-2 pr-2.5 py-0.5 bg-[#ecfcf2] rounded-full border border-[#aaefc6] justify-start items-center gap-1.5 flex">
-              <div class="w-2 h-2 relative">
-                <div class="w-1.5 h-1.5 left-[1px] top-[1px] absolute bg-[#17b169] rounded-full"></div>
-              </div>
-              <div class="text-center text-[#057647] text-sm font-medium font-['Inter'] leading-tight">Live webinar</div>
-            </div>
-            <div class="px-2.5 py-0.5 bg-[#fdf1f9] rounded-full border border-[#fbceee] justify-start items-center flex">
-              <div class="text-center text-[#c01573] text-sm font-medium font-['Inter'] leading-tight">Tax</div>
-            </div>
-          </div>
-          <div class="self-stretch flex-col justify-start items-start gap-2 flex">
-            <div class="self-stretch text-[#101828] text-lg font-semibold font-['Inter'] leading-7">Mastering Charitable Remainder Trusts – Planning and Compliance with Form 5227 </div>
-            <div class="self-stretch text-[#475467] text-sm font-normal font-['Inter'] leading-normal">Tue Oct 22 2024 | 1:00 PM - 4:00 PM ET</div>
-          </div>
-          <div class="pl-1 pr-2.5 py-1 rounded-full justify-start items-center gap-3 inline-flex">
-            <div class="text-[#667084] text-sm font-semibold font-['Inter'] line-through leading-[38px]">US$199</div>
-            <div class="text-[#2970fe] text-xl font-semibold font-['Inter'] leading-[38px]">US$159</div>
-          </div>
-        </div>
-      </div>
-      <div class="flex flex-col w-[380px] rounded-[10px] border-[#d4d5d6] border-2">
-        <div class=" h-[132px] relative bg-gradient-to-t from-[#72edf2] to-[#5151e5] rounded-[10px] flex-col justify-start items-start inline-flex overflow-hidden">
-          <div class="h-14 w-full  flex-col justify-center items-center inline-flex">
-            <div class="self-stretch h-14 p-4 bg-white/30 border-t border-white/30 backdrop-blur-xl flex-col justify-start items-start gap-6 flex">
-              <div class="self-stretch justify-start items-start gap-6 inline-flex">
-                <div class="flex-col justify-start items-start inline-flex">
-                  <div class="text-white text-base font-bold font-['Inter'] leading-normal">Credits: 3.5 | NASBA | IRS | CFP</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="ml-4 mt-2">
-            <div class="flex">
-              <img class="w-8 h-8 rounded-[684px] ml[-10px]" src="/assets/images/person.png" />
-              <img class="w-8 h-8 rounded-[684px]" src="/assets/images/person.png" />
-              <img class="w-8 h-8 rounded-[684px]" src="/assets/images/person.png" />
-            </div>
-            <div class="w-[280px] mt-3 justify-start items-center gap-2.5 inline-flex">
-              <div class="flex-col justify-start items-start inline-flex">
-                <div class="text-white text-sm font-semibold font-['Inter'] leading-tight">Bradley Burnett | Arthur Werner | Mary Jane </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="px-5 pb-6 mt-4 flex-col justify-start items-start gap-[18px] inline-flex">
-          <div class="self-stretch justify-start items-start gap-2 inline-flex">
-            <div class="pl-2 pr-2.5 py-0.5 bg-[#ecfcf2] rounded-full border border-[#aaefc6] justify-start items-center gap-1.5 flex">
-              <div class="w-2 h-2 relative">
-                <div class="w-1.5 h-1.5 left-[1px] top-[1px] absolute bg-[#17b169] rounded-full"></div>
-              </div>
-              <div class="text-center text-[#057647] text-sm font-medium font-['Inter'] leading-tight">Live webinar</div>
-            </div>
-            <div class="px-2.5 py-0.5 bg-[#fdf1f9] rounded-full border border-[#fbceee] justify-start items-center flex">
-              <div class="text-center text-[#c01573] text-sm font-medium font-['Inter'] leading-tight">Tax</div>
-            </div>
-          </div>
-          <div class="self-stretch flex-col justify-start items-start gap-2 flex">
-            <div class="self-stretch text-[#101828] text-lg font-semibold font-['Inter'] leading-7">Mastering Charitable Remainder Trusts – Planning and Compliance with Form 5227 </div>
-            <div class="self-stretch text-[#475467] text-sm font-normal font-['Inter'] leading-normal">Tue Oct 22 2024 | 1:00 PM - 4:00 PM ET</div>
-          </div>
-          <div class="pl-1 pr-2.5 py-1 rounded-full justify-start items-center gap-3 inline-flex">
-            <div class="text-[#667084] text-sm font-semibold font-['Inter'] line-through leading-[38px]">US$199</div>
-            <div class="text-[#2970fe] text-xl font-semibold font-['Inter'] leading-[38px]">US$159</div>
-          </div>
-        </div>
-      </div>
+      @for (course of homeCourses; track $index) {
+        <app-course-card app-course-card [course]="course"></app-course-card>
+      }
     </div>
 
     <div class="pt-12">
@@ -489,167 +167,85 @@
       <div class="self-stretch h-[94px] flex-col justify-start items-center gap-8 flex">
         <div class="self-stretch h-[94px] flex-col justify-start items-center gap-5 flex">
           <div class="self-stretch h-11 flex-col justify-start items-start gap-3 flex">
-            <div class="self-stretch text-center text-[#101828] text-4xl font-semibold font-['Inter'] leading-[44px]">Approved by</div>
+            <div class="self-stretch text-center text-[#101828] text-4xl font-semibold font-['Inter'] leading-[44px]">{{partners.title}}</div>
           </div>
-          <div class="self-stretch text-center text-[#475467] text-xl font-normal font-['Inter'] leading-[30px]">You Can Trust the Credits You Earn with CPE warehouse</div>
+          <div class="self-stretch text-center text-[#475467] text-xl font-normal font-['Inter'] leading-[30px]">{{partners.subtitle}}</div>
         </div>
       </div>
     </div>
+
     <div class="self-stretch h-[623px] px-8 flex-col justify-start items-start gap-16 flex">
       <div class="self-stretch h-[623px] justify-center items-start gap-8 inline-flex">
+        @for (part of partners.partners; track $index) {
         <div class="grow shrink basis-0 h-[560px] rounded-[10px] border border-[#155dee] flex-col justify-start items-start gap-5 inline-flex">
           <div class="h-[200px] pl-[97px] pr-[107px] pt-[29px] pb-[30px] bg-gradient-to-b from-[#f5feff] to-[#d4dbe2] rounded-tr-[10px] rounded-br-[10px] justify-start items-center inline-flex">
-            <img class="w-[180px] self-stretch pt-2" src="/assets/images/approved.png" />
+            <img class="w-[180px] self-stretch pt-2" src="{{ environmentUrl + part?.image?.data?.attributes?.url }}" />
           </div>
           <div class="self-stretch h-[336px] p-4 flex-col justify-start items-start gap-6 flex">
             <div class="self-stretch h-[304px] flex-col justify-start items-start gap-2 flex">
               <div class="self-stretch justify-start items-start gap-4 inline-flex">
-                <div class="grow shrink basis-0 text-[#101828] text-2xl font-semibold font-['Inter'] leading-loose">NASBA</div>
+                <div class="grow shrink basis-0 text-[#101828] text-2xl font-semibold font-['Inter'] leading-loose">{{part?.title}}</div>
               </div>
-              <div class="self-stretch text-[#475467] text-base font-normal font-['Inter'] leading-normal">CPE Warehouse is registered with the National Association of State Boards of Accountancy (NASBA) as a sponsor of continuing professional education on the National Registry of CPE Sponsors. State boards of accountancy have final authority on the acceptance of individual courses for CPE credit. Complaints regarding registered sponsors may be submitted to the National Registry of CPE Sponsors through its website: www.nasbaregistry.org. Registry ID: 143337</div>
+              <div class="self-stretch text-[#475467] text-base font-normal font-['Inter'] leading-normal">
+                {{ part?.description }}
+              </div>
             </div>
           </div>
         </div>
-        <div class="grow shrink basis-0 h-[560px] rounded-[10px] border border-[#155dee] flex-col justify-start items-start gap-5 inline-flex">
-          <div class="h-[200px] pl-[97px] pr-[107px] pt-[29px] pb-[30px] bg-gradient-to-b from-[#f5feff] to-[#d4dbe2] rounded-tr-[10px] rounded-br-[10px] justify-start items-center inline-flex">
-            <img class="w-[180px] self-stretch pt-2" src="/assets/images/approved.png" />
-          </div>
-          <div class="self-stretch h-[336px] p-4 flex-col justify-start items-start gap-6 flex">
-            <div class="self-stretch h-[304px] flex-col justify-start items-start gap-2 flex">
-              <div class="self-stretch justify-start items-start gap-4 inline-flex">
-                <div class="grow shrink basis-0 text-[#101828] text-2xl font-semibold font-['Inter'] leading-loose">CFP BOARD</div>
-              </div>
-              <div class="self-stretch text-[#475467] text-base font-normal font-['Inter'] leading-normal">Certified Financial Planner Board of Standards Inc. owns the certification marks CFP®, CERTIFIED FINANCIAL PLANNER™ and federally registered CFP in the U.S., which it awards to individuals who successfully complete CFP Board’s initial and ongoing certification requirements. </div>
-            </div>
-          </div>
-        </div>
-        <div class="grow shrink basis-0 h-[560px] rounded-[10px] border border-[#155dee] flex-col justify-start items-start gap-5 inline-flex">
-          <div class="h-[200px] pl-[97px] pr-[107px] pt-[29px] pb-[30px] bg-gradient-to-b from-[#f5feff] to-[#d4dbe2] rounded-tr-[10px] rounded-br-[10px] justify-start items-center inline-flex">
-            <img class="w-[180px] self-stretch pt-2" src="/assets/images/approved.png" />
-          </div>
-          <div class="self-stretch h-[336px] p-4 flex-col justify-start items-start gap-6 flex">
-            <div class="self-stretch h-[304px] flex-col justify-start items-start gap-2 flex">
-              <div class="self-stretch justify-start items-start gap-4 inline-flex">
-                <div class="grow shrink basis-0 text-[#101828] text-2xl font-semibold font-['Inter'] leading-loose">IRS</div>
-              </div>
-              <div class="self-stretch text-[#475467] text-base font-normal font-['Inter'] leading-normal">CPE Warehouse is recognized by the Internal Revenue Service as a qualified entity to offer continuing education courses for tax professionals. This approval ensures that our course listings meet compliance standards (as outlined in section 10.6 and 10.9 of Circular 230), along with other quality assurance, and accreditation standards set forth by the IRS.  Our IRS approved Continuing Education Provider number is: 11111111 </div>
-            </div>
-          </div>
-        </div>
+        }
       </div>
     </div>
   </div>
 </section>
 
-
-<section class="bg-[#f9fafb] py-24">
-  <div class="container mx-auto">
-    <div class="self-stretch h-[94px] mb-12 flex-col justify-start items-start gap-8 flex">
-      <div class="self-stretch h-[94px] flex-col justify-start items-center gap-8 flex">
-        <div class="self-stretch h-[94px] flex-col justify-start items-center gap-5 flex">
-          <div class="self-stretch h-11 justify-between items-start gap-3 flex">
-            <div class="self-stretch text-left text-[#101828] text-4xl font-semibold font-['Inter'] leading-[44px]">Faculty</div>
-            <div class=" px-[18px] py-3  bg-[#2970fe] rounded-[28px] shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] border-2 border-white justify-center items-center">
-              <div class="px-0.5 justify-center items-center flex">
-                <div class="text-white text-base font-semibold font-['Inter'] leading-normal">View all Faculty</div>
+@if (InstructorData) {
+  <section class="bg-[#f9fafb] py-24 h-auto ">
+    <div class="container mx-auto">
+      <div class="self-stretch h-[94px] mb-12 flex-col justify-start items-start gap-8 flex">
+        <div class="self-stretch h-[94px] flex-col justify-start items-center gap-8 flex">
+          <div class="self-stretch h-[94px] flex-col justify-start items-center gap-5 flex">
+            <div class="self-stretch h-11 justify-between items-start gap-3 flex">
+              <div class="self-stretch text-left text-[#101828] text-4xl font-semibold font-['Inter'] leading-[44px]">
+                {{ InstructorData?.title }}
+              </div>
+              <div class=" px-[18px] py-3  bg-[#2970fe] rounded-[28px] shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] border-2 border-white justify-center items-center">
+                <div class="px-0.5 justify-center items-center flex">
+                  <a href="{{ InstructorData?.button?.href }}" class="text-white text-base font-semibold font-['Inter'] leading-normal">
+                    {{ InstructorData?.button?.label }}</a>
+                </div>
+              </div>
+            </div>
+            <div class="self-stretch text-left text-[#475467] text-xl font-normal font-['Inter'] leading-[30px]">
+              Hear from some of our amazing customers who are automating their finances.</div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4">
+        @for (faculty of homepagefacultymembers; track $index) {
+        <div class="w-full flex flex-wrap gap-8 mb-24 border">
+          <div class=" inline-flex flex-col justify-start items-start">
+            <img class="h-full w-full relative" src="{{environmentUrl + faculty.attributes.image.data.attributes.url}}" />
+            <div class="flex flex-col justify-start items-start">
+              <div class="h-[102px] flex flex-col justify-start items-start gap-4 px-4 py-4">
+                <div class="h-[62px] flex flex-col justify-start items-start gap-1">
+                  <div class="relative justify-start text-[#101828] text-xl font-semibold font-['Inter'] leading-[30px]">{{faculty.attributes.firstName}}
+                    {{ faculty.attributes.lastName }}
+                  </div>
+                  <div class="relative justify-start text-[#004eea] text-lg font-normal font-['Inter'] leading-7">
+                    {{ faculty.attributes?.shortDesc}}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div class="self-stretch text-left text-[#475467] text-xl font-normal font-['Inter'] leading-[30px]">
-            Hear from some of our amazing customers who are automating their finances.</div>
         </div>
+        }
       </div>
     </div>
-
-    <div class="flex flex-wrap gap-8">
-     
-      <div class="w-[400px]">
-        <div style="background-image: url('/assets/images/person.png');" class="h-[401px] w-full bg-no-repeat pt-[275px] flex-col justify-end items-center inline-flex">
-          <div class="flex-col justify-center items-center inline-flex">
-            <div class="self-stretch w-[300px] h-[126px] px-5 py-6 bg-white/30 border border-white/30 backdrop-blur-[14px] flex-col justify-start items-start gap-3 flex">
-              <div class="self-stretch h-[38px] flex-col justify-start items-start gap-4 flex">
-                <div class="self-stretch text-white text-3xl font-semibold font-['Inter'] leading-[38px]">Nick Preusch</div>
-              </div>
-              <div class="self-stretch h-7 flex-col justify-start items-start gap-0.5 flex">
-                <div class="self-stretch text-white text-lg font-semibold font-['Inter'] leading-7">IRS Attorney</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="w-[400px]">
-        <div style="background-image: url('/assets/images/person.png');" class="h-[401px] w-full bg-no-repeat pt-[275px] flex-col justify-end items-center inline-flex">
-          <div class="flex-col justify-center items-center inline-flex">
-            <div class="self-stretch w-[300px] h-[126px] px-5 py-6 bg-white/30 border border-white/30 backdrop-blur-[14px] flex-col justify-start items-start gap-3 flex">
-              <div class="self-stretch h-[38px] flex-col justify-start items-start gap-4 flex">
-                <div class="self-stretch text-white text-3xl font-semibold font-['Inter'] leading-[38px]">Nick Preusch</div>
-              </div>
-              <div class="self-stretch h-7 flex-col justify-start items-start gap-0.5 flex">
-                <div class="self-stretch text-white text-lg font-semibold font-['Inter'] leading-7">IRS Attorney</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="w-[400px]">
-        <div style="background-image: url('/assets/images/person.png');" class="h-[401px] w-full bg-no-repeat pt-[275px] flex-col justify-end items-center inline-flex">
-          <div class="flex-col justify-center items-center inline-flex">
-            <div class="self-stretch w-[300px] h-[126px] px-5 py-6 bg-white/30 border border-white/30 backdrop-blur-[14px] flex-col justify-start items-start gap-3 flex">
-              <div class="self-stretch h-[38px] flex-col justify-start items-start gap-4 flex">
-                <div class="self-stretch text-white text-3xl font-semibold font-['Inter'] leading-[38px]">Nick Preusch</div>
-              </div>
-              <div class="self-stretch h-7 flex-col justify-start items-start gap-0.5 flex">
-                <div class="self-stretch text-white text-lg font-semibold font-['Inter'] leading-7">IRS Attorney</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="w-[400px]">
-        <div style="background-image: url('/assets/images/person.png');" class="h-[401px] w-full bg-no-repeat pt-[275px] flex-col justify-end items-center inline-flex">
-          <div class="flex-col justify-center items-center inline-flex">
-            <div class="self-stretch w-[300px] h-[126px] px-5 py-6 bg-white/30 border border-white/30 backdrop-blur-[14px] flex-col justify-start items-start gap-3 flex">
-              <div class="self-stretch h-[38px] flex-col justify-start items-start gap-4 flex">
-                <div class="self-stretch text-white text-3xl font-semibold font-['Inter'] leading-[38px]">Nick Preusch</div>
-              </div>
-              <div class="self-stretch h-7 flex-col justify-start items-start gap-0.5 flex">
-                <div class="self-stretch text-white text-lg font-semibold font-['Inter'] leading-7">IRS Attorney</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="w-[400px]">
-        <div style="background-image: url('/assets/images/person.png');" class="h-[401px] w-full bg-no-repeat pt-[275px] flex-col justify-end items-center inline-flex">
-          <div class="flex-col justify-center items-center inline-flex">
-            <div class="self-stretch w-[300px] h-[126px] px-5 py-6 bg-white/30 border border-white/30 backdrop-blur-[14px] flex-col justify-start items-start gap-3 flex">
-              <div class="self-stretch h-[38px] flex-col justify-start items-start gap-4 flex">
-                <div class="self-stretch text-white text-3xl font-semibold font-['Inter'] leading-[38px]">Nick Preusch</div>
-              </div>
-              <div class="self-stretch h-7 flex-col justify-start items-start gap-0.5 flex">
-                <div class="self-stretch text-white text-lg font-semibold font-['Inter'] leading-7">IRS Attorney</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="w-[400px]">
-        <div style="background-image: url('/assets/images/person.png');" class="h-[401px] w-full bg-no-repeat pt-[275px] flex-col justify-end items-center inline-flex">
-          <div class="flex-col justify-center items-center inline-flex">
-            <div class="self-stretch w-[300px] h-[126px] px-5 py-6 bg-white/30 border border-white/30 backdrop-blur-[14px] flex-col justify-start items-start gap-3 flex">
-              <div class="self-stretch h-[38px] flex-col justify-start items-start gap-4 flex">
-                <div class="self-stretch text-white text-3xl font-semibold font-['Inter'] leading-[38px]">Nick Preusch</div>
-              </div>
-              <div class="self-stretch h-7 flex-col justify-start items-start gap-0.5 flex">
-                <div class="self-stretch text-white text-lg font-semibold font-['Inter'] leading-7">IRS Attorney</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
+  
+}
 
 
 <section class="bg-[#eef4ff]">
@@ -723,4 +319,9 @@
       </div>
     </div>
   </div>
+</section>
+
+<section class="container mx-auto h-[500px]">
+
+  <app-carousel></app-carousel>
 </section>

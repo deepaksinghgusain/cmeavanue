@@ -28,41 +28,47 @@
   </div>
 </section>
 
-<section class="container mx-auto">
-  <div class="justify-center items-center gap-8 inline-flex">
-    <div class="grow shrink basis-0 flex-col justify-start items-start gap-12 inline-flex">
-      <div class="self-stretch flex-col justify-start items-start gap-6 flex">
-        <div class="self-stretch  flex-col justify-start items-start gap-4 flex">
-          <div class="self-stretch text-[#101828] text-6xl font-semibold font-['Inter'] leading-[72px]">Elevate your
-            Continuing Education with us</div>
-          <div class="self-stretch h-[60px] text-[#0f1728] text-xl font-medium font-['Inter'] leading-[30px]">Recording
-            | Handouts | Instant CPE | Customer Service</div>
-        </div>
-        <div class="self-stretch text-[#667085] text-xl font-normal font-['Inter'] leading-normal">Accredited by NASBA,
-          IRS & the CFB Board. Our course catalogue features live virtual courses as well as self-paced education,
-          provided to you by our faculty.</div>
-      </div>
-    </div>
-    <div class="justify-center items-center flex overflow-hidden">
-      <div class="self-stretch pt-[61px] bg-gradient-to-b flex-col justify-center items-center inline-flex">
-        <div class="p-8">
-          <img src="/assets/images/sign-up-banner.jpg" class="rounded-2xl " alt="">
+@if (heroSection) {
+  <section class="container mx-auto">
+    <div class="justify-center items-center gap-8 inline-flex">
+      <div class="w-1/2 grow shrink basis-0 flex-col justify-start items-start gap-12 inline-flex">
+        <div class="self-stretch flex-col justify-start items-start gap-6 flex">
+          <div class="self-stretch  flex-col justify-start items-start gap-4 flex">
+            <div class="self-stretch text-[#101828] text-6xl font-semibold font-['Inter'] leading-[72px]">{{heroSection.title}}</div>
+            <!-- <div class="self-stretch h-[60px] text-[#0f1728] text-xl font-medium font-['Inter'] leading-[30px]">Recording
+              | Handouts | Instant CPE | Customer Service</div> -->
+          </div>
+          <!-- <div class="self-stretch text-[#667085] text-xl font-normal font-['Inter'] leading-normal">Accredited by NASBA,
+            IRS & the CFB Board. Our course catalogue features live virtual courses as well as self-paced education,
+            provided to you by our faculty.</div> -->
         </div>
       </div>
+      <div class="w-1/2 justify-center items-center flex overflow-hidden">
+        <div class="self-stretch pt-[61px] bg-gradient-to-b flex-col justify-center items-center inline-flex">
+          <div class="p-8">
+            <!-- <img src="/assets/images/sign-up-banner.jpg" class="rounded-2xl " alt=""> -->
+
+            @if (heroSection.videoDetail) {
+              <video src="{{ heroSection.videoDetail.videourl }}" controls autoplay class="rounded-2xl"></video>
+            }
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+}
+
 
 <section class="container mx-auto my-10">
   <div class="w-full flex justify-between">
     <div class="h-9 px-1 pb-3 border-b-2 border-[#155dee] justify-center items-center gap-2 inline-flex">
-      <div class="text-[#155dee] text-2xl font-semibold font-['Inter'] leading-loose">Live Webinar</div>
+      <a class="text-[#155dee] text-2xl font-semibold font-['Inter'] leading-loose">Live Webinar</a>
     </div>
     <div class="h-9 px-1 pb-3 justify-center items-center gap-2 inline-flex">
-      <div class="text-[#667085] text-2xl font-semibold font-['Inter'] leading-loose">Self Study</div>
+      <a class="text-[#667085] text-2xl font-semibold font-['Inter'] leading-loose">Self Study</a>
     </div>
     <div class="h-9 px-1 pb-3 justify-center items-center gap-2 inline-flex">
-      <div class="text-[#667085] text-2xl font-medium font-['Inter'] leading-loose">E-Book</div>
+      <a class="text-[#667085] text-2xl font-medium font-['Inter'] leading-loose">E-Book</a>
     </div>
   </div>
 
