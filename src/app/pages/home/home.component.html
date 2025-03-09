@@ -161,42 +161,44 @@
 
 </section>
 
-<section class="container mx-auto">
-  <div class="w-full h-[894px] py-24 bg-gradient-to-b rounded-[10px] flex-col justify-start items-center gap-16 inline-flex overflow-hidden">
-    <div class="self-stretch h-[94px] px-8 flex-col justify-start items-start gap-8 flex">
-      <div class="self-stretch h-[94px] flex-col justify-start items-center gap-8 flex">
-        <div class="self-stretch h-[94px] flex-col justify-start items-center gap-5 flex">
-          <div class="self-stretch h-11 flex-col justify-start items-start gap-3 flex">
-            <div class="self-stretch text-center text-[#101828] text-4xl font-semibold font-['Inter'] leading-[44px]">{{partners.title}}</div>
+@if(partners) {
+  <section class="container mx-auto">
+    <div class="w-full h-[894px] py-24 bg-gradient-to-b rounded-[10px] flex-col justify-start items-center gap-16 inline-flex overflow-hidden">
+      <div class="self-stretch h-[94px] px-8 flex-col justify-start items-start gap-8 flex">
+        <div class="self-stretch h-[94px] flex-col justify-start items-center gap-8 flex">
+          <div class="self-stretch h-[94px] flex-col justify-start items-center gap-5 flex">
+            <div class="self-stretch h-11 flex-col justify-start items-start gap-3 flex">
+              <div class="self-stretch text-center text-[#101828] text-4xl font-semibold font-['Inter'] leading-[44px]">{{partners?.title}}</div>
+            </div>
+            <div class="self-stretch text-center text-[#475467] text-xl font-normal font-['Inter'] leading-[30px]">{{partners?.subtitle}}</div>
           </div>
-          <div class="self-stretch text-center text-[#475467] text-xl font-normal font-['Inter'] leading-[30px]">{{partners.subtitle}}</div>
         </div>
       </div>
-    </div>
-
-    <div class="self-stretch h-[623px] px-8 flex-col justify-start items-start gap-16 flex">
-      <div class="self-stretch h-[623px] justify-center items-start gap-8 inline-flex">
-        @for (part of partners.partners; track $index) {
-        <div class="grow shrink basis-0 h-[560px] rounded-[10px] border border-[#155dee] flex-col justify-start items-start gap-5 inline-flex">
-          <div class="h-[200px] pl-[97px] pr-[107px] pt-[29px] pb-[30px] bg-gradient-to-b from-[#f5feff] to-[#d4dbe2] rounded-tr-[10px] rounded-br-[10px] justify-start items-center inline-flex">
-            <img class="w-[180px] self-stretch pt-2" src="{{ environmentUrl + part?.image?.data?.attributes?.url }}" />
-          </div>
-          <div class="self-stretch h-[336px] p-4 flex-col justify-start items-start gap-6 flex">
-            <div class="self-stretch h-[304px] flex-col justify-start items-start gap-2 flex">
-              <div class="self-stretch justify-start items-start gap-4 inline-flex">
-                <div class="grow shrink basis-0 text-[#101828] text-2xl font-semibold font-['Inter'] leading-loose">{{part?.title}}</div>
-              </div>
-              <div class="self-stretch text-[#475467] text-base font-normal font-['Inter'] leading-normal">
-                {{ part?.description }}
+  
+      <div class="self-stretch h-[623px] px-8 flex-col justify-start items-start gap-16 flex">
+        <div class="self-stretch h-[623px] justify-center items-start gap-8 inline-flex">
+          @for (part of partners.partners; track $index) {
+          <div class="grow shrink basis-0 h-[560px] rounded-[10px] border border-[#155dee] flex-col justify-start items-start gap-5 inline-flex">
+            <div class="h-[200px] pl-[97px] pr-[107px] pt-[29px] pb-[30px] bg-gradient-to-b from-[#f5feff] to-[#d4dbe2] rounded-tr-[10px] rounded-br-[10px] justify-start items-center inline-flex">
+              <img class="w-[180px] self-stretch pt-2" src="{{ environmentUrl + part?.image?.data?.attributes?.url }}" />
+            </div>
+            <div class="self-stretch h-[336px] p-4 flex-col justify-start items-start gap-6 flex">
+              <div class="self-stretch h-[304px] flex-col justify-start items-start gap-2 flex">
+                <div class="self-stretch justify-start items-start gap-4 inline-flex">
+                  <div class="grow shrink basis-0 text-[#101828] text-2xl font-semibold font-['Inter'] leading-loose">{{part?.title}}</div>
+                </div>
+                <div class="self-stretch text-[#475467] text-base font-normal font-['Inter'] leading-normal">
+                  {{ part?.description }}
+                </div>
               </div>
             </div>
           </div>
+          }
         </div>
-        }
       </div>
     </div>
-  </div>
-</section>
+  </section>
+}
 
 @if (InstructorData) {
   <section class="bg-[#f9fafb] py-24 h-auto ">
