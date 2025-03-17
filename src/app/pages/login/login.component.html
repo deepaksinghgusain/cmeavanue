@@ -6,7 +6,7 @@
           <div class="self-stretch text-[#101828] text-3xl font-semibold font-['Inter'] leading-[38px]">Welcome back</div>
           <div class="self-stretch text-[#475467] text-lg font-normal font-['Inter'] leading-7">Welcome back! Please enter your details.</div>
         </div>
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="w-full">
           <div class="self-stretch h-[352px] rounded-xl flex-col justify-start items-center gap-6 flex">
 
             <div class="self-stretch h-44 flex-col justify-start items-start gap-5 flex">
@@ -41,14 +41,16 @@
             <div class="self-stretch justify-start items-center inline-flex">
               <div class="grow shrink basis-0 h-5 justify-start items-start gap-2 flex">
                 <div class="pt-0.5 justify-center items-center flex">
-                  <div class="w-4 h-4 relative rounded border border-[#d0d5dd]"></div>
+                  <div>
+                    <input type="checkbox" class="self-stretch text-[#344054] text-sm font-medium font-['Inter'] leading-tight">
+                  </div>
                 </div>
                 <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
-                  <input type="checkbox" class="self-stretch text-[#344054] text-sm font-medium font-['Inter'] leading-tight">Remember Your Password
+                  Remember Your Password
                 </div>
               </div>
               <div class="self-stretch justify-center items-center gap-1.5 flex overflow-hidden">
-                <a  href="/forgot-password" class="text-[#2970fe] text-sm font-medium font-['Inter'] leading-tight">Forgot password</a>
+                <a href="/forgot-password" class="text-[#2970fe] text-sm font-medium font-['Inter'] leading-tight">Forgot password</a>
               </div>
             </div>
             <div class="self-stretch h-[108px] flex-col justify-start items-start gap-4 flex">
@@ -68,7 +70,7 @@
           <div class="self-stretch justify-center items-baseline gap-1 inline-flex">
             <div class="text-[#475467] text-lg font-normal font-['Inter'] leading-7">New to CPE warehouse?</div>
             <div class="justify-center items-center gap-1.5 flex overflow-hidden">
-              <div class="text-[#2970fe] text-lg font-semibold font-['Inter'] leading-7">Sign up</div>
+              <a routerLink="/register" class="text-[#2970fe] text-lg font-semibold font-['Inter'] leading-7">Sign up</a>
             </div>
           </div>
         </form>

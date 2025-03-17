@@ -969,7 +969,6 @@ export class CourseService {
     return this.http.get(`${this.url}/api/packages/${slug}?populate=deep`);
   }
 
-
   /* GETTING PACKAGE DETAIL BY GRAPH QL */
   getPackageDetailbByGql(slug: string) {
     return this.apollo.watchQuery<any>({

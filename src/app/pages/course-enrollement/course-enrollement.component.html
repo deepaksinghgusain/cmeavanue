@@ -45,7 +45,9 @@
                 <div class="text-[#088ab2] text-sm font-semibold font-['Inter'] leading-tight">Tax</div>
               </div>
             </div>
-            <div class="self-stretch text-[#101828] text-3xl font-semibold font-['Inter'] leading-[38px]">{{courseData?.title }}</div>
+            <div class="self-stretch text-[#101828] text-3xl font-semibold font-['Inter'] leading-[38px]">
+              {{courseData?.title }}
+            </div>
             <div class="pl-1 pr-2.5 py-1 rounded-full justify-start items-center gap-3 inline-flex">
               <!-- <div class="text-[#667084] text-base font-semibold font-['Inter'] line-through leading-[38px]">US {{ courseData?.price * seats | currency:'USD':'symbol'}}</div> -->
               <div class="text-[#0e9384] text-[32px] font-semibold font-['Inter'] leading-[38px]">US
@@ -74,7 +76,8 @@
         <div class="h-[412px] bg-white rounded-xl  shadow-[0px_20px_24px_-4px_rgba(16,24,40,0.08)] flex-col justify-start items-end flex overflow-hidden">
           <div class="self-stretch h-12 px-6 pt-5 flex-col justify-start items-start gap-5 flex">
             <div class="self-stretch h-7 flex-col justify-start items-start gap-1 flex">
-              <div class="self-stretch text-[#101828] text-lg font-semibold font-['Inter'] leading-7">Choose Webinar Dates</div>
+              <div class="self-stretch text-[#101828] text-lg font-semibold font-['Inter'] leading-7">Choose Webinar
+                Dates</div>
             </div>
           </div>
           <div class="self-stretch h-[157px] pt-2 flex-col justify-center items-start flex">
@@ -86,7 +89,8 @@
                     <div class="justify-start items-center gap-3 inline-flex">
                       <div class="justify-center items-center flex">
                         <div class="w-5 h-5 p-[3px] bg-[#155dee] rounded-md  shadow-[0px_0px_0px_2px_rgba(255,255,255,1.00)] justify-center items-center flex overflow-hidden">
-                          <div class="w-3.5 h-3.5 relative flex-col justify-start items-start flex overflow-hidden"></div>
+                          <div class="w-3.5 h-3.5 relative flex-col justify-start items-start flex overflow-hidden">
+                          </div>
                           <input type="checkbox" name="" checked id="">
                         </div>
                       </div>
@@ -159,7 +163,11 @@
             </div>
             <div class="w-[480px] px-[22px] py-4 rounded-[10px] justify-center items-center gap-2.5 inline-flex overflow-hidden">
               <div class="px-0.5 justify-start items-center flex">
-                <div><span class="text-[#475467] text-xl font-normal font-['Inter'] leading-[30px]">For Group</span><span class="text-[#18212f] text-xl font-medium font-['Inter'] leading-[30px]"> Enrollments</span><span class="text-[#475467] text-xl font-normal font-['Inter'] leading-[30px]">, </span><span class="text-[#db6803] text-xl font-bold font-['Inter'] leading-[30px]">Contact us</span></div>
+                <div><span class="text-[#475467] text-xl font-normal font-['Inter'] leading-[30px]">For
+                    Group</span><span class="text-[#18212f] text-xl font-medium font-['Inter'] leading-[30px]">
+                    Enrollments</span><span class="text-[#475467] text-xl font-normal font-['Inter'] leading-[30px]">,
+                  </span><span class="text-[#db6803] text-xl font-bold font-['Inter'] leading-[30px]">Contact us</span>
+                </div>
               </div>
               <div class="w-6 h-6 relative  overflow-hidden"></div>
             </div>
@@ -175,7 +183,9 @@
   <div class="h-9 w-full px-12 justify-start items-start gap-12 inline-flex">
     @for (tab of courseTabs; track $index) {
     <div class="grow shrink basis-0 h-9 px-1 pb-3 border-b-2 border-[#155dee] justify-center items-center gap-2 flex">
-      <div class="text-[#155dee] text-2xl font-semibold font-['Inter'] leading-loose" (click)="openTabContent($index)">{{tab?.title}}</div>
+      <div class="text-[#155dee] text-2xl font-semibold font-['Inter'] leading-loose" (click)="openTabContent($index)">
+        {{tab?.title}}
+      </div>
     </div>
     }
     <!-- <div class="grow shrink basis-0 h-9 px-1 pb-3 justify-center items-center gap-2 flex">
@@ -191,164 +201,175 @@
 
   <div class="px-8 mt-8 rounded-xl justify-start gap-8 inline-flex">
 
-    <div *ngFor="let tab of courseTabs; let i=index">
+    @for (tab of courseTabs; track $index) {
+      @if (showTabContent===$index) {
+      <div>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id={{tab?.title}} role="tabpanel" aria-labelledby="courseoutline-tab">
+            @if (tab.index==='Outline' || tab.index==='Credits' || tab.index==='GivingBack') {
+            <div class="package-course-tabs padding-distance-md">
+              <div class="row">
+                <div class="col-sm-5  mb-4">
+                  <!-- @if (tab?.featureTitle !==null) {
+                  <div [innerHTML]="sanitize(tab?.featureTitle)"> </div>
+                  } -->
 
-      <div class="tab-content" id="myTabContent" *ngIf="showTabContent===i">
+                  <br>
 
-        <div class="tab-pane fade show active" id={{tab?.title}} role="tabpanel" aria-labelledby="courseoutline-tab">
-          <div class="package-course-tabs padding-distance-md" *ngIf="tab.index==='Outline' || tab.index==='Credits' || tab.index==='GivingBack'  ">
-            <div class="row">
-              <div class="col-sm-5  mb-4">
-                <div *ngIf="tab?.featureTitle !==null" [innerHTML]="sanitize(tab?.featureTitle)"> </div>
-                <br>
-                <div class="couseD_heading" style="font-family:Barlow,sans-serif !important;" *ngIf="tab.index==='Outline'" [innerHTML]="sanitize(courseData?.shortDesc)">
+                  <!-- @if (tab.index==='Outline') {
+                  <div class="couseD_heading" [innerHTML]="sanitize(courseData?.shortDesc)"></div>
+                  } -->
+
                 </div>
               </div>
-            </div>
 
-            <div class="row">
-              <div class="col-sm-12">
+              <div class="row">
+                <div class="col-sm-12">
 
-                <div class="tabdynamic ">
-                  <div class="package-deal-right-content">
+                  <div class="tabdynamic ">
+                    <div class="package-deal-right-content">
 
-                    <div class="event-course-image  mb-4" *ngIf="tab.index==='Outline' else next ">
-                      <img alt="tabimage" src="{{imageUrl+ courseData?.image?.data?.attributes?.url}}" class="img-fluid">
-                    </div>
+                      @if (tab.index==='Outline' ) {
+                      <div class="event-course-image  mb-4">
+                        <img alt="tabimage" src="{{imageUrl+ courseData?.image?.data?.attributes?.url}}" class="img-fluid">
+                      </div>
+                      }
 
-                    <ng-template #next>
+                      @else {
                       <div class="event-course-image mb-4">
                         <img alt="tabimage" *ngIf="tab?.image?.data?.attributes?.url" src="{{imageUrl+ tab?.image?.data?.attributes?.url }}" class="img-fluid">
                       </div>
-                    </ng-template>
+                      }
 
-                    <div *ngIf="tab?.content" [innerHTML]="sanitize(tab?.content)">
+                      <div *ngIf="tab?.content" [innerHTML]="sanitize(tab?.content)">
+
+                      </div>
 
                     </div>
 
+                    <!-- @if (tab.index==='Outline' && tab.index!=='Credits' && tab.index!=='GivingBack') {
+                    <div class="cpa-social-icons cpa-social-icons-package ng-star-inserted">
+
+                      <div class="">
+                        <label class="share">share with</label>
+                      </div>
+
+                      <ul>
+                        <li>
+                          <a [href]="sharingUrls.fb" target="_blank">
+                            <img alt="fb" src="../../../assets/params/images/icons/facebook.svg"></a>
+                        </li>
+                        <li>
+                          <a [href]="sharingUrls.twitter" target="_blank">
+                            <img alt="twitter" src="../../../assets/params/images/icons/twitter.svg"></a>
+                        </li>
+                        <li>
+                          <a [href]="sharingUrls.linkedin" target="_blank">
+                            <img alt="linkedin" src="../../../assets/params/images/icons/icon-linked-white.svg"></a>
+                        </li>
+                        <li>
+                          <a href="https://www.instagram.com/cpe_warehouse/" target="_blank">
+                            <img alt="insta" src="../../../assets/params/images/icons/insta.svg"></a>
+                        </li>
+                      </ul>
+                    </div>
+                    } -->
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            }
+
+
+            <div class="package-course-tabs padding-distance-md " *ngIf="tab.title ==='FAQ' || tab.index ==='Other' ">
+
+              @if (tab?.featureTitle!=null) {
+              <div class="heading-sm text-uppercase font-barlow" [innerHTML]="sanitize(tab?.featureTitle)">
+              </div>
+              }
+
+
+              <div class="row">
+                <div class="package-deal-right-content">
+                  <div class="about-list faq mt-3 ml-5">
+                    <div [innerHTML]="sanitize(tab?.content)">
+                    </div>
                   </div>
 
-                  <div *ngIf="tab.index==='Outline' && tab.index!=='Credits' && tab.index!=='GivingBack'" class="cpa-social-icons cpa-social-icons-package ng-star-inserted">
+                </div>
+                <div class="col-sm-12">
+                  <div *ngIf="tab.index==='Other' && tab?.title !=='Faculty' && tab?.title !=='FAQ'" class="cpa-social-icons cpa-social-icons-package ng-star-inserted">
 
                     <div class="">
                       <label class="share">share with</label>
 
-
+                      <ul class="flex">
+                        <li>
+                          <a [href]="sharingUrls.fb" target="_blank">
+                            <img alt="fb" src="/assets/params/images/icons/facebook.svg"></a>
+                        </li>
+                        <li>
+                          <a [href]="sharingUrls.twitter" target="_blank">
+                            <img alt="twitter" src="/assets/params/images/icons/twitter.svg"></a>
+                        </li>
+                        <li>
+                          <a [href]="sharingUrls.linkedin" target="_blank">
+                            <img alt="linkedin" src="/assets/params/images/icons/icon-linked-white.svg"></a>
+                        </li>
+                        <li>
+                          <a href="https://www.instagram.com/cpe_warehouse/" target="_blank">
+                            <img alt="insta" src="/assets/params/images/icons/insta.svg"></a>
+                        </li>
+                      </ul>
                     </div>
 
-
-                    <ul>
-                      <li>
-                        <a [href]="sharingUrls.fb" target="_blank">
-                          <img alt="fb" src="../../../assets/params/images/icons/facebook.svg"></a>
-                      </li>
-                      <li>
-                        <a [href]="sharingUrls.twitter" target="_blank">
-                          <img alt="twitter" src="../../../assets/params/images/icons/twitter.svg"></a>
-                      </li>
-                      <li>
-                        <a [href]="sharingUrls.linkedin" target="_blank">
-                          <img alt="linkedin" src="../../../assets/params/images/icons/icon-linked-white.svg"></a>
-                      </li>
-                      <li>
-                        <a href="https://www.instagram.com/cpe_warehouse/" target="_blank">
-                          <img alt="insta" src="../../../assets/params/images/icons/insta.svg"></a>
-                      </li>
-                    </ul>
                   </div>
-                </div>
-
-
-                <div class="package-deal-right-content tabdynamic">
-
                 </div>
               </div>
 
-
-
-            </div>
-          </div>
-
-          <div class="package-course-tabs padding-distance-md " *ngIf="tab.title ==='FAQ' || tab.index ==='Other' ">
-
-            <div *ngIf="tab?.featureTitle!=null" class="heading-sm text-uppercase font-barlow" [innerHTML]="sanitize(tab?.featureTitle)">
             </div>
 
-            <div class="row">
+            @if (tab.title ==='Faculty') {
+              <div class="package-course-tabs padding-distance-md">
 
-              <div class="package-deal-right-content">
-                <div class="about-list faq mt-3 ml-5">
-                  <div [innerHTML]="sanitize(tab?.content)">
-                  </div>
-
-                </div>
-
-              </div>
-              <div class="col-sm-12">
-                <div *ngIf="tab.index==='Other' && tab?.title !=='Faculty' && tab?.title !=='FAQ'" class="cpa-social-icons cpa-social-icons-package ng-star-inserted">
-
-                  <div class="">
-                    <label class="share">share with</label>
-
-                    <ul class="flex">
-                      <li>
-                        <a [href]="sharingUrls.fb" target="_blank">
-                          <img alt="fb" src="/assets/params/images/icons/facebook.svg"></a>
-                      </li>
-                      <li>
-                        <a [href]="sharingUrls.twitter" target="_blank">
-                          <img alt="twitter" src="/assets/params/images/icons/twitter.svg"></a>
-                      </li>
-                      <li>
-                        <a [href]="sharingUrls.linkedin" target="_blank">
-                          <img alt="linkedin" src="/assets/params/images/icons/icon-linked-white.svg"></a>
-                      </li>
-                      <li>
-                        <a href="https://www.instagram.com/cpe_warehouse/" target="_blank">
-                          <img alt="insta" src="/assets/params/images/icons/insta.svg"></a>
-                      </li>
-                    </ul>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="package-course-tabs padding-distance-md" *ngIf="tab.title ==='Faculty'">
-
-            <ul class="choose_instructors">
-              <li *ngFor="let instructor of faculties ;let i=index">
-                <div class="list-row">
-                  <!-- <h6>/0{{i+1}}</h6> -->
-                  <div class="row">
-                    <div class="col-sm-5">
-                      <div class="instructor-media">
-                        <img alt="instructor" *ngIf="(instructor?.imgurl !== '') " src="{{imageUrl}}{{instructor.imgurl}}" class="img-fluid">
-
-                        <img alt="instructor" *ngIf="instructor?.imgurl == '' " src="../../../../../assets/params/images/img/faculty2.png" class="img-fluid">
-
-                      </div>
-                    </div>
-                    <div class="col-sm-7">
-                      <div class="instructor-detail">
-                        <h5 class="heading-sm text-uppercase">{{instructor.title}} </h5>
-                        <div class="font-barlow" [innerHTML]="sanitize(instructor.bio)">
+                <ul class="choose_instructors">
+                  <li *ngFor="let instructor of faculties ;let i=index">
+                    <div class="list-row">
+                      <!-- <h6>/0{{i+1}}</h6> -->
+                      <div class="row">
+                        <div class="col-sm-5">
+                          <div class="instructor-media">
+                            <img alt="instructor" *ngIf="(instructor?.imgurl !== '') " src="{{imageUrl}}{{instructor.imgurl}}" class="img-fluid">
+  
+                            <img alt="instructor" *ngIf="instructor?.imgurl == '' " src="../../../../../assets/params/images/img/faculty2.png" class="img-fluid">
+  
+                          </div>
                         </div>
-
+                        <div class="col-sm-7">
+                          <div class="instructor-detail">
+                            <h5 class="heading-sm text-uppercase">{{instructor.title}} </h5>
+                            <div class="font-barlow" [innerHTML]="sanitize(instructor.bio)">
+                            </div>
+  
+                          </div>
+                        </div>
+  
                       </div>
-                    </div>
-
-                  </div>
-                </div><br>
-              </li>
-
-            </ul>
+                    </div><br>
+                  </li>
+  
+                </ul>
+              </div>
+            }
+           
           </div>
         </div>
       </div>
-    </div>
+      }
+
+    }
+
 
 
     <!-- <div class="w-[592px] rounded-2xl flex-col justify-start items-start inline-flex overflow-hidden">
@@ -573,7 +594,8 @@
       <div class="self-stretch h-11 flex-col justify-start items-start gap-8 flex">
         <div class="self-stretch h-11 flex-col justify-start items-start gap-5 flex">
           <div class="self-stretch h-11 flex-col justify-start items-start gap-3 flex">
-            <div class="self-stretch text-[#101828] text-4xl font-semibold font-['Inter'] leading-[44px]">About this course</div>
+            <div class="self-stretch text-[#101828] text-4xl font-semibold font-['Inter'] leading-[44px]">About this
+              course</div>
           </div>
         </div>
       </div>
@@ -598,8 +620,10 @@
         <div class="self-stretch h-[138px] flex-col justify-start items-center flex">
           <div class="self-stretch h-[138px] px-6 pt-6 flex-col justify-start items-center gap-4 flex">
             <div class="self-stretch h-[114px] flex-col justify-start items-center gap-1 flex">
-              <div class="self-stretch text-center text-[#101828] text-lg font-semibold font-['Inter'] leading-7">Explore Our Unlimited CPE Package</div>
-              <div class="self-stretch text-center"><span class="text-[#344054] text-lg font-normal font-['Inter'] leading-7">This course is part of the CPE Warehouse Pass. Subscribe today for</span><span class="text-black text-lg font-normal font-['Inter'] leading-7"> </span><span class="text-[#667084] text-lg font-medium font-['Inter'] line-through leading-7">$1200</span><span class="text-[#7e56d8] text-2xl font-bold font-['Inter'] leading-7"> $999</span></div>
+              <div class="self-stretch text-center text-[#101828] text-lg font-semibold font-['Inter'] leading-7">
+                Explore Our Unlimited CPE Package</div>
+              <div class="self-stretch text-center"><span class="text-[#344054] text-lg font-normal font-['Inter'] leading-7">This course is part of the CPE
+                  Warehouse Pass. Subscribe today for</span><span class="text-black text-lg font-normal font-['Inter'] leading-7"> </span><span class="text-[#667084] text-lg font-medium font-['Inter'] line-through leading-7">$1200</span><span class="text-[#7e56d8] text-2xl font-bold font-['Inter'] leading-7"> $999</span></div>
             </div>
           </div>
         </div>
@@ -617,7 +641,8 @@
     <div class="self-stretch flex-col justify-start items-start gap-5 flex">
       <div class="self-stretch h-[88px] flex-col justify-start items-start gap-5 flex">
         <div class="self-stretch h-[88px] flex-col justify-start items-start gap-8 flex">
-          <div class="self-stretch text-[#101828] text-lg font-semibold font-['Inter'] leading-7">This Course includes:</div>
+          <div class="self-stretch text-[#101828] text-lg font-semibold font-['Inter'] leading-7">This Course includes:
+          </div>
           <div class="self-stretch justify-start items-center gap-5 inline-flex">
             <div class="justify-start items-center gap-2 flex">
               <div class="w-6 h-6 relative  overflow-hidden"></div>
@@ -625,7 +650,8 @@
             </div>
             <div class="justify-start items-center gap-2 flex">
               <div class="w-6 h-6 relative  overflow-hidden"></div>
-              <div class="text-[#344054] text-base font-semibold font-['Inter'] leading-normal">Lighting fast customer service</div>
+              <div class="text-[#344054] text-base font-semibold font-['Inter'] leading-normal">Lighting fast customer
+                service</div>
             </div>
             <div class="justify-start items-center gap-2 flex">
               <div class="w-6 h-6 relative  overflow-hidden"></div>
@@ -633,7 +659,8 @@
             </div>
             <div class="justify-start items-center gap-2 flex">
               <div class="w-6 h-6 relative  overflow-hidden"></div>
-              <div class="text-[#344054] text-base font-semibold font-['Inter'] leading-normal">World class faculty</div>
+              <div class="text-[#344054] text-base font-semibold font-['Inter'] leading-normal">World class faculty
+              </div>
             </div>
             <div class="justify-start items-center gap-2 flex">
               <div class="w-6 h-6 relative  overflow-hidden"></div>
@@ -654,10 +681,12 @@
             <div class="text-center text-[#344054] text-sm font-medium font-['Inter'] leading-tight">EA</div>
           </div>
           <div class="px-3 py-1 bg-gray-50 rounded-full border border-[#e4e7ec] justify-start items-center flex">
-            <div class="text-center text-[#344054] text-sm font-medium font-['Inter'] leading-tight">Tax Practitioner</div>
+            <div class="text-center text-[#344054] text-sm font-medium font-['Inter'] leading-tight">Tax Practitioner
+            </div>
           </div>
           <div class="px-3 py-1 bg-gray-50 rounded-full border border-[#e4e7ec] justify-start items-center flex">
-            <div class="text-center text-[#344054] text-sm font-medium font-['Inter'] leading-tight">Financial Planners</div>
+            <div class="text-center text-[#344054] text-sm font-medium font-['Inter'] leading-tight">Financial Planners
+            </div>
           </div>
         </div>
       </div>
@@ -673,7 +702,8 @@
         <div class="self-stretch h-11 flex-col justify-start items-start gap-5 flex">
           <div class="container mx-auto">
             <div class="self-stretch h-11 flex-col justify-start items-start gap-3 flex">
-              <div class="self-stretch text-[#101828] text-4xl font-semibold font-['Inter'] leading-[44px]">Credits & Accreditation </div>
+              <div class="self-stretch text-[#101828] text-4xl font-semibold font-['Inter'] leading-[44px]">Credits &
+                Accreditation </div>
             </div>
           </div>
         </div>
@@ -698,7 +728,8 @@
     <div class="container mx-auto">
       <div class="self-stretch px-8 justify-between items-start gap-8 inline-flex">
         <div class="w-[771px] py-5 flex-col justify-between items-start gap-8 inline-flex">
-          <div class="self-stretch text-[#101828] text-lg font-semibold font-['Inter'] leading-7">NASBA Sponsorship and Compliance Statement</div>
+          <div class="self-stretch text-[#101828] text-lg font-semibold font-['Inter'] leading-7">NASBA Sponsorship and
+            Compliance Statement</div>
           <div class="self-stretch h-20 px-1 flex-col justify-start items-start gap-8 flex">
             <div class="w-[794px] justify-start items-start inline-flex">
               <div class="grow shrink basis-0 px-4 pt-6 flex-col justify-start items-center gap-5 inline-flex">
@@ -713,7 +744,8 @@
                     </div>
                   </div>
                   <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
-                    <div class="self-stretch text-[#475467] text-lg font-normal font-['Inter'] leading-7">IRS CE Provider #: QQTMI</div>
+                    <div class="self-stretch text-[#475467] text-lg font-normal font-['Inter'] leading-7">IRS CE
+                      Provider #: QQTMI</div>
                   </div>
                 </div>
               </div>
@@ -729,7 +761,8 @@
                     </div>
                   </div>
                   <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
-                    <div class="self-stretch text-[#475467] text-lg font-normal font-['Inter'] leading-7">NASBA Sponsor #: 143337</div>
+                    <div class="self-stretch text-[#475467] text-lg font-normal font-['Inter'] leading-7">NASBA Sponsor
+                      #: 143337</div>
                   </div>
                 </div>
               </div>
@@ -745,7 +778,8 @@
                     </div>
                   </div>
                   <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
-                    <div class="self-stretch text-[#475467] text-lg font-normal font-['Inter'] leading-7">IRS Course ID: QQTMI-T-00431-24-O</div>
+                    <div class="self-stretch text-[#475467] text-lg font-normal font-['Inter'] leading-7">IRS Course ID:
+                      QQTMI-T-00431-24-O</div>
                   </div>
                 </div>
               </div>
@@ -753,7 +787,12 @@
           </div>
           <div class="self-stretch h-[200px] py-4 flex-col justify-start items-start gap-5 flex">
             <div class="self-stretch h-[168px] flex-col justify-start items-center gap-2 flex">
-              <div class="self-stretch text-[#475467] text-lg font-normal font-['Inter'] leading-7">Asterid Group Inc. (dba CPE Warehouse) (Sponsor Id#: 143337) is registered with the National Association of State Boards of Accountancy (NASBA) as a sponsor of continuing professional education on the National Registry of CPE Sponsors. State boards of accountancy have final authority on the acceptance of individual courses for CPE credit. Complaints regarding registered sponsors may be submitted to the National Registry of CPE Sponsors through its website: www.NASBARegistry.org.</div>
+              <div class="self-stretch text-[#475467] text-lg font-normal font-['Inter'] leading-7">Asterid Group Inc.
+                (dba CPE Warehouse) (Sponsor Id#: 143337) is registered with the National Association of State Boards of
+                Accountancy (NASBA) as a sponsor of continuing professional education on the National Registry of CPE
+                Sponsors. State boards of accountancy have final authority on the acceptance of individual courses for
+                CPE credit. Complaints regarding registered sponsors may be submitted to the National Registry of CPE
+                Sponsors through its website: www.NASBARegistry.org.</div>
             </div>
           </div>
         </div>
@@ -773,7 +812,8 @@
 
                     </div>
                     <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
-                      <div class="self-stretch text-[#344054] text-lg font-semibold font-['Inter'] leading-7">2 hours Live Webinar </div>
+                      <div class="self-stretch text-[#344054] text-lg font-semibold font-['Inter'] leading-7">2 hours
+                        Live Webinar </div>
                     </div>
                   </div>
                   <div class="self-stretch justify-start items-start gap-3 inline-flex">
@@ -787,7 +827,8 @@
 
                     </div>
                     <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
-                      <div class="self-stretch text-[#344054] text-lg font-semibold font-['Inter'] leading-normal">2 credits NASBA and IRS</div>
+                      <div class="self-stretch text-[#344054] text-lg font-semibold font-['Inter'] leading-normal">2
+                        credits NASBA and IRS</div>
                     </div>
                   </div>
                   <div class="self-stretch justify-start items-start gap-3 inline-flex">
@@ -801,7 +842,8 @@
 
                     </div>
                     <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
-                      <div class="self-stretch text-[#344054] text-lg font-semibold font-['Inter'] leading-normal">Basic Learning level</div>
+                      <div class="self-stretch text-[#344054] text-lg font-semibold font-['Inter'] leading-normal">Basic
+                        Learning level</div>
                     </div>
                   </div>
                   <div class="self-stretch justify-start items-start gap-3 inline-flex">
@@ -815,7 +857,8 @@
 
                     </div>
                     <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
-                      <div class="self-stretch text-[#344054] text-base font-semibold font-['Inter'] leading-normal">Delivery method Group Internet based</div>
+                      <div class="self-stretch text-[#344054] text-base font-semibold font-['Inter'] leading-normal">
+                        Delivery method Group Internet based</div>
                     </div>
                   </div>
                   <div class="self-stretch justify-start items-start gap-3 inline-flex">
@@ -829,7 +872,8 @@
 
                     </div>
                     <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
-                      <div class="self-stretch text-[#344054] text-lg font-semibold font-['Inter'] leading-normal">No prerequisites</div>
+                      <div class="self-stretch text-[#344054] text-lg font-semibold font-['Inter'] leading-normal">No
+                        prerequisites</div>
                     </div>
                   </div>
                 </div>
@@ -849,7 +893,8 @@
       <div class="grow shrink basis-0 pr-8 flex-col justify-start items-start gap-10 inline-flex">
         <div class="self-stretch justify-start items-start gap-3 inline-flex">
           <div class="grow shrink basis-0 flex-col justify-start items-start gap-1 inline-flex">
-            <div class="self-stretch text-[#101828] text-3xl font-semibold font-['Inter'] leading-[38px]"> Instructor</div>
+            <div class="self-stretch text-[#101828] text-3xl font-semibold font-['Inter'] leading-[38px]"> Instructor
+            </div>
             <div class="self-stretch justify-start items-center gap-5 inline-flex">
               <div class="justify-start items-center gap-2 flex">
                 <div class="w-5 h-5 relative  overflow-hidden">
@@ -879,7 +924,7 @@
             <div class="self-stretch h-[158px] px-5 py-6 bg-white/30 border border-white/30 backdrop-blur-xl flex-col justify-start items-start gap-3 flex">
               <div class="self-stretch justify-start items-start gap-4 inline-flex">
                 <div class="grow shrink basis-0 text-white text-4xl font-semibold font-['Inter'] leading-[44px]">
-                  {{ instructor?.firstName +  " " + instructor?.lastName }}
+                  {{ instructor?.firstName + " " + instructor?.lastName }}
                 </div>
               </div>
               <div class="self-stretch h-[54px] flex-col justify-start items-start gap-0.5 flex">
@@ -907,9 +952,11 @@
       <div class="self-stretch h-[94px] flex-col justify-start items-center gap-8 flex">
         <div class="self-stretch h-[94px] flex-col justify-start items-center gap-5 flex">
           <div class="self-stretch h-11 flex-col justify-start items-start gap-3 flex">
-            <div class="self-stretch text-left text-[#101828] text-4xl font-semibold font-['Inter'] leading-[44px]">Related Courses</div>
+            <div class="self-stretch text-left text-[#101828] text-4xl font-semibold font-['Inter'] leading-[44px]">
+              Related Courses</div>
           </div>
-          <div class="self-stretch text-left text-[#475467] text-xl font-normal font-['Inter'] leading-[30px]">Check our suggestions below</div>
+          <div class="self-stretch text-left text-[#475467] text-xl font-normal font-['Inter'] leading-[30px]">Check our
+            suggestions below</div>
         </div>
       </div>
     </div>

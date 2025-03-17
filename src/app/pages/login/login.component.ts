@@ -35,7 +35,6 @@ export class LoginComponent {
   heroImg: any;
   environmentUrl: string = '';
 
-
   constructor(private formBuilder: FormBuilder, private _commannService: CommonService, private cartService: CartService,
     public authenticationService: AuthService, private courseService: CourseService, private router: Router) {
     this.imageUrl = environment.imageEndPoint,

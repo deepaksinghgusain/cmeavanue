@@ -102,8 +102,6 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
     this.getCourseData(this.slug);
 
     if (isPlatformBrowser(this.platformId)) {
-
-      
       
       const timezone = moment.tz.guess();
       const offset = new Date().getTimezoneOffset();
@@ -133,13 +131,13 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
           }
         }));
 
-      this.unsubscribe$.add(this.courseService.getAllCourses().subscribe((res: any) => {
-        res.data.courses.data.forEach((element: any) => {
-          if (element.attributes.forTaxLaw) {
-            this.courseListingContent.push(element)
-          }
-        });
-      }))
+      // this.unsubscribe$.add(this.courseService.getAllCourses().subscribe((res: any) => {
+      //   res.data.courses.data.forEach((element: any) => {
+      //     if (element.attributes.forTaxLaw) {
+      //       this.courseListingContent.push(element)
+      //     }
+      //   });
+      // }))
 
     } else {
       console.log("server side code rendering");
@@ -233,8 +231,6 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
       this.courseId = this.coursesDetail?.data[0]?.id;
       // this.courseData = res?.data[0]?.attributes
       this.courseData = this.coursesDetail?.data[0]?.attributes;
-      console.log(this.courseData);
-      
       this.instructor = this.courseData.instructors.data[0]?.attributes;
       
       
@@ -308,7 +304,6 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
           "featureTitle": faqContent?.question,
           "content": faqContent?.answer,
           "image": { data: { attributes: { url: null } } }
-
         }]
 
       this.courseData?.instructors?.data?.forEach((element: any, index: number) => {
@@ -427,9 +422,6 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
 
     return name.join(',');
   }
-
-
-
 
   seatIncrementer() {
     let quantity = this.seats
@@ -555,7 +547,7 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
                   this.getcardCount();
                   // SHOW MESSAGE (COURSE ADD SUCCESSFULL)
                   localStorage.setItem('cartId', resp.data.id)
-                  this.router.navigateByUrl('/cart')
+                  this.router.navigateByUrl('/checkout')
                   this.gtagservice.pushEvent('add_to_cart',
                     {
                       "id": courseid,

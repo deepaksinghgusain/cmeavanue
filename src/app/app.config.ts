@@ -1,12 +1,12 @@
 import { ApplicationConfig, provideZoneChangeDetection, inject } from '@angular/core';
 import { provideRouter } from '@angular/router';
-
+import { setContext } from '@apollo/client/link/context';
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { HttpHeaders, provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { provideApollo } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
-import { InMemoryCache } from '@apollo/client/core';
+import { createHttpLink, InMemoryCache } from '@apollo/client/core';
 import { environment } from '../environments/environment';
 import jwtInterceptor from './interceptors/jwt';
 
@@ -14,7 +14,21 @@ const uri = environment.apibaseurl + '/graphql';
 
 const token = localStorage.getItem('token');
 
-console.log(token);
+
+const authLink = setContext((_, { headers }: { headers?: Record<string, string> }) => {
+  // get the authentication token from local storage if it exists
+  const token: string | null = localStorage.getItem('token');
+
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : "",
+    }
+  };
+});
+
+
 
 
 export const appConfig: ApplicationConfig = {
@@ -25,15 +39,14 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withFetch(), withInterceptors([jwtInterceptor])),
     provideApollo(() => {
     
-    const httpLink = inject(HttpLink);
+      const httpLink = inject(HttpLink);
+
+      const httpLinkUri = httpLink.create({
+        uri
+      });
 
     return {
-      link: httpLink.create({
-        uri,
-        headers: new HttpHeaders({
-          "Authorization": `Bearer ${token}`,
-        })
-      }),
+      link: authLink.concat(httpLinkUri),
       cache: new InMemoryCache(),
     };
   })]
