@@ -13,6 +13,7 @@ import { SelfStudyComponent } from './pages/self-study/self-study.component';
 import { CourseCatalogComponent } from './pages/course-catalog/course-catalog.component';
 import { BundleandsubscriptionComponent } from './pages/bundleandsubscription/bundleandsubscription.component';
 import { EBookComponent } from './pages/e-book/e-book.component';
+import { CartComponent } from './pages/cart/cart.component';
 
 export const routes: Routes = [
     {
@@ -43,10 +44,7 @@ export const routes: Routes = [
         path: 'package',
         component: PackageComponent
     },
-    {
-        path: 'course-enrollement',
-        component: CourseEnrollementComponent
-    },
+   
     {
         path: 'testimonial',
         component: TestimonialComponent
@@ -70,5 +68,13 @@ export const routes: Routes = [
     {
         path: 'e-book',
         component: EBookComponent
+    },
+    {
+        path: 'course/:slug',
+        component: CourseEnrollementComponent
+    },
+    {
+        path: 'cart',
+        component: CartComponent
     }
 ];

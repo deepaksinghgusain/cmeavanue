@@ -39,7 +39,7 @@
       </div>
     </div>
     <div class="self-stretch flex-col justify-start items-start gap-2 flex">
-      <a routerLink="/{{ course.slug }}">
+      <a routerLink="/course/{{ course.slug }}">
         <div class="self-stretch text-[#101828] text-lg font-semibold font-['Inter'] leading-7" [innerHTML]="course.shortDesc"></div>
       </a>
       <div class="self-stretch text-[#475467] text-sm font-normal font-['Inter'] leading-normal">{{ startDate | uppercase }} | {{ startTime | uppercase }} - {{endTime | uppercase }}</div>

@@ -327,8 +327,6 @@ export class CourseService {
       }`;
   }
   checkAlreadyCoursePurchased(id: number, email: string) {
-
-
     return this.apollo.watchQuery<any>({
       query: this.getAlreadyCoursePurchasedGQL(id, email),
     }).valueChanges;
@@ -381,6 +379,7 @@ export class CourseService {
          }
        }`;
   }
+
   getCourseCategoryById() {
     return this.apollo.watchQuery<any>({
       query: this.getCourseCategory(),
