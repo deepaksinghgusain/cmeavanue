@@ -14,6 +14,7 @@ import { CourseCatalogComponent } from './pages/course-catalog/course-catalog.co
 import { BundleandsubscriptionComponent } from './pages/bundleandsubscription/bundleandsubscription.component';
 import { EBookComponent } from './pages/e-book/e-book.component';
 import { CartComponent } from './pages/cart/cart.component';
+import { DashboardComponent } from './pages/learner/dashboard/dashboard.component';
 
 export const routes: Routes = [
     {
@@ -21,11 +22,11 @@ export const routes: Routes = [
         component: HomeComponent
     },
     {
-        path: 'about',
+        path: 'about-us',
         component: AboutComponent
     },
     {
-        path: 'contact',
+        path: 'contact-us',
         component: ContactComponent
     }, 
     {
@@ -76,5 +77,9 @@ export const routes: Routes = [
     {
         path: 'cart',
         component: CartComponent
+    },
+    {
+        path: 'learner/dashboard',
+        component: DashboardComponent
     }
 ];

@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit {
   footerData: any;
   cartQty: any = "";
   cartData: any;
-  // cartId = Number(localStorage.getItem('cartId')) || 0;
+  cartId = Number(localStorage.getItem('cartId')) || 0;
   headerlogo: any;
   environmentUrl: string = environment.apibaseurl;
 
@@ -57,10 +57,15 @@ export class HeaderComponent implements OnInit {
         }
       }
     })
+
+    this.getCartQty();
   }
   
   getCartQty() {
     this.commonService.commanCartQtydata.subscribe((res: any) => {
+
+      console.log({res});
+      
 
       this.cartQty = res;
     });

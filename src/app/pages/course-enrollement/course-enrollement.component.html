@@ -182,8 +182,8 @@
 <section class="container mx-auto">
   <div class="h-9 w-full px-12 justify-start items-start gap-12 inline-flex">
     @for (tab of courseTabs; track $index) {
-    <div class="grow shrink basis-0 h-9 px-1 pb-3 border-b-2 border-[#155dee] justify-center items-center gap-2 flex">
-      <div class="text-[#155dee] text-2xl font-semibold font-['Inter'] leading-loose" (click)="openTabContent($index)">
+    <div [ngClass]="showTabContent===$index ? 'border-[#155dee]' : ''" class="grow shrink basis-0 h-9 px-1 pb-3 border-b-2  justify-center items-center gap-2 flex">
+      <div [ngClass]="showTabContent===$index ? 'text-[#155dee]' : 'text-[#667085]'" class="cursor-pointer text-2xl font-semibold font-['Inter'] leading-loose" (click)="openTabContent($index)">
         {{tab?.title}}
       </div>
     </div>
@@ -356,7 +356,7 @@
                         </div>
   
                       </div>
-                    </div><br>
+                    </div>
                   </li>
   
                 </ul>
@@ -604,7 +604,7 @@
       <div class="w-[771px] flex-col justify-start items-start gap-8 inline-flex">
         <div class="self-stretch flex-col justify-start items-start gap-5 flex">
           <div class="self-stretch flex-col justify-start items-center gap-2 flex">
-            <div class="self-stretch text-[#475467] font-normal font-['Inter'] leading-[30px]" [innerHTML]="courseData?.shortDesc"></div>
+            <div class="self-stretch text-[#475467] font-normal font-['Inter'] leading-[30px]" [innerHTML]="sanitize(courseData?.shortDesc)"></div>
           </div>
         </div>
 
@@ -940,7 +940,7 @@
     </div>
     <div class="grow shrink basis-0 h-[540px] px-8 justify-start items-start flex">
       <div class="grow shrink basis-0 pr-8 flex-col justify-start items-start gap-10 inline-flex">
-        <div class="self-stretch text-[#475467] font-normal font-['Inter'] leading-[30px]" [innerHTML]="instructor?.bioData"></div>
+        <div class="self-stretch text-[#475467] font-normal font-['Inter'] leading-[30px]" [innerHTML]="sanitize(instructor?.bioData)"></div>
       </div>
     </div>
   </div>

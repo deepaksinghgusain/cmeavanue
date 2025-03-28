@@ -27,54 +27,34 @@
   </div>
 </section>
 
+@if (aboutFirst) {
 <section class="container mx-auto">
   <div class="h-[533px] pt-12 flex-col justify-start items-center gap-16 inline-flex overflow-hidden">
     <div class="self-stretch h-[124px] px-8 flex-col justify-start items-start gap-16 flex">
       <div class="self-stretch justify-start items-start gap-8 inline-flex">
         <div class="grow shrink basis-0 flex-col justify-start items-start gap-5 inline-flex">
-          <div class="self-stretch text-[#101828] text-4xl font-semibold font-['Inter'] leading-[44px]">Your trusted source for best-in-class CPE</div>
-          <div class="self-stretch text-[#475467] text-xl font-normal font-['Inter'] leading-[30px]">Building a Portfolio of World-Class Education Providers, Empowering Professional Growth with Quality, Up-to-Date Learning.</div>
+          <div class="self-stretch text-[#101828] text-4xl font-semibold font-['Inter'] leading-[44px]">{{aboutFirst?.title}}</div>
+          <div class="self-stretch text-[#475467] text-xl font-normal font-['Inter'] leading-[30px]">{{aboutFirst?.description}}</div>
         </div>
       </div>
     </div>
     <div class="self-stretch h-[140px] px-8 flex-col justify-start items-start gap-16 flex">
       <div class="self-stretch justify-start items-start gap-8 inline-flex">
-        <div class="grow shrink basis-0 flex-col justify-start items-start gap-5 inline-flex">
-          <div class="self-stretch h-[140px] flex-col justify-start items-start gap-3 flex">
-            <div class="self-stretch text-[#6071f3] text-4xl font-semibold font-['Inter'] leading-[44px]">01</div>
-            <div class="self-stretch h-[84px] flex-col justify-start items-start gap-2 flex">
-              <div class="self-stretch text-[#101828] text-lg font-semibold font-['Inter'] leading-7">25K Learners</div>
-              <div class="self-stretch text-[#475467] text-base font-normal font-['Inter'] leading-normal">Trusted by Over 25,000 Learners Worldwide</div>
+        @if (aboutFirst?.list) {
+
+          @for (list of aboutFirst.list; track $index) {
+          <div class="grow shrink basis-0 flex-col justify-start items-start gap-5 inline-flex">
+            <div class="self-stretch h-[140px] flex-col justify-start items-start gap-3 flex">
+              <div class="self-stretch text-[#6071f3] text-4xl font-semibold font-['Inter'] leading-[44px]">{{list.Sno}}</div>
+              <div class="self-stretch h-[84px] flex-col justify-start items-start gap-2 flex">
+                <div class="self-stretch text-[#101828] text-lg font-semibold font-['Inter'] leading-7">{{list.title}}</div>
+                <div class="self-stretch text-[#475467] text-base font-normal font-['Inter'] leading-normal">{{list.description}}</div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="grow shrink basis-0 flex-col justify-start items-start gap-5 inline-flex">
-          <div class="self-stretch h-[140px] flex-col justify-start items-start gap-3 flex">
-            <div class="self-stretch text-[#6071f3] text-4xl font-semibold font-['Inter'] leading-[44px]">02</div>
-            <div class="self-stretch h-[84px] flex-col justify-start items-start gap-2 flex">
-              <div class="self-stretch text-[#101828] text-lg font-semibold font-['Inter'] leading-7">Founded in 2017</div>
-              <div class="self-stretch text-[#475467] text-base font-normal font-['Inter'] leading-normal">Building a legacy of professional education from the heart of </div>
-            </div>
-          </div>
-        </div>
-        <div class="grow shrink basis-0 flex-col justify-start items-start gap-5 inline-flex">
-          <div class="self-stretch h-[140px] flex-col justify-start items-start gap-3 flex">
-            <div class="self-stretch text-[#6071f3] text-4xl font-semibold font-['Inter'] leading-[44px]">03</div>
-            <div class="self-stretch h-[84px] flex-col justify-start items-start gap-2 flex">
-              <div class="self-stretch text-[#101828] text-lg font-semibold font-['Inter'] leading-7">Global Presence</div>
-              <div class="self-stretch text-[#475467] text-base font-normal font-['Inter'] leading-normal">Offices in Toronto, Washington DC, and New Delhi </div>
-            </div>
-          </div>
-        </div>
-        <div class="grow shrink basis-0 flex-col justify-start items-start gap-5 inline-flex">
-          <div class="self-stretch h-[140px] flex-col justify-start items-start gap-3 flex">
-            <div class="self-stretch text-[#6071f3] text-4xl font-semibold font-['Inter'] leading-[44px]">04</div>
-            <div class="self-stretch h-[84px] flex-col justify-start items-start gap-2 flex">
-              <div class="self-stretch text-[#101828] text-lg font-semibold font-['Inter'] leading-7">Accreditation</div>
-              <div class="self-stretch text-[#475467] text-base font-normal font-['Inter'] leading-normal">Accredited by HRCI, SHRM, IRS, NASBA, and CFP Board</div>
-            </div>
-          </div>
-        </div>
+          }
+
+        }
       </div>
     </div>
     <div class="self-stretch h-12 px-8 flex-col justify-start items-start gap-16 flex">
@@ -91,339 +71,294 @@
     </div>
   </div>
 </section>
+}
 
-<section class="container mx-auto">
-  <div class="h-[1964px] py-12 bg-white flex-col justify-start items-center gap-24 inline-flex overflow-hidden">
-    <div class="self-stretch h-11 px-8 flex-col justify-start items-start gap-8 flex">
-      <div class="self-stretch h-11 flex-col justify-start items-center gap-8 flex">
-        <div class="self-stretch h-11 flex-col justify-start items-center gap-5 flex">
-          <div class="self-stretch h-11 flex-col justify-start items-start gap-3 flex">
-            <div class="self-stretch text-center text-[#101828] text-4xl font-semibold font-['Inter'] leading-[44px]">Portfolio</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="self-stretch px-8 justify-start items-center gap-24 inline-flex">
-      <div class="grow shrink basis-0 flex-col justify-start items-start gap-8 inline-flex">
-        <div class="self-stretch h-[110px] flex-col justify-start items-start gap-5 flex">
-          <div class="self-stretch h-[110px] flex-col justify-start items-start gap-4 flex">
-            <div class="self-stretch text-[#101828] text-3xl font-semibold font-['Inter'] leading-[38px]">CPE warehouse</div>
-            <div class="self-stretch text-[#344054] text-lg font-normal font-['Inter'] leading-7">Essential, On-Demand CPE for Finance and Tax Professionals across North America</div>
-          </div>
-        </div>
-        <div class="self-stretch h-64 pl-4 flex-col justify-start items-start gap-5 flex">
-          <div class="self-stretch justify-start items-start gap-3 inline-flex">
-            <div class="w-7 h-7 rounded-full justify-center items-center flex overflow-hidden">
-              <div class="w-7 h-7 relative flex-col justify-start items-start flex overflow-hidden"></div>
-            </div>
-            <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
-              <div class="self-stretch"><span class="text-[#344054] text-lg font-bold font-['Inter'] leading-7">Expert-Led Courses:</span><span class="text-[#344054] text-lg font-normal font-['Inter'] leading-7"> Top-rated instructors provide relevant, up-to-date content.</span></div>
-            </div>
-          </div>
-          <div class="self-stretch justify-start items-start gap-3 inline-flex">
-            <div class="w-7 h-7 rounded-full justify-center items-center flex overflow-hidden">
-              <div class="w-7 h-7 relative flex-col justify-start items-start flex overflow-hidden"></div>
-            </div>
-            <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
-              <div class="self-stretch"><span class="text-[#344054] text-lg font-bold font-['Inter'] leading-7">Flexible Learning Options: </span><span class="text-[#344054] text-lg font-normal font-['Inter'] leading-7">Access live and on-demand courses at your convenience.</span></div>
-            </div>
-          </div>
-          <div class="self-stretch justify-start items-start gap-3 inline-flex">
-            <div class="w-7 h-7 rounded-full justify-center items-center flex overflow-hidden">
-              <div class="w-7 h-7 relative flex-col justify-start items-start flex overflow-hidden"></div>
-            </div>
-            <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
-              <div class="self-stretch"><span class="text-[#344054] text-lg font-bold font-['Inter'] leading-7">Compliant and Comprehensive:</span><span class="text-[#344054] text-lg font-normal font-['Inter'] leading-7"> Meets state and federal finance requirements for CPE.</span></div>
-            </div>
-          </div>
-          <div class="justify-center items-center gap-3 inline-flex overflow-hidden">
-            <div class="text-[#db6803] text-lg font-semibold font-['Inter'] leading-7">Learn more</div>
-            <div class="w-6 h-6 relative  overflow-hidden"></div>
-          </div>
-        </div>
-      </div>
-      <img class="h-[512px] relative" src="/assets/images/about-banner-1.jpg" />
-    </div>
-    <div class="self-stretch px-8 justify-start items-center gap-24 inline-flex">
-      <img class="h-[512px] relative" src="/assets/images/about-banner-2.jpg" />
-      <div class="grow shrink basis-0 flex-col justify-start items-start gap-8 inline-flex">
-        <div class="self-stretch h-[110px] flex-col justify-start items-start gap-5 flex">
-          <div class="self-stretch h-[110px] flex-col justify-start items-start gap-4 flex">
-            <div class="self-stretch text-[#101828] text-3xl font-semibold font-['Inter'] leading-[38px]">HR & Payroll Academy</div>
-            <div class="self-stretch text-[#344054] text-lg font-normal font-['Inter'] leading-7">Accessible, Expert-Led Training for HR & Payroll Professionals Across North America</div>
-          </div>
-        </div>
-        <div class="self-stretch h-64 pl-4 flex-col justify-start items-start gap-5 flex">
-          <div class="self-stretch justify-start items-start gap-3 inline-flex">
-            <div class="w-7 h-7 rounded-full justify-center items-center flex overflow-hidden">
-              <div class="w-7 h-7 relative flex-col justify-start items-start flex overflow-hidden"></div>
-            </div>
-            <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
-              <div class="self-stretch"><span class="text-[#344054] text-lg font-bold font-['Inter'] leading-7">Flexible Online Learning: </span><span class="text-[#344054] text-lg font-normal font-['Inter'] leading-7">Access courses anytime, anywhere, on any device.</span></div>
-            </div>
-          </div>
-          <div class="self-stretch justify-start items-start gap-3 inline-flex">
-            <div class="w-7 h-7 rounded-full justify-center items-center flex overflow-hidden">
-              <div class="w-7 h-7 relative flex-col justify-start items-start flex overflow-hidden"></div>
-            </div>
-            <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
-              <div class="self-stretch"><span class="text-[#344054] text-lg font-bold font-['Inter'] leading-7">Affordable Compliance Education: </span><span class="text-[#344054] text-lg font-normal font-['Inter'] leading-7">High-quality, cost-effective training for individuals and teams.</span></div>
-            </div>
-          </div>
-          <div class="self-stretch justify-start items-start gap-3 inline-flex">
-            <div class="w-7 h-7 rounded-full justify-center items-center flex overflow-hidden">
-              <div class="w-7 h-7 relative flex-col justify-start items-start flex overflow-hidden"></div>
-            </div>
-            <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
-              <div class="self-stretch"><span class="text-[#344054] text-lg font-bold font-['Inter'] leading-7">Trusted by 2000+ Firms:</span><span class="text-[#344054] text-lg font-normal font-['Inter'] leading-7"> Stay updated with top-tier faculty and timely regulatory content.</span></div>
-            </div>
-          </div>
-          <div class="justify-center items-center gap-3 inline-flex overflow-hidden">
-            <div class="text-[#db6803] text-lg font-semibold font-['Inter'] leading-7">Learn more</div>
-            <div class="w-6 h-6 relative  overflow-hidden"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="self-stretch px-8 justify-start items-center gap-24 inline-flex">
-      <div class="grow shrink basis-0 flex-col justify-start items-start gap-8 inline-flex">
-        <div class="self-stretch h-[110px] flex-col justify-start items-start gap-5 flex">
-          <div class="self-stretch h-[110px] flex-col justify-start items-start gap-4 flex">
-            <div class="self-stretch text-[#101828] text-3xl font-semibold font-['Inter'] leading-[38px]">CME Avenue</div>
-            <div class="self-stretch text-[#344054] text-lg font-normal font-['Inter'] leading-7">continuing education for healthcare professionals across north america.</div>
-          </div>
-        </div>
-        <div class="self-stretch h-64 pl-4 flex-col justify-start items-start gap-5 flex">
-          <div class="self-stretch justify-start items-start gap-3 inline-flex">
-            <div class="w-7 h-7 rounded-full justify-center items-center flex overflow-hidden">
-              <div class="w-7 h-7 relative flex-col justify-start items-start flex overflow-hidden"></div>
-            </div>
-            <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
-              <div class="self-stretch"><span class="text-[#344054] text-lg font-bold font-['Inter'] leading-7">Tailored Healthcare Training: </span><span class="text-[#344054] text-lg font-normal font-['Inter'] leading-7">Specialized courses in medical coding, billing, management, and auditing.</span></div>
-            </div>
-          </div>
-          <div class="self-stretch justify-start items-start gap-3 inline-flex">
-            <div class="w-7 h-7 rounded-full justify-center items-center flex overflow-hidden">
-              <div class="w-7 h-7 relative flex-col justify-start items-start flex overflow-hidden"></div>
-            </div>
-            <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
-              <div class="self-stretch"><span class="text-[#344054] text-lg font-bold font-['Inter'] leading-7">Expert Learning Solutions:</span><span class="text-[#344054] text-lg font-normal font-['Inter'] leading-7"> High-quality resources to advance healthcare professional skills.</span></div>
-            </div>
-          </div>
-          <div class="self-stretch justify-start items-start gap-3 inline-flex">
-            <div class="w-7 h-7 rounded-full justify-center items-center flex overflow-hidden">
-              <div class="w-7 h-7 relative flex-col justify-start items-start flex overflow-hidden"></div>
-            </div>
-            <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
-              <div class="self-stretch"><span class="text-[#344054] text-lg font-bold font-['Inter'] leading-7">Continuous Development: </span><span class="text-[#344054] text-lg font-normal font-['Inter'] leading-7">Programs to help healthcare professionals stay current and excel.</span></div>
-            </div>
-          </div>
-          <div class="justify-center items-center gap-3 inline-flex overflow-hidden">
-            <div class="text-[#db6803] text-lg font-semibold font-['Inter'] leading-7">Learn more</div>
-            <div class="w-6 h-6 relative  overflow-hidden"></div>
-          </div>
-        </div>
-      </div>
-      <img class="h-[512px] relative" src="/assets/images/about-banner-3.jpg" />
-    </div>
-  </div>
-</section>
-
-<section class="container mx-auto">
-  <div class="h-[940px] py-24 bg-white flex-col justify-start items-center gap-16 inline-flex overflow-hidden">
-    <div class="self-stretch h-[124px] px-8 flex-col justify-start items-start gap-8 flex">
-      <div class="self-stretch justify-between items-start inline-flex">
-        <div class="grow shrink basis-0 flex-col justify-start items-start gap-5 inline-flex">
-          <div class="self-stretch h-11 flex-col justify-start items-start gap-3 flex">
-            <div class="self-stretch text-[#101828] text-4xl font-semibold font-['Inter'] leading-[44px]">Our Mission</div>
-          </div>
-          <div class="self-stretch text-[#475467] text-xl font-normal font-['Inter'] leading-[30px]">Our mission is to educate finance and tax professionals by providing exceptional learning experiences, with up-to-date content and world class faculty.</div>
-        </div>
-        <div class="justify-start items-start gap-3 flex">
-          <div class="px-[18px] py-3 bg-[#2970fe] rounded-[28px] shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] border-2 border-white justify-center items-center gap-1.5 flex overflow-hidden">
-            <div class="px-0.5 justify-center items-center flex">
-              <div class="text-white text-base font-semibold font-['Inter'] leading-normal">View Course catalouge</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="self-stretch h-[560px] px-8 flex-col justify-start items-center gap-16 flex">
-      <div class="self-stretch justify-start items-start gap-16 inline-flex">
-        <div class="w-1/2 grow shrink basis-0 flex-col justify-start items-start inline-flex">
-          <div class="self-stretch h-[168px] flex-col justify-start items-start flex">
-            <div class="self-stretch"><span class="text-[#475467] text-lg font-normal font-['Inter'] leading-7">Asterid Group Inc (dba CPE Warehouse) </span><span class="text-[#db6803] text-lg font-medium font-['Inter'] leading-7">provides finance and accounting professionals across Canada and the U.S.</span><span class="text-[#db6803] text-lg font-normal font-['Inter'] leading-7"> </span><span class="text-[#475467] text-lg font-normal font-['Inter'] leading-7">with flexible, high-quality continuing education options. With both live </span><span class="text-[#475467] text-lg font-medium font-['Inter'] leading-7">moderated courses and on-demand self-study,</span><span class="text-[#475467] text-lg font-normal font-['Inter'] leading-7"> we ensure you have access to industry-leading content that fits your schedule and fulfills your state or federal finance requirements.</span></div>
-          </div>
-          <div class="self-stretch h-[136px] flex-col justify-start items-start flex">
-            <div class="self-stretch h-10"></div>
-            <div class="self-stretch text-[#101828] text-3xl font-semibold font-['Inter'] leading-[38px]">Exceptional learning experiences, led by top-rated faculty</div>
-            <div class="self-stretch h-5"></div>
-          </div>
-          <div class="self-stretch h-[196px] flex-col justify-start items-start flex">
-            <div class="self-stretch"><span class="text-[#475467] text-lg font-normal font-['Inter'] leading-7">Our distinguished faculty are recognized as best-in-class and top-rated CPE instructors, known for their expertise and outstanding success rates. Whether you need to </span><span class="text-[#db6803] text-lg font-medium font-['Inter'] leading-7">fulfill state or federal finance requirements</span><span class="text-[#475467] text-lg font-normal font-['Inter'] leading-7">, expand your knowledge, or stay updated on critical issues, we have an </span><span class="text-[#db6803] text-lg font-medium font-['Inter'] leading-7">extensive course catalog</span><span class="text-[#475467] text-lg font-normal font-['Inter'] leading-7">. Plus, a portion of each course purchase supports charities that help strengthen our communities.</span></div>
-          </div>
-        </div>
-        <div class="w-1/2">
-          <img class="h-[560px] relative" src="/assets/images/about-banner-4.jpg" />
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="bg-[#6071f3]">
-  <div class="container mx-auto">
-    <div class="h-[504px] py-24  flex-col justify-start items-center gap-16 inline-flex overflow-hidden">
-      <div class="self-stretch h-[94px] px-8 flex-col justify-start items-start gap-8 flex">
-        <div class="self-stretch h-[94px] flex-col justify-start items-center gap-12 flex">
-          <div class="self-stretch h-[94px] flex-col justify-start items-center gap-5 flex">
+@if (portfolio) {
+  <section class="container mx-auto">
+    <div class="h-[1964px] py-12 bg-white flex-col justify-start items-center gap-24 inline-flex overflow-hidden">
+      <div class="self-stretch h-11 px-8 flex-col justify-start items-start gap-8 flex">
+        <div class="self-stretch h-11 flex-col justify-start items-center gap-8 flex">
+          <div class="self-stretch h-11 flex-col justify-start items-center gap-5 flex">
             <div class="self-stretch h-11 flex-col justify-start items-start gap-3 flex">
-              <div class="self-stretch text-center text-white text-4xl font-semibold font-['Inter'] leading-[44px]">Our commitment</div>
-            </div>
-            <div class="self-stretch text-center text-white text-xl font-normal font-['Inter'] leading-[30px]">Accessible continuing education for finance professionals</div>
-          </div>
-        </div>
-      </div>
-      <div class="self-stretch h-[154px] px-8 flex-col justify-start items-start gap-16 flex">
-        <div class="self-stretch justify-start items-start gap-8 inline-flex">
-          <div class="grow shrink basis-0 flex-col justify-start items-center gap-5 inline-flex">
-            <div class="w-12 h-12 p-3 bg-white rounded-[10px]  shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] border border-[#e4e7ec] justify-center items-center inline-flex overflow-hidden">
-              <div class="w-6 h-6 relative flex-col justify-start items-start flex overflow-hidden">
-                <img src="/assets/images/icon-1.png" alt="">
-              </div>
-            </div>
-            <div class="self-stretch h-[86px] flex-col justify-start items-center gap-2 flex">
-              <div class="self-stretch text-center text-white text-xl font-semibold font-['Inter'] leading-[30px]">TOP-RATED FACULTY</div>
-              <div class="self-stretch text-center text-white text-base font-normal font-['Inter'] leading-normal">We have a top-rated faculty, with an average instructor approval rating of 4.8/5.</div>
-            </div>
-          </div>
-          <div class="grow shrink basis-0 flex-col justify-start items-center gap-5 inline-flex">
-            <div class="w-12 h-12 p-3 bg-white rounded-[10px] shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] border border-[#e4e7ec] justify-center items-center inline-flex overflow-hidden">
-              <div class="w-6 h-6 relative flex-col justify-start items-start flex overflow-hidden">
-                <img src="/assets/images/icon-2.png" alt="">
-              </div>
-            </div>
-            <div class="self-stretch h-[86px] flex-col justify-start items-center gap-2 flex">
-              <div class="self-stretch text-center text-white text-xl font-semibold font-['Inter'] leading-[30px]">ON-DEMAND CONTENT</div>
-              <div class="self-stretch text-center text-white text-base font-normal font-['Inter'] leading-normal">Study on your schedule with on-demand and self-study options for your convenience.</div>
-            </div>
-          </div>
-          <div class="grow shrink basis-0 flex-col justify-start items-center gap-5 inline-flex">
-            <div class="w-12 h-12 p-3 bg-white rounded-[10px] shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] border border-[#e4e7ec] justify-center items-center inline-flex overflow-hidden">
-              <div class="w-6 h-6 relative flex-col justify-start items-start flex overflow-hidden">
-                <img src="/assets/images/icon-3.png" alt="">
-              </div>
-            </div>
-            <div class="self-stretch h-[86px] flex-col justify-start items-center gap-2 flex">
-              <div class="self-stretch text-center text-white text-xl font-semibold font-['Inter'] leading-[30px]">CPE CREDIT</div>
-              <div class="self-stretch text-center text-white text-base font-normal font-['Inter'] leading-normal">Stay up-to-date in your industry and earn CPE credit when you enroll in our live courses.</div>
+              <div class="self-stretch text-center text-[#101828] text-4xl font-semibold font-['Inter'] leading-[44px]">Portfolio</div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+      @if (portfolio.section) {
 
-<section class="container mx-auto">
-    <div class="w-[1440px] h-[886px] py-24 bg-white flex-col justify-start items-center gap-16 inline-flex overflow-hidden">
-        <div class="self-stretch h-[124px] px-8 flex-col justify-start items-start gap-8 flex">
-            <div class="self-stretch h-[124px] flex-col justify-start items-start gap-12 flex">
-                <div class="self-stretch h-[124px] flex-col justify-start items-start gap-5 flex">
-                    <div class="self-stretch h-11 flex-col justify-start items-start gap-3 flex">
-                        <div class="self-stretch text-[#101828] text-4xl font-semibold font-['Inter'] leading-[44px]">Our Values</div>
-                    </div>
-                    <div class="self-stretch text-[#475467] text-xl font-normal font-['Inter'] leading-[30px]">Powerful, self-serve product and growth analytics to help you convert, engage, and retain more users. Trusted by over 4,000 startups.</div>
+        @for (item of portfolio.section; track $index) {
+          <div class="self-stretch px-8 justify-start items-center gap-24 inline-flex">
+            <div class="grow shrink basis-0 flex-col justify-start items-start gap-8 inline-flex">
+              <div class="self-stretch h-[110px] flex-col justify-start items-start gap-5 flex">
+                <div class="self-stretch h-[110px] flex-col justify-start items-start gap-4 flex">
+                  <div class="self-stretch text-[#101828] text-3xl font-semibold font-['Inter'] leading-[38px]">{{item.title}}</div>
+                  <div class="self-stretch text-[#344054] text-lg font-normal font-['Inter'] leading-7">{{item.description}}</div>
                 </div>
-            </div>
-        </div>
-        <div class="px-8">
-            <div class="flex flex-wrap gap-14">
-                <div class="w-1/4 flex-col justify-start items-start">
-                    <div class="w-12 h-12 p-3 bg-white rounded-[10px] shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] border border-[#e4e7ec] justify-center items-center inline-flex overflow-hidden">
-                        <div class="w-6 h-6 relative flex-col justify-start items-start flex overflow-hidden">
-                            <img src="/assets/images/icon-1.png" alt="">
-                        </div>
-                    </div>
-                    <div class="self-stretch flex-col justify-start items-start gap-2 flex">
-                        <div class="self-stretch text-[#101828] text-xl font-semibold font-['Inter'] leading-[30px]">Quality</div>
-                        <div class="self-stretch text-[#475467] text-base font-normal font-['Inter'] leading-normal">We take pride in the quality of our educational programs, and the expertise of our faculty. We are dedicated to delivering premium content, alongside top-rated instructors.</div>
-                    </div>
-                </div>
-                <div class="w-1/4 flex-col justify-start items-start">
-                    <div class="w-12 h-12 p-3 bg-white rounded-[10px] shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] border border-[#e4e7ec] justify-center items-center inline-flex overflow-hidden">
-                        <div class="w-6 h-6 relative flex-col justify-start items-start flex overflow-hidden">
-                            <img src="/assets/images/icon-5.png" alt="">
-                        </div>
-                    </div>
-                    <div class="self-stretch h-[110px] flex-col justify-start items-start gap-2 flex">
-                        <div class="self-stretch text-[#101828] text-xl font-semibold font-['Inter'] leading-[30px]">Trust</div>
-                        <div class="self-stretch text-[#475467] text-base font-normal font-['Inter'] leading-normal">We do as we say, and deliver on what we promise. You can count on us to provide consistent and reliable service to earn the trust of our customers.</div>
-                    </div>
-                </div>
-                <div class="w-1/4 flex-col justify-start items-start">
-                    <div class="w-12 h-12 p-3 bg-white rounded-[10px] shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] border border-[#e4e7ec] justify-center items-center inline-flex overflow-hidden">
-                        <div class="w-6 h-6 relative flex-col justify-start items-start flex overflow-hidden">
-                            <img src="/assets/images/icon-3.png" alt="">
-                        </div>
-                    </div>
-                    <div class="self-stretch flex-col justify-start items-start gap-2 flex">
-                        <div class="self-stretch text-[#101828] text-xl font-semibold font-['Inter'] leading-[30px]">Accessibility</div>
-                        <div class="self-stretch text-[#475467] text-base font-normal font-['Inter'] leading-normal">We believe educational opportunities should be available to all those who wish to pursue them. Our programs are accessible, convenient and easy to use.</div>
-                    </div>
-                </div>
-                <div class="w-1/4 flex-col justify-start items-start">
-                    <div class="w-12 h-12 p-3 bg-white rounded-[10px] shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] border border-[#e4e7ec] justify-center items-center inline-flex overflow-hidden">
-                        <div class="w-6 h-6 relative flex-col justify-start items-start flex overflow-hidden">
-                            <img src="/assets/images/icon-6.png" alt="">
-                        </div>
-                    </div>
-                    <div class="self-stretch flex-col justify-start items-start">
-                        <div class="self-stretch text-[#101828] text-xl font-semibold font-['Inter'] leading-[30px]">Customer-focus</div>
-                        <div class="self-stretch text-[#475467] text-base font-normal font-['Inter'] leading-normal">When our customers talk, we listen. We remain steadfast in our commitment to providing educational experiences that exceed expectations.</div>
-                    </div>
-                </div>
-                <div class="w-1/4 flex-col justify-start items-start gap-5 inline-flex">
-                    <div class="w-12 h-12 p-3 bg-white rounded-[10px] shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] border border-[#e4e7ec] justify-center items-center inline-flex overflow-hidden">
-                        <div class="w-6 h-6 relative flex-col justify-start items-start flex overflow-hidden">
-                            <img src="/assets/images/icon-4.png" alt="">
-                        </div>
-                    </div>
-                    <div class="self-stretch flex-col justify-start items-start gap-2 flex">
-                        <div class="self-stretch text-[#101828] text-xl font-semibold font-['Inter'] leading-[30px]">Community</div>
-                        <div class="self-stretch text-[#475467] text-base font-normal font-['Inter'] leading-normal">We foster a sense of community by creating a learning environment that empowers and inspires. We celebrate the diversity of our students, instructors and team.</div>
-                    </div>
-                </div>
-                <div class="w-1/4 py-24 flex-col justify-start items-start gap-5 inline-flex">
-                    <div class="px-4 py-2.5 bg-[#2970fe] rounded-[28px] shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] border-2 border-white justify-center items-center gap-1.5 flex overflow-hidden">
-                        <div class="px-0.5 justify-center items-center flex">
-                          <div class="text-white text-lg font-semibold font-['Inter'] leading-7">View Packages -></div>
+              </div>
+              <div class="self-stretch h-64 pl-4 flex-col justify-start items-start gap-5 flex">
+                @if (item.list) {
+                  @for (list of item.list; track $index) {
+                    <div class="self-stretch justify-start items-start gap-3 inline-flex">
+                      <div class="w-7 h-7 rounded-full justify-center items-center flex overflow-hidden">
+                        <div class="w-7 h-7 relative flex-col justify-start items-start flex overflow-hidden"></div>
+                      </div>
+                      <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
+                        <div class="self-stretch">
+                          {{ list.item }}
                         </div>
                       </div>
+                    </div>
+                  }
+                }
+                
+                
+                <div class="justify-center items-center gap-3 inline-flex overflow-hidden">
+                  <div class="text-[#db6803] text-lg font-semibold font-['Inter'] leading-7">Learn more</div>
+                  <div class="w-6 h-6 relative  overflow-hidden"></div>
                 </div>
+              </div>
             </div>
+            <img class="h-[512px] relative" src="{{imageUrl + item.image.data.attributes.url }}" />
+          </div>
+        }
+        
+      }
+      <!-- <div class="self-stretch px-8 justify-start items-center gap-24 inline-flex">
+        <img class="h-[512px] relative" src="/assets/images/about-banner-2.jpg" />
+        <div class="grow shrink basis-0 flex-col justify-start items-start gap-8 inline-flex">
+          <div class="self-stretch h-[110px] flex-col justify-start items-start gap-5 flex">
+            <div class="self-stretch h-[110px] flex-col justify-start items-start gap-4 flex">
+              <div class="self-stretch text-[#101828] text-3xl font-semibold font-['Inter'] leading-[38px]">HR & Payroll Academy</div>
+              <div class="self-stretch text-[#344054] text-lg font-normal font-['Inter'] leading-7">Accessible, Expert-Led Training for HR & Payroll Professionals Across North America</div>
+            </div>
+          </div>
+          <div class="self-stretch h-64 pl-4 flex-col justify-start items-start gap-5 flex">
+            <div class="self-stretch justify-start items-start gap-3 inline-flex">
+              <div class="w-7 h-7 rounded-full justify-center items-center flex overflow-hidden">
+                <div class="w-7 h-7 relative flex-col justify-start items-start flex overflow-hidden"></div>
+              </div>
+              <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
+                <div class="self-stretch"><span class="text-[#344054] text-lg font-bold font-['Inter'] leading-7">Flexible Online Learning: </span><span class="text-[#344054] text-lg font-normal font-['Inter'] leading-7">Access courses anytime, anywhere, on any device.</span></div>
+              </div>
+            </div>
+            <div class="self-stretch justify-start items-start gap-3 inline-flex">
+              <div class="w-7 h-7 rounded-full justify-center items-center flex overflow-hidden">
+                <div class="w-7 h-7 relative flex-col justify-start items-start flex overflow-hidden"></div>
+              </div>
+              <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
+                <div class="self-stretch"><span class="text-[#344054] text-lg font-bold font-['Inter'] leading-7">Affordable Compliance Education: </span><span class="text-[#344054] text-lg font-normal font-['Inter'] leading-7">High-quality, cost-effective training for individuals and teams.</span></div>
+              </div>
+            </div>
+            <div class="self-stretch justify-start items-start gap-3 inline-flex">
+              <div class="w-7 h-7 rounded-full justify-center items-center flex overflow-hidden">
+                <div class="w-7 h-7 relative flex-col justify-start items-start flex overflow-hidden"></div>
+              </div>
+              <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
+                <div class="self-stretch"><span class="text-[#344054] text-lg font-bold font-['Inter'] leading-7">Trusted by 2000+ Firms:</span><span class="text-[#344054] text-lg font-normal font-['Inter'] leading-7"> Stay updated with top-tier faculty and timely regulatory content.</span></div>
+              </div>
+            </div>
+            <div class="justify-center items-center gap-3 inline-flex overflow-hidden">
+              <div class="text-[#db6803] text-lg font-semibold font-['Inter'] leading-7">Learn more</div>
+              <div class="w-6 h-6 relative  overflow-hidden"></div>
+            </div>
+          </div>
         </div>
+      </div> -->
+      <!-- <div class="self-stretch px-8 justify-start items-center gap-24 inline-flex">
+        <div class="grow shrink basis-0 flex-col justify-start items-start gap-8 inline-flex">
+          <div class="self-stretch h-[110px] flex-col justify-start items-start gap-5 flex">
+            <div class="self-stretch h-[110px] flex-col justify-start items-start gap-4 flex">
+              <div class="self-stretch text-[#101828] text-3xl font-semibold font-['Inter'] leading-[38px]">CME Avenue</div>
+              <div class="self-stretch text-[#344054] text-lg font-normal font-['Inter'] leading-7">continuing education for healthcare professionals across north america.</div>
+            </div>
+          </div>
+          <div class="self-stretch h-64 pl-4 flex-col justify-start items-start gap-5 flex">
+            <div class="self-stretch justify-start items-start gap-3 inline-flex">
+              <div class="w-7 h-7 rounded-full justify-center items-center flex overflow-hidden">
+                <div class="w-7 h-7 relative flex-col justify-start items-start flex overflow-hidden"></div>
+              </div>
+              <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
+                <div class="self-stretch"><span class="text-[#344054] text-lg font-bold font-['Inter'] leading-7">Tailored Healthcare Training: </span><span class="text-[#344054] text-lg font-normal font-['Inter'] leading-7">Specialized courses in medical coding, billing, management, and auditing.</span></div>
+              </div>
+            </div>
+            <div class="self-stretch justify-start items-start gap-3 inline-flex">
+              <div class="w-7 h-7 rounded-full justify-center items-center flex overflow-hidden">
+                <div class="w-7 h-7 relative flex-col justify-start items-start flex overflow-hidden"></div>
+              </div>
+              <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
+                <div class="self-stretch"><span class="text-[#344054] text-lg font-bold font-['Inter'] leading-7">Expert Learning Solutions:</span><span class="text-[#344054] text-lg font-normal font-['Inter'] leading-7"> High-quality resources to advance healthcare professional skills.</span></div>
+              </div>
+            </div>
+            <div class="self-stretch justify-start items-start gap-3 inline-flex">
+              <div class="w-7 h-7 rounded-full justify-center items-center flex overflow-hidden">
+                <div class="w-7 h-7 relative flex-col justify-start items-start flex overflow-hidden"></div>
+              </div>
+              <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
+                <div class="self-stretch"><span class="text-[#344054] text-lg font-bold font-['Inter'] leading-7">Continuous Development: </span><span class="text-[#344054] text-lg font-normal font-['Inter'] leading-7">Programs to help healthcare professionals stay current and excel.</span></div>
+              </div>
+            </div>
+            <div class="justify-center items-center gap-3 inline-flex overflow-hidden">
+              <div class="text-[#db6803] text-lg font-semibold font-['Inter'] leading-7">Learn more</div>
+              <div class="w-6 h-6 relative  overflow-hidden"></div>
+            </div>
+          </div>
+        </div>
+        <img class="h-[512px] relative" src="/assets/images/about-banner-3.jpg" />
+      </div> -->
     </div>
+  </section>
+}
+
+@if (mission) {
+  <section class="container mx-auto">
+    <div class="h-[940px] py-24 bg-white flex-col justify-start items-center gap-16 inline-flex overflow-hidden">
+      <div class="self-stretch h-[124px] px-8 flex-col justify-start items-start gap-8 flex">
+        <div class="self-stretch justify-between items-start inline-flex">
+          <div class="grow shrink basis-0 flex-col justify-start items-start gap-5 inline-flex">
+            <div class="self-stretch h-11 flex-col justify-start items-start gap-3 flex">
+              <div class="self-stretch text-[#101828] text-4xl font-semibold font-['Inter'] leading-[44px]">{{mission.title}}</div>
+            </div>
+            <div class="self-stretch text-[#475467] text-xl font-normal font-['Inter'] leading-[30px]">{{mission.description}}</div>
+          </div>
+          <div class="justify-start items-start gap-3 flex">
+            <div class="px-[18px] py-3 bg-[#2970fe] rounded-[28px] shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] border-2 border-white justify-center items-center gap-1.5 flex overflow-hidden">
+              <div class="px-0.5 justify-center items-center flex">
+                <div class="text-white text-base font-semibold font-['Inter'] leading-normal">View Course catalouge</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="self-stretch h-[560px] px-8 flex-col justify-start items-center gap-16 flex">
+        <div class="self-stretch justify-start items-start gap-16 inline-flex">
+          <div class="w-1/2 grow shrink basis-0 flex-col justify-start items-start inline-flex">
+            <div class="self-stretch h-[168px] flex-col justify-start items-start flex">
+              <div class="self-stretch"><span class="text-[#475467] text-lg font-normal font-['Inter'] leading-7">{{mission.about}}</span></div>
+            </div>
+            @if (mission.item) {
+              @for (item of mission.item; track $index) {
+                <div class="self-stretch h-[136px] flex-col justify-start items-start flex">
+                  <div class="self-stretch h-10"></div>
+                  <div class="self-stretch text-[#101828] text-3xl font-semibold font-['Inter'] leading-[38px]">{{item.title}}</div>
+                  <div class="self-stretch h-5"></div>
+                </div>
+                <div class="self-stretch h-[196px] flex-col justify-start items-start flex">
+                  <div class="self-stretch"><span class="text-[#475467] text-lg font-normal font-['Inter'] leading-7">{{item.description}}</span></div>
+                </div>
+              }
+            }
+          </div>
+          <div class="w-1/2">
+            <img class="h-[560px] relative" src="{{imageUrl + mission.image.data.attributes.url}}" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+}
+
+@if (commitment) {
+  <section class="bg-[#6071f3]">
+    <div class="container mx-auto">
+      <div class="h-[504px] py-24  flex-col justify-start items-center gap-16 inline-flex overflow-hidden">
+        <div class="self-stretch h-[94px] px-8 flex-col justify-start items-start gap-8 flex">
+          <div class="self-stretch h-[94px] flex-col justify-start items-center gap-12 flex">
+            <div class="self-stretch h-[94px] flex-col justify-start items-center gap-5 flex">
+              <div class="self-stretch h-11 flex-col justify-start items-start gap-3 flex">
+                <div class="self-stretch text-center text-white text-4xl font-semibold font-['Inter'] leading-[44px]">{{commitment.title}}</div>
+              </div>
+              <div class="self-stretch text-center text-white text-xl font-normal font-['Inter'] leading-[30px]">{{commitment.description}}</div>
+            </div>
+          </div>
+        </div>
+        <div class="self-stretch h-[154px] px-8 flex-col justify-start items-start gap-16 flex">
+          <div class="self-stretch justify-start items-start gap-8 inline-flex">
+            @if (commitment.item) {
+              @for (item of commitment.item; track $index) {
+                <div class="grow shrink basis-0 flex-col justify-start items-center gap-5 inline-flex">
+                  <div class="w-12 h-12 p-3 bg-white rounded-[10px]  shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] border border-[#e4e7ec] justify-center items-center inline-flex overflow-hidden">
+                    <div class="w-6 h-6 relative flex-col justify-start items-start flex overflow-hidden">
+                      <!-- <img src="{{ imageUrl + item.image.data.attributes.url }}" alt=""> -->
+                    </div>
+                  </div>
+                  <div class="self-stretch h-[86px] flex-col justify-start items-center gap-2 flex">
+                    <div class="self-stretch text-center text-white text-xl font-semibold font-['Inter'] leading-[30px]">{{item.title}}</div>
+                    <div class="self-stretch text-center text-white text-base font-normal font-['Inter'] leading-normal">{{item.description}}</div>
+                  </div>
+                </div>
+              }
+            }
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+}
+
+@if (values) {
+  
+<section class="container mx-auto">
+  <div class="w-[1440px] h-[886px] py-24 bg-white flex-col justify-start items-center gap-16 inline-flex overflow-hidden">
+    <div class="self-stretch h-[124px] px-8 flex-col justify-start items-start gap-8 flex">
+      <div class="self-stretch h-[124px] flex-col justify-start items-start gap-12 flex">
+        <div class="self-stretch h-[124px] flex-col justify-start items-start gap-5 flex">
+          <div class="self-stretch h-11 flex-col justify-start items-start gap-3 flex">
+            <div class="self-stretch text-[#101828] text-4xl font-semibold font-['Inter'] leading-[44px]">{{values.title}}</div>
+          </div>
+          <div class="self-stretch text-[#475467] text-xl font-normal font-['Inter'] leading-[30px]">{{values.description}}.</div>
+        </div>
+      </div>
+    </div>
+    <div class="px-8">
+      <div class="flex flex-wrap gap-14">
+        @if (values.list) {
+          @for (item of values.list; track $index) {
+            <div class="w-1/4 flex-col justify-start items-start">
+              <div class="w-12 h-12 p-3 bg-white rounded-[10px] shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] border border-[#e4e7ec] justify-center items-center inline-flex overflow-hidden">
+                <div class="w-6 h-6 relative flex-col justify-start items-start flex overflow-hidden">
+                  <img src="{{ imageUrl + item.image.data.attributes.url }}" alt="">
+                </div>
+              </div>
+              <div class="self-stretch flex-col justify-start items-start gap-2 flex">
+                <div class="self-stretch text-[#101828] text-xl font-semibold font-['Inter'] leading-[30px]">{{item.title}}</div>
+                <div class="self-stretch text-[#475467] text-base font-normal font-['Inter'] leading-normal">{{item.description}}</div>
+              </div>
+            </div>
+          }
+        }
+        <div class="w-1/4 py-24 flex-col justify-start items-start gap-5 inline-flex">
+          <div class="px-4 py-2.5 bg-[#2970fe] rounded-[28px] shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] border-2 border-white justify-center items-center gap-1.5 flex overflow-hidden">
+            <div class="px-0.5 justify-center items-center flex">
+              <div class="text-white text-lg font-semibold font-['Inter'] leading-7">View Packages -></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+}
 
 <section class="container mx-auto">
-    <div class="h-[640px] py-24 bg-white flex-col justify-center items-center gap-16 inline-flex overflow-hidden">
-        <div class="self-stretch px-8 justify-center items-center inline-flex">
-            <div class="grow shrink basis-0 h-[448px] bg-gray-50 rounded-3xl justify-start items-center flex overflow-hidden">
-                <div class="grow shrink basis-0 p-16 flex-col justify-center items-start gap-10 inline-flex">
-                    <div class="self-stretch h-[168px] flex-col justify-start items-start gap-8 flex">
-                        <div class="self-stretch h-[88px] flex-col justify-start items-start gap-6 flex">
-                            <div class="self-stretch text-[#101828] text-4xl font-medium font-['Inter'] leading-[44px]">Exceptional learning experiences, guided by top-rated faculty</div>
-                        </div>
-                        <div class="px-[18px] py-3 bg-[#2970fe] rounded-[28px] shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] border-2 border-white justify-center items-center gap-1.5 inline-flex overflow-hidden">
-                            <div class="px-0.5 justify-center items-center flex">
-                                <div class="text-white text-base font-semibold font-['Inter'] leading-normal">Meet Our Faculty</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <img class="w-[480px] h-[448px] relative" src="/assets/images/about-banner-5.jpg" />
+  <div class="h-[640px] py-24 bg-white flex-col justify-center items-center gap-16 inline-flex overflow-hidden">
+    <div class="self-stretch px-8 justify-center items-center inline-flex">
+      <div class="grow shrink basis-0 h-[448px] bg-gray-50 rounded-3xl justify-start items-center flex overflow-hidden">
+        <div class="grow shrink basis-0 p-16 flex-col justify-center items-start gap-10 inline-flex">
+          <div class="self-stretch h-[168px] flex-col justify-start items-start gap-8 flex">
+            <div class="self-stretch h-[88px] flex-col justify-start items-start gap-6 flex">
+              <div class="self-stretch text-[#101828] text-4xl font-medium font-['Inter'] leading-[44px]">Exceptional learning experiences, guided by top-rated faculty</div>
             </div>
+            <div class="px-[18px] py-3 bg-[#2970fe] rounded-[28px] shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] border-2 border-white justify-center items-center gap-1.5 inline-flex overflow-hidden">
+              <div class="px-0.5 justify-center items-center flex">
+                <div class="text-white text-base font-semibold font-['Inter'] leading-normal">Meet Our Faculty</div>
+              </div>
+            </div>
+          </div>
         </div>
+        <img class="w-[480px] h-[448px] relative" src="/assets/images/about-banner-5.jpg" />
+      </div>
     </div>
+  </div>
 </section>

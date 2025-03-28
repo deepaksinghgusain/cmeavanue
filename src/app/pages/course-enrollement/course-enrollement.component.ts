@@ -165,9 +165,8 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
 
       this.coursesDetail = res.data.courses;
       this.courseId = this.coursesDetail?.data[0]?.id;
-      // this.courseData = res?.data[0]?.attributes
 
-      // console.log(this.coursesDetail.instructors);
+      // this.courseData = res?.data[0]?.attributes
       
       this.courseData = this.coursesDetail?.data[0]?.attributes;
       if (this.courseData) {
@@ -233,7 +232,6 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
       this.courseData = this.coursesDetail?.data[0]?.attributes;
       this.instructor = this.courseData.instructors.data[0]?.attributes;
       
-      
       this.courseCategory = this.coursesDetail?.data[0]?.attributes?.category?.data?.attributes?.title;
       this.gtagservice.pushEvent('view_item',
         {
@@ -296,8 +294,6 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
       // this.faqContent = res?.data[0]?.attributes?.category?.data?.attributes?.faqs.faq[0]
       const faqContent = this.courseData?.category.data?.attributes?.faqs.faq[0]
 
-
-
       const categoryFaq = [
         {
           "title": "FAQ",
@@ -338,7 +334,7 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
       });
       // console.log('faculties', this.faculties)
       this.courseTabs = this.courseData?.tabs
-      console.log('coursetabs', this.courseTabs)
+     
       let dummyFacultyTab = [{
         __typename: 'FacultyStaticTab', title: 'Faculty', content: '', index: 'Other'
       }];
@@ -382,7 +378,6 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
             (item?.attributes?.title?.toString().toLowerCase().includes(element.toString().toLowerCase()))
             && (item.attributes?.category?.data?.attributes?.title == this.courseCategory)
           )
-
 
           filteredResult.forEach((element: any, index: number) => {
             const facultyname = this.getInstructorName(element?.attributes?.instructors)
@@ -668,7 +663,7 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
     this._commannService.setCartQtyObs(this.cartData.data.CartItem.length)
     this.unsubscribe$.add(this.cartService.updateCart(this.cartData, this.cartId).subscribe((cartResp: any) => {
       this.getcardCount();
-      this.router.navigateByUrl('/learner/shopping-cart');
+      this.router.navigateByUrl('/learner/checkout');
     }, (err => {
       // debugger
       if (err.error.error.status === 403) {

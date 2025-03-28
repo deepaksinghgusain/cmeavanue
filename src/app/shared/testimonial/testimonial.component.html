@@ -1,0 +1,36 @@
+<ngx-slick-carousel class="slider" [config]="slideConfig">
+  <div ngxSlickItem *ngFor="let slide of slides">
+    <div class="max-w-md mx-auto bg-white shadow-lg rounded-2xl p-6 border border-gray-200">
+      <div class="flex items-center space-x-4">
+        <img class="w-14 h-14 rounded-full border-2 border-indigo-500" src="https://randomuser.me/api/portraits/women/44.jpg" alt="User">
+        <div>
+          <h4 class="text-lg font-semibold text-gray-900">Sarah Johnson</h4>
+          <p class="text-sm text-gray-500">Marketing Manager</p>
+        </div>
+      </div>
+      <p class="mt-4 text-gray-700 italic">
+        "This service has completely transformed our workflow. It's easy to use, efficient, and saves us hours of work!"
+      </p>
+      <div class="mt-4 flex items-center">
+        <!-- Star Rating -->
+        <div class="flex text-yellow-400 space-x-1">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+            <path d="M12 .587l3.668 7.431 8.2 1.191-5.934 5.755 1.4 8.16-7.334-3.855-7.334 3.855 1.4-8.16-5.934-5.755 8.2-1.191z" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+            <path d="M12 .587l3.668 7.431 8.2 1.191-5.934 5.755 1.4 8.16-7.334-3.855-7.334 3.855 1.4-8.16-5.934-5.755 8.2-1.191z" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+            <path d="M12 .587l3.668 7.431 8.2 1.191-5.934 5.755 1.4 8.16-7.334-3.855-7.334 3.855 1.4-8.16-5.934-5.755 8.2-1.191z" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+            <path d="M12 .587l3.668 7.431 8.2 1.191-5.934 5.755 1.4 8.16-7.334-3.855-7.334 3.855 1.4-8.16-5.934-5.755 8.2-1.191z" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-gray-300" viewBox="0 0 24 24">
+            <path d="M12 .587l3.668 7.431 8.2 1.191-5.934 5.755 1.4 8.16-7.334-3.855-7.334 3.855 1.4-8.16-5.934-5.755 8.2-1.191z" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</ngx-slick-carousel>

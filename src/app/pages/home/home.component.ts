@@ -10,10 +10,13 @@ import { MetatagsService } from '../../services/metatags.service';
 import { CommonService } from '../../services/common.service';
 import { CourseCardComponent } from '../../shared/course-card/course-card.component';
 import { CommonModule } from '@angular/common';
-import { CarouselComponent } from '../../shared/carousel/carousel.component';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { slideConfig } from '../../models/slick.config';
+import { TestimonialComponent } from '../../shared/testimonial/testimonial.component';
+
 @Component({
   selector: 'app-home',
-  imports: [CourseCardComponent, CommonModule, CarouselComponent],
+  imports: [CourseCardComponent, CommonModule, SlickCarouselModule, TestimonialComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -37,6 +40,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   timezone: any;
   twoLettertimezone: any;
   frontPageBanner:any;
+  slickConfig: any = slideConfig;
+  
   constructor(
     @Inject(PLATFORM_ID) private platformId: object,
     private meta: Meta,

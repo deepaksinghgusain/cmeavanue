@@ -21,3 +21,18 @@
     color: #000 !important;
 }
 
+
+.autocomplete-container {
+    box-shadow: none;
+}
+
+.input-container {
+    border: none;
+}
+.autocomplete-container .input-container input {
+    border: none;
+}
+
+.autocomplete-container {
+    box-shadow: none !important;
+}
