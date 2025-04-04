@@ -22,7 +22,9 @@ export default function jwtInterceptor(request: HttpRequest<any>,
             if (token) {
                 request = request.clone({
                     setHeaders: {
-                       
+                       'Cache-Control': 'no-cache',
+                        'Pragma': 'no-cache',
+                        'Expires': '0'
                     },
                 });
             }
@@ -39,6 +41,9 @@ export default function jwtInterceptor(request: HttpRequest<any>,
         request = request.clone({
             setHeaders: {
                 // Authorization: `Bearer ${tokenStatic}`,
+                'Cache-Control': 'no-cache',
+                'Pragma': 'no-cache',
+                'Expires': '0'
             },
         });
     }
@@ -48,6 +53,9 @@ export default function jwtInterceptor(request: HttpRequest<any>,
         request = request.clone({
             setHeaders: {
                 // Authorization: `Bearer ${tokenStatic}`,
+                'Cache-Control': 'no-cache',
+                'Pragma': 'no-cache',
+                'Expires': '0'
             },
         });
     }
