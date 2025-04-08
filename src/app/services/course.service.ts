@@ -468,10 +468,8 @@ export class CourseService {
 
   getAllCoursesForLive(title?: any) {
 
-    let search = title || '';
-    console.log(this.currentDate)
     return this.apollo.watchQuery<any>({
-      query: this.getCoursesLiveTitleGql(true, true, search),
+      query: this.getCoursesLiveTitleGql(true, true),
     }).valueChanges;
 
   }
@@ -479,8 +477,6 @@ export class CourseService {
   getCoursesLiveTitleGql(
     fortaxLaw: boolean,
     isActive: boolean,
-    title: string
-
   ) {
 
     return gql`query{
@@ -490,10 +486,7 @@ export class CourseService {
         filters : {
           isActive: { eq: ${isActive}}, 
           forTaxLaw: { eq: ${fortaxLaw} },
-          title: { contains : "${title}" },
           and: [{
-                    endDate:   { gte:  "${this.currentDate}"
-                    },
                     category: {
                         title: {eq: "Live"}
                     }
@@ -547,8 +540,15 @@ export class CourseService {
                 instructors{
                   data{
                     attributes{
-                      firstName
-                      lastName
+                         firstName
+                    lastName
+                      image {
+                          data {
+                            attributes {
+                              url
+                            }
+                          }
+                        }
                       }
                     }
                   }
@@ -599,8 +599,8 @@ export class CourseService {
                   		attributes {
                         name
                         url
-                         alternativeText
-                         caption
+                        alternativeText
+                        caption
                         width
                         height
                         mime

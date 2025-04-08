@@ -20,6 +20,17 @@ export class CourseCardComponent implements OnInit {
   ngOnInit(): void { 
     this.startDate = moment(this.course.startDate).format("dddd MMM d YYYY h:mm a")
     this.startTime = moment(this.course.startDate).format("h:mm a")
-    this.endTime = moment(this.course.endDate).format("h:mm a")
+    this.endTime = moment(this.course.endDate).format("h:mm a");
+
+    console.log(this.course);
+    
+
+    if("attributes" in this.course) {
+      this.course = {id: this.course.id , ...this.course.attributes}
+
+      console.log(this.course.instructors);
+      
+    }
+    
   }
 }

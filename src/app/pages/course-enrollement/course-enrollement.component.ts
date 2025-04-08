@@ -68,6 +68,8 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
   instructor: any;
   public unsubscribe$ = new SubSink()
 
+  courseOutline: any;
+
   constructor(
     @Inject(PLATFORM_ID) private platformId: object,
     private pageService: PageService,
@@ -112,8 +114,7 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
       this.twoLettertimezone  = firstLetter + lastLetter;
 
       this.timezone = timezoneAbbrv;
-      this.renderer = isPlatformBrowser(this.platformId) ? "Browser" : "Server";
-
+     
       if (this.cartId > 0)
         this.unsubscribe$.add(this.cartService.getCart(this.cartId).subscribe({
           next: (resp: any) => {
@@ -130,14 +131,6 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
             localStorage.setItem('cartQty', '0');
           }
         }));
-
-      // this.unsubscribe$.add(this.courseService.getAllCourses().subscribe((res: any) => {
-      //   res.data.courses.data.forEach((element: any) => {
-      //     if (element.attributes.forTaxLaw) {
-      //       this.courseListingContent.push(element)
-      //     }
-      //   });
-      // }))
 
     } else {
       console.log("server side code rendering");
@@ -287,20 +280,13 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
 
       // this.courseTabContent = res?.data[0]?.attributes?.tabs[0]?.content
       this.courseTabContent = this.courseData?.tabs[0]?.content
+      
 
       // this.givingBackTabContent = res?.data[0]?.attributes?.tabs[2]?.content
       this.givingBackTabContent = this.courseData?.tabs[1]?.content
 
       // this.faqContent = res?.data[0]?.attributes?.category?.data?.attributes?.faqs.faq[0]
       const faqContent = this.courseData?.category.data?.attributes?.faqs.faq[0]
-
-      const categoryFaq = [
-        {
-          "title": "FAQ",
-          "featureTitle": faqContent?.question,
-          "content": faqContent?.answer,
-          "image": { data: { attributes: { url: null } } }
-        }]
 
       this.courseData?.instructors?.data?.forEach((element: any, index: number) => {
 
@@ -334,20 +320,8 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
       });
       // console.log('faculties', this.faculties)
       this.courseTabs = this.courseData?.tabs
-     
-      let dummyFacultyTab = [{
-        __typename: 'FacultyStaticTab', title: 'Faculty', content: '', index: 'Other'
-      }];
 
-      let faqfromCourse = this.courseTabs?.filter((item: { title: string; }) => item?.title.toLowerCase() === "faq") || null;
-      if (this.courseTabs != undefined || this.courseTabs?.length > 0) {
-        if (faqfromCourse === undefined || faqfromCourse.length == 0)
-          this.courseTabs = [...this.courseTabs, ...dummyFacultyTab, ...categoryFaq]
-        else
-          this.courseTabs = [...this.courseTabs, ...dummyFacultyTab,]
-      }
-
-      let tabcomponent = this.courseTabs?.filter((item: { index: string; }) => item?.index === "Outline") || {};
+      let tabcomponent = this.courseOutline = this.courseTabs?.filter((item: { index: string; }) => item?.index === "Outline") || {};
 
       if (tabcomponent != undefined || tabcomponent != null && tabcomponent[0]?.image != null || tabcomponent[0]?.image != undefined) {
         if (tabcomponent[0]?.image["data"] != null)
@@ -390,7 +364,7 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
               'credit': element?.attributes?.credit,
               'slug': element?.attributes?.slug,
               'price': element?.attributes?.price,
-              'instructor': element?.attributes?.instructors,
+              'instructors': element?.attributes?.instructors,
             })
           })
 
@@ -647,10 +621,6 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
           }
 
         }
-
-        // total += ((ci.course.discountedPrice || ci.course.discounted_price || ci.course.discount) > 0) ? (ci.course.discount * ci.qty || ci.course.discountedPrice * ci.qty || ci.course.discounted_price * ci.qty) :
-        //   (ci.packageId) == 0 ? (ci.course.price * ci.qty) : (ci.course.price * ci.qty) >=0 ? (ci.course.price * ci.qty) : (ci.course.includedCoursePrice * ci.qty);
-
       }
     });
     this.cartData.data.total = total

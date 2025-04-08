@@ -1,4 +1,4 @@
-<header class="flex sticky shadow-lg px-3 py-2 top-0 bg-white z-50">
+<header class="flex sticky px-3 py-2 top-0 bg-white z-50">
   <nav class="container mx-auto h-20 justify-between  lg:justify-start items-center inline-flex">
     <div class="shrink basis-0 self-stretch flex-col justify-center items-center gap-8 inline-flex">
       <div class="self-stretch justify-start items-center gap-8 inline-flex">
@@ -24,7 +24,7 @@
                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                     </svg>
                   </div>
-                  <div class="searchBox" class="py-3 ps-10 lg:w-[600px] md:w-full bg-white rounded-lg shadow-[0px_1px_2px_0px_rgba(16,24,40,0.05)] border focus:outline-blue-500">
+                  <div class="searchBox" class=" relative lg:w-[600px] md:w-full bg-white rounded-lg shadow-[0px_1px_2px_0px_rgba(16,24,40,0.05)] border focus:outline-blue-500">
                     <ng-autocomplete #auto [data]="data" [searchKeyword]="keyword" placeholder="Search" (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)' [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate">
                     </ng-autocomplete>
 
@@ -35,6 +35,19 @@
                     <ng-template #notFoundTemplate let-notFound>
                       <div [innerHTML]="notFound"></div>
                     </ng-template>
+
+                    <div class="absolute inset-y-0 right-2 cursor-pointer z-40 pl-3 flex items-center pointer-events-none">
+                      <svg
+                        class="h-5 w-5 text-gray-500"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
+                      </svg>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -84,32 +97,34 @@
 
 </header>
 
-<section class="container mx-auto">
-  <div class="h-[72px] px-8 mt-4 justify-center items-center">
-    <div class="justify-center items-center gap-4 flex">
-      <div class="justify-center items-center gap-6 flex">
-        <div class="px-3 py-2 bg-white rounded-md justify-center items-center gap-2 flex overflow-hidden">
-          <div class="justify-start items-center gap-3 flex">
-            <a routerLink="/course-catalog" class="text-[#344054] text-base font-semibold font-['Inter'] leading-normal">Course Catalogue</a>
+
+<section class="border-b">
+  <div class="container mx-auto">
+    <div class="h-[72px] px-8 mt-4 justify-center items-center">
+      <div class="justify-center items-center gap-4 flex">
+        <div class="justify-center items-center gap-6 flex">
+          <div [routerLinkActive]="'bg-[#f2f4f7]'" class="px-3 py-2 bg-white rounded-md justify-center items-center gap-2 flex overflow-hidden">
+            <div class="justify-start items-center gap-3 flex">
+              <a routerLink="/course-catalog" class="text-[#344054] text-base font-semibold font-['Inter'] leading-normal">Course Catalogue</a>
+            </div>
           </div>
-        </div>
-        <div class="px-3 py-2 bg-white rounded-md justify-start items-center gap-2 flex overflow-hidden">
-          <div class="justify-start items-center gap-3 flex">
-            <a routerLink="/bundle-and-subscription" class="text-[#344054] text-base font-semibold font-['Inter'] leading-normal">Bundles and Subcriptions</a>
+          <div [routerLinkActive]="'bg-[#f2f4f7]'" class="px-3 py-2 bg-white rounded-md justify-start items-center gap-2 flex overflow-hidden">
+            <div class="justify-start items-center gap-3 flex">
+              <a routerLink="/bundle-and-subscription" class="text-[#344054] text-base font-semibold font-['Inter'] leading-normal">Bundles and Subcriptions</a>
+            </div>
           </div>
-        </div>
-        <div class="h-10 px-3 py-2 rounded-md justify-start items-center gap-2 flex overflow-hidden">
-          <div class="grow shrink basis-0 h-6 justify-start items-center gap-3 flex">
-            <div class="text-[#18212f] text-lg font-semibold font-['Inter'] leading-normal">CPE Forums</div>
+          <div [routerLinkActive]="'bg-[#f2f4f7]'" class="h-10 px-3 py-2 rounded-md justify-start items-center gap-2 flex overflow-hidden">
+            <div class="grow shrink basis-0 h-6 justify-start items-center gap-3 flex">
+              <div class="text-[#18212f] text-lg font-semibold font-['Inter'] leading-normal">CPE Forums</div>
+            </div>
           </div>
-        </div>
-        <div class="h-11 px-3 py-2 bg-[#f2f4f7] rounded-md justify-start items-center gap-2 flex overflow-hidden">
-          <div class="grow shrink basis-0 h-7 justify-center items-center gap-3 flex">
-            <a routerLink="/about-us" class="text-[#18212f] text-lg font-semibold font-['Inter'] leading-7">About</a>
+          <div [routerLinkActive]="'bg-[#f2f4f7]'" class="h-11 px-3 py-2  rounded-md justify-start items-center gap-2 flex overflow-hidden">
+            <div class="grow shrink basis-0 h-7 justify-center items-center gap-3 flex">
+              <a routerLink="/about-us" class="text-[#18212f] text-lg font-semibold font-['Inter'] leading-7">About</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-

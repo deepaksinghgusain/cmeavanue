@@ -126,7 +126,7 @@ export class HomeComponent implements OnInit, OnDestroy {
             'credit': element?.attributes?.credit,
             'slug': element?.attributes?.slug,
             'price': element?.attributes?.price,
-            'instructor': element?.attributes?.instructors,
+            'instructors': element?.attributes?.instructors,
           });
         });
       }

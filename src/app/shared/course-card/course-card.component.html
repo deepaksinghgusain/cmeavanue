@@ -1,26 +1,31 @@
-<div class="flex flex-col w-[380px] rounded-[10px] border-[#d4d5d6] border-2">
+<div class="flex flex-col w-full rounded-[10px] border-[#d4d5d6] border-2">
   <div class=" h-[132px] relative bg-gradient-to-t from-[#72edf2] to-[#5151e5] rounded-[10px] flex-col justify-start items-start inline-flex overflow-hidden">
     <div class="h-14 w-full  flex-col justify-center items-center inline-flex">
       <div class="self-stretch h-14 p-4 bg-white/30 border-t border-white/30 backdrop-blur-xl flex-col justify-start items-start gap-6 flex">
         <div class="self-stretch justify-start items-start gap-6 inline-flex">
           <div class="flex-col justify-start items-start inline-flex">
-            <div class="text-white text-base font-bold font-['Inter'] leading-normal">Credits: {{ course.credit }} | NASBA | IRS | CFP</div>
+            <div class="text-white text-base font-bold font-['Inter'] leading-normal">Credits: 
+              {{ course.credit }} | NASBA | IRS | CFP
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div class="ml-4 mt-2">
       <div class="flex">
-        @for (instructor of course.instructor.data; track $index) {
-          <img class="w-8 h-8 rounded-[684px] ml[-10px]" src="{{ environmentUrl + instructor.attributes.image.data.attributes.url }}" />
+
+        @for (instructor of course.instructors.data; track $index) {
+          <img class="w-8 h-8 rounded-[684px] ml[-10px]" src="{{ environmentUrl + instructor?.attributes?.image?.data?.attributes?.url }}" />
         }
+
       </div>
       <div class="w-[280px] mt-3 justify-start items-center gap-2.5 inline-flex">
         <div class="flex-col justify-start items-start inline-flex">
           <div class="text-white text-sm font-semibold font-['Inter'] leading-tight">
-            @for (instructor of course.instructor.data; track $index) {
-             {{instructor.attributes.firstName}} {{instructor.attributes.lastName}}
-            }   
+            @for (instructor of course.instructors?.data; track $index) {
+              {{instructor?.attributes?.firstName}} {{instructor?.attributes?.lastName}}
+            }
+
           </div>
         </div>
       </div>
@@ -40,13 +45,19 @@
     </div>
     <div class="self-stretch flex-col justify-start items-start gap-2 flex">
       <a routerLink="/course/{{ course.slug }}">
-        <div class="self-stretch text-[#101828] text-lg font-semibold font-['Inter'] leading-7" [innerHTML]="course.shortDesc"></div>
+        <div class="self-stretch text-[#101828] text-lg font-semibold font-['Inter'] leading-7">{{course.title}}</div>
+        <!-- <div class="self-stretch text-[#101828] text-lg font-semibold font-['Inter'] leading-7" [innerHTML]="course.shortDesc"></div> -->
       </a>
-      <div class="self-stretch text-[#475467] text-sm font-normal font-['Inter'] leading-normal">{{ startDate | uppercase }} | {{ startTime | uppercase }} - {{endTime | uppercase }}</div>
+      <div class="self-stretch text-[#475467] text-sm font-normal font-['Inter'] leading-normal">
+        {{ startDate | uppercase }} |
+        {{ startTime | uppercase }} - {{endTime | uppercase }}
+      </div>
     </div>
     <div class="pl-1 pr-2.5 py-1 rounded-full justify-start items-center gap-3 inline-flex">
       <!-- <div class="text-[#667084] text-sm font-semibold font-['Inter'] line-through leading-[38px]">US$199</div> -->
-      <div class="text-[#2970fe] text-xl font-semibold font-['Inter'] leading-[38px]">US {{ course.price }}</div>
+      <div class="text-[#2970fe] text-xl font-semibold font-['Inter'] leading-[38px]">US
+        {{ course.price }}
+      </div>
     </div>
   </div>
 </div>
