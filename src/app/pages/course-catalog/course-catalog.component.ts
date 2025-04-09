@@ -4,23 +4,26 @@ import { SubSink } from 'subsink';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CourseService } from '../../services/course.service';
 import { environment } from '../../../environments/environment';
-import { CourseCardComponent } from '../../shared/course-card/course-card.component';
+import { CourseLisitingComponent } from '../../shared/course-lisiting/course-lisiting.component';
+import { PageService } from '../../services/page.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-course-catalog',
-  imports: [CommonModule, CourseCardComponent],
+  imports: [CommonModule, CourseLisitingComponent, RouterModule],
   templateUrl: './course-catalog.component.html',
   styleUrl: './course-catalog.component.css'
 })
 export class CourseCatalogComponent implements OnInit, OnDestroy {
-  totalPages: number = 1;
-  currentPage: number = 1;
-  pageChange: number = 1;
-
   data: any;
   priceCheck: any;
   forTaxLawCheck: any;
   isActiveCheck: any;
+
+  heroImageSection:any;
+  accreditedPartners:any;
+  otherCourseBanner:any;
+
 
   LiveCourseListing: any = [];
   slefStudyCourseListing: any = [];
@@ -36,6 +39,7 @@ export class CourseCatalogComponent implements OnInit, OnDestroy {
 
   constructor(
     private courseService: CourseService,
+    private pageService: PageService,
     private sanitizer: DomSanitizer) {
     this.imageUrl = environment.imageEndPoint;
   }
@@ -45,6 +49,23 @@ export class CourseCatalogComponent implements OnInit, OnDestroy {
     this.environmentUrl = environment.apibaseurl
 
     this.getLiveCourse();
+
+    this.getPageData();
+  }
+
+  getPageData() {
+
+    this.unsubscribe$.add(this.pageService.getPageContent('course-listing').subscribe((res: any) => {      
+      this.heroImageSection = res?.data[0]?.attributes?.blocks.filter((res: { __component: string; }) => res.__component === 'blocks.course-catalog-banner')[0];
+      this.accreditedPartners = res?.data[0]?.attributes?.blocks.filter((res: { __component: string; }) => res.__component === 'blocks.accredited-partners')[0];
+      this.otherCourseBanner = res?.data[0]?.attributes?.blocks.filter((res: { __component: string; }) => res.__component === 'blocks.other-course-banner')[0];
+
+      console.log(this.otherCourseBanner);
+      
+      
+      // this.apiSection = res?.data[0]?.attributes?.blocks.filter((res: { __component: string; }) => res.__component === 'blocks.api-section')[0];
+      // this.backGroundImageUrl = environment.imageEndPoint + this.heroImageSection?.ackgroundImage?.data?.attributes?.formats?.large?.url
+    }))
   }
 
   sanitize(content: any) {
@@ -92,22 +113,5 @@ export class CourseCatalogComponent implements OnInit, OnDestroy {
     this.unsubscribe$.unsubscribe()
   }
 
-  get pages(): number[] {
-    const pages: number[] = [];
-    const range = 2; // pages to show before/after current
-    const start = Math.max(1, this.currentPage - range);
-    const end = Math.min(this.totalPages, this.currentPage + range);
-
-    for (let i = start; i <= end; i++) {
-      pages.push(i);
-    }
-
-    return pages;
-  }
-
-  goToPage(page: number) {
-    if (page >= 1 && page <= this.totalPages && page !== this.currentPage) {
-      this.pageChange = page
-    }
-  }
+  
 }

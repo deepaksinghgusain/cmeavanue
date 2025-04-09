@@ -14,8 +14,10 @@
     <div class="ml-4 mt-2">
       <div class="flex">
 
-        @for (instructor of course.instructors.data; track $index) {
-          <img class="w-8 h-8 rounded-[684px] ml[-10px]" src="{{ environmentUrl + instructor?.attributes?.image?.data?.attributes?.url }}" />
+        @if (course.instructors) {
+          @for (instructor of course.instructors.data; track $index) {
+            <img class="w-8 h-8 rounded-[684px] ml[-10px]" src="{{ environmentUrl + instructor?.attributes?.image?.data?.attributes?.url }}" />
+          }
         }
 
       </div>

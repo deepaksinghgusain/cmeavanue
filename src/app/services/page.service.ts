@@ -22,5 +22,9 @@ export class PageService {
     return this.http.get(_url)
   }
 
+  getPageContent(slug: string) {
+    return this.http.get(`${this.baseUrl}/api/pages?populate=deep&filters[slug][$eq]=${slug}`)
+  }
+
 
 }

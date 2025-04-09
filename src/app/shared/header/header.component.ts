@@ -63,10 +63,6 @@ export class HeaderComponent implements OnInit {
   
   getCartQty() {
     this.commonService.commanCartQtydata.subscribe((res: any) => {
-
-      console.log({res});
-      
-
       this.cartQty = res;
     });
   }
