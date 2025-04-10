@@ -15,6 +15,7 @@ import { BundleandsubscriptionComponent } from './pages/bundleandsubscription/bu
 import { EBookComponent } from './pages/e-book/e-book.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { DashboardComponent } from './pages/learner/dashboard/dashboard.component';
+import { InstructorListingComponent } from './pages/instructor/instructor-listing/instructor-listing.component';
 
 export const routes: Routes = [
     {
@@ -77,6 +78,10 @@ export const routes: Routes = [
     {
         path: 'cart',
         component: CartComponent
+    },
+    {
+        path: 'instructor/instructor-listing',
+        component: InstructorListingComponent
     },
     {
         path: 'learner/dashboard',

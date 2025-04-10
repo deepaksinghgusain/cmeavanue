@@ -86,6 +86,8 @@ export class InstructorService {
               firstName
               lastName
               shortDesc
+              bioData
+              topics
               image{
                 data{
                   attributes{

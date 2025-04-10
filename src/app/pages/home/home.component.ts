@@ -140,6 +140,9 @@ export class HomeComponent implements OnInit, OnDestroy {
       
       if (res) {
         this.homepagefacultymembers = res.data.instructors.data  
+
+        console.log(this.homepagefacultymembers);
+        
       }
     }))
   }

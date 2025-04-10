@@ -1,0 +1,99 @@
+<div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-4 py-10">
+  @for (faculty of facultymembers; track $index) {
+
+  <div class="flex-1 min-w-60 inline-flex flex-col justify-start items-start gap-6">
+    <img class="self-stretch h-72 relative" src="{{environmentUrl + faculty.attributes.image.data.attributes.url}}" />
+    <div class="self-stretch flex flex-col justify-start items-start gap-6">
+      <div class="self-stretch flex flex-col justify-start items-start gap-4">
+        <div class="self-stretch flex flex-col justify-start items-start gap-1">
+          <div class="self-stretch justify-start text-Colors-Text-text-primary-(900) text-xl font-semibold font-['Inter'] leading-loose">{{faculty.attributes.firstName}}
+            {{ faculty.attributes.lastName }}
+          </div>
+          <div class="self-stretch justify-start text-Colors-Text-text-brand-secondary-(700) text-lg font-normal font-['Inter'] leading-7">
+            {{ faculty.attributes?.shortDesc}}
+          </div>
+        </div>
+      </div>
+      <div class="inline-flex justify-center items-center gap-2 overflow-hidden">
+        <div class="justify-start text-[#2970FE] text-base font-semibold font-['Inter'] leading-normal">Read Bio</div>
+        <div class="w-5 h-5 relative overflow-hidden">
+
+          <div class="cursor-pointer" (click)="showPopup(faculty.id)">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g id="arrow-right">
+                <path id="Icon" d="M4.16797 9.99999H15.8346M15.8346 9.99999L10.0013 4.16666M15.8346 9.99999L10.0013 15.8333" stroke="#2970FF" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  }
+</div>
+
+
+@if (visiblePopup) {
+<div class="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
+  <!-- Modal Box -->
+  <div class="bg-white p-6 rounded-2xl shadow-xl w-2/3">
+    <div class="w-full max-w-[1280px] p-8 inline-flex flex-col justify-start items-start gap-6">
+      <div class="self-stretch inline-flex justify-start items-start gap-6">
+        <div class="w-40 h-40 relative rounded-full">
+          <div class="w-40 h-40 left-0 top-0 absolute rounded-full shadow-[0px_12px_16px_-4px_rgba(16,24,40,0.08)] outline outline-4 outline-Component-colors-Components-Avatars-avatar-profile-photo-border overflow-hidden">
+            <div class="w-40 h-40 left-0 top-0 absolute rounded-full border border-Component-colors-Components-Avatars-avatar-contrast-border/10">
+                @if (showCurrentFacultyDataPopup) {
+                    <img src="{{environmentUrl + showCurrentFacultyDataPopup.attributes.image.data.attributes.url}}" alt="">
+                }
+
+                @else {
+                    Data not found
+                }
+            </div>
+          </div>
+        </div>
+        <div class="flex-1 py-8 inline-flex flex-col justify-start items-start gap-5">
+          <div class="self-stretch inline-flex justify-start items-start gap-4 flex-wrap content-start">
+            <div class="flex-1 min-w-60 inline-flex flex-col justify-start items-start gap-1">
+             @if (showCurrentFacultyDataPopup) {
+                 <div class="self-stretch justify-start text-Colors-Text-text-primary-(900) text-3xl font-semibold font-['Inter'] leading-9">{{showCurrentFacultyDataPopup.attributes.firstName}} {{ showCurrentFacultyDataPopup.attributes.lastName }}</div>
+                 <div class="self-stretch justify-start text-Colors-Text-text-tertiary-(600) text-base font-normal font-['Inter'] leading-normal">  {{ showCurrentFacultyDataPopup.attributes?.shortDesc}}</div>
+             }
+            </div>
+            <div class="flex justify-start items-center gap-3">
+              <div class="p-4 bg-Component-colors-Components-Buttons-Secondary-button-secondary-bg rounded-[10px] shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] outline outline-1 outline-offset-[-1px] outline-[#344054] flex justify-center items-center gap-2 overflow-hidden">
+                <div class="w-6 h-6 relative overflow-hidden cursor-pointer" (click)="closePopup()">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="x-close">
+                      <path id="Icon" d="M18 6L6 18M6 6L18 18" stroke="#344054" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
+                    </g>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+       @if (showCurrentFacultyDataPopup) {
+        <div class="w-full">
+            <div class="self-stretch inline-flex flex-col justify-start items-start gap-5 border-b w-full">
+              <div class="self-stretch inline-flex justify-start items-start gap-4 w-full">
+                <div class="flex-1 self-stretch inline-flex flex-col justify-center items-start gap-1">
+                  <div class="self-stretch justify-start text-Colors-Text-text-primary-(900) text-lg font-semibold font-['Inter'] leading-7">Teaches Course Topics</div>
+                  <div class="self-stretch justify-start text-[#475467] text-sm font-normal font-['Inter'] leading-tight">{{ showCurrentFacultyDataPopup.attributes.topics }}</div>
+                </div>
+              </div>
+              <div class="self-stretch h-px bg-Colors-Border-border-secondary"></div>
+            </div>
+      
+            <div class="self-stretch justify-start text-Colors-Text-text-primary-(900) text-base font-medium font-['Inter'] leading-normal mt-10">Bio</div>
+      
+            <div class="self-stretch justify-start text-[#475467] text-base font-normal font-['Inter'] leading-normal" [innerHTML]="sanitize(showCurrentFacultyDataPopup.attributes.bioData)"></div>
+          </div>
+       }
+    </div>
+  </div>
+</div>
+}

@@ -18,6 +18,77 @@ export class CourseLisitingComponent implements AfterViewChecked {
 
   @Input() courses: [] = [];
 
+  filters = [
+    {
+      label: 'Price',
+      name: 'price',
+      icon: '/assets/images/price-icon.png',
+      showChildren: false,
+      children: [
+        {
+          label: "Free",
+          value: "Free"
+        },
+        {
+          label: "Premium",
+          value: "Premium"
+        }
+      ]
+    },
+    {
+      label: 'CPE Credit',
+      name: 'credit',
+      icon: '/assets/images/credit-icon.png',
+      showChildren: false,
+      children: [
+        {
+          label: "1-2 credit",
+          value: "1-2"
+        },
+        {
+          label: "2-4 credit",
+          value: "2-4"
+        },
+        {
+          label: "4-8 credit",
+          value: "4-8"
+        },
+        {
+          label: "8+ credit",
+          value: "8-+"
+        },
+      ]
+    },
+    {
+      label: 'Field To Study',
+      name: 'field-to-study',
+      icon: '/assets/images/field-to-study.png',
+      showChildren: false,
+      children: [
+        {
+          label: "Accounting",
+          value: "accounting"
+        },
+        {
+          label: "Auditing",
+          value: "auditing"
+        },
+        {
+          label: "Business Law",
+          value: "business-law"
+        },
+        {
+          label: "Economics",
+          value: "economics"
+        },
+        {
+          label: "Cinance",
+          value: "finance"
+        },
+      ]
+    }
+  ]
+
   constructor(private cd: ChangeDetectorRef){}
 
   goToPage(page: number) {    
