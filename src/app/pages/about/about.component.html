@@ -16,10 +16,10 @@
         @for (list of aboutFirst.list; track $index) {
         <div class="grow shrink basis-0 flex-col justify-start items-start gap-5 inline-flex">
           <div class="self-stretch h-[140px] flex-col justify-start items-start gap-3 flex">
-            <div class="self-stretch text-[#6071f3] text-4xl font-semibold font-['Inter'] leading-[44px]">{{list.Sno}}</div>
+            <div class="self-stretch text-[#6071f3] text-4xl font-semibold font-['Inter'] leading-[44px]">{{list?.Sno}}</div>
             <div class="self-stretch h-[84px] flex-col justify-start items-start gap-2 flex">
-              <div class="self-stretch text-[#101828] text-lg font-semibold font-['Inter'] leading-7">{{list.title}}</div>
-              <div class="self-stretch text-[#475467] text-base font-normal font-['Inter'] leading-normal">{{list.description}}</div>
+              <div class="self-stretch text-[#101828] text-lg font-semibold font-['Inter'] leading-7">{{list?.title}}</div>
+              <div class="self-stretch text-[#475467] text-base font-normal font-['Inter'] leading-normal">{{list?.description}}</div>
             </div>
           </div>
         </div>
@@ -67,7 +67,7 @@
             <div class="self-stretch h-[110px] flex-col justify-start items-start gap-5 flex">
               <div class="self-stretch h-[110px] flex-col justify-start items-start gap-4 flex">
                 <div class="self-stretch text-[#101828] text-3xl font-semibold font-['Inter'] leading-[38px]">{{item.title}}</div>
-                <div class="self-stretch text-[#344054] text-lg font-normal font-['Inter'] leading-7">{{item.description}}</div>
+                <div class="self-stretch text-[#344054] text-lg font-normal font-['Inter'] leading-7">{{item?.description}}</div>
               </div>
             </div>
             <div class="self-stretch h-64 pl-4 flex-col justify-start items-start gap-5 flex">
@@ -86,7 +86,6 @@
                   }
               }
     
-    
               <div class="justify-center items-center gap-3 inline-flex overflow-hidden">
                 <div class="text-[#db6803] text-lg font-semibold font-['Inter'] leading-7">Learn more</div>
                 <div class="w-6 h-6 relative  overflow-hidden"></div>
@@ -103,7 +102,7 @@
             <div class="self-stretch h-[110px] flex-col justify-start items-start gap-5 flex">
               <div class="self-stretch h-[110px] flex-col justify-start items-start gap-4 flex">
                 <div class="self-stretch text-[#101828] text-3xl font-semibold font-['Inter'] leading-[38px]">{{item.title}}</div>
-                <div class="self-stretch text-[#344054] text-lg font-normal font-['Inter'] leading-7">{{item.description}}</div>
+                <div class="self-stretch text-[#344054] text-lg font-normal font-['Inter'] leading-7">{{item?.description}}</div>
               </div>
             </div>
             <div class="self-stretch h-64 pl-4 flex-col justify-start items-start gap-5 flex">
@@ -231,7 +230,7 @@
           <div class="self-stretch h-11 flex-col justify-start items-start gap-3 flex">
             <div class="self-stretch text-[#101828] text-4xl font-semibold font-['Inter'] leading-[44px]">{{mission.title}}</div>
           </div>
-          <div class="self-stretch text-[#475467] text-xl font-normal font-['Inter'] leading-[30px]">{{mission.description}}</div>
+          <div class="self-stretch text-[#475467] text-xl font-normal font-['Inter'] leading-[30px]">{{mission?.description}}</div>
         </div>
         <div class="justify-start items-start gap-3 flex">
           <div class="px-[18px] py-3 bg-[#2970fe] rounded-[28px] shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] border-2 border-white justify-center items-center gap-1.5 flex overflow-hidden">
@@ -256,7 +255,7 @@
             <div class="self-stretch h-5"></div>
           </div>
           <div class="self-stretch h-[196px] flex-col justify-start items-start flex">
-            <div class="self-stretch"><span class="text-[#475467] text-lg font-normal font-['Inter'] leading-7">{{item.description}}</span></div>
+            <div class="self-stretch"><span class="text-[#475467] text-lg font-normal font-['Inter'] leading-7">{{item?.description}}</span></div>
           </div>
           }
           }
@@ -280,7 +279,7 @@
             <div class="self-stretch h-11 flex-col justify-start items-start gap-3 flex">
               <div class="self-stretch text-center text-white text-4xl font-semibold font-['Inter'] leading-[44px]">{{commitment.title}}</div>
             </div>
-            <div class="self-stretch text-center text-white text-xl font-normal font-['Inter'] leading-[30px]">{{commitment.description}}</div>
+            <div class="self-stretch text-center text-white text-xl font-normal font-['Inter'] leading-[30px]">{{commitment?.description}}</div>
           </div>
         </div>
       </div>
@@ -291,12 +290,12 @@
           <div class="grow shrink basis-0 flex-col justify-start items-center gap-5 inline-flex">
             <div class="w-12 h-12 p-3 bg-white rounded-[10px]  shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] border border-[#e4e7ec] justify-center items-center inline-flex overflow-hidden">
               <div class="w-6 h-6 relative flex-col justify-start items-start flex overflow-hidden">
-                <!-- <img src="{{ imageUrl + item.image.data.attributes.url }}" alt=""> -->
+                <img src="{{ imageUrl + item?.image?.data?.attributes.url }}" alt="">
               </div>
             </div>
             <div class="self-stretch h-[86px] flex-col justify-start items-center gap-2 flex">
               <div class="self-stretch text-center text-white text-xl font-semibold font-['Inter'] leading-[30px]">{{item.title}}</div>
-              <div class="self-stretch text-center text-white text-base font-normal font-['Inter'] leading-normal">{{item.description}}</div>
+              <div class="self-stretch text-center text-white text-base font-normal font-['Inter'] leading-normal">{{item?.description}}</div>
             </div>
           </div>
           }
@@ -335,7 +334,7 @@
           </div>
           <div class="self-stretch flex-col justify-start items-start gap-2 flex">
             <div class="self-stretch text-[#101828] text-xl font-semibold font-['Inter'] leading-[30px]">{{item.title}}</div>
-            <div class="self-stretch text-[#475467] text-base font-normal font-['Inter'] leading-normal">{{item.description}}</div>
+            <div class="self-stretch text-[#475467] text-base font-normal font-['Inter'] leading-normal">{{item?.description}}</div>
           </div>
         </div>
         }
@@ -353,24 +352,70 @@
 </section>
 }
 
-<section class="container mx-auto">
-  <div class="h-[640px] py-24 bg-white flex-col justify-center items-center gap-16 inline-flex overflow-hidden">
-    <div class="self-stretch px-8 justify-center items-center inline-flex">
-      <div class="grow shrink basis-0 h-[448px] bg-gray-50 rounded-3xl justify-start items-center flex overflow-hidden">
-        <div class="grow shrink basis-0 p-16 flex-col justify-center items-start gap-10 inline-flex">
-          <div class="self-stretch h-[168px] flex-col justify-start items-start gap-8 flex">
-            <div class="self-stretch h-[88px] flex-col justify-start items-start gap-6 flex">
-              <div class="self-stretch text-[#101828] text-4xl font-medium font-['Inter'] leading-[44px]">Exceptional learning experiences, guided by top-rated faculty</div>
-            </div>
-            <div class="px-[18px] py-3 bg-[#2970fe] rounded-[28px] shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] border-2 border-white justify-center items-center gap-1.5 inline-flex overflow-hidden">
-              <div class="px-0.5 justify-center items-center flex">
-                <div class="text-white text-base font-semibold font-['Inter'] leading-normal">Meet Our Faculty</div>
+@if (ourFaculty) {
+  <section class="container mx-auto">
+    <div class="h-[640px] py-24 bg-white flex-col justify-center items-center gap-16 inline-flex overflow-hidden">
+      <div class="self-stretch px-8 justify-center items-center inline-flex">
+        <div class="grow shrink basis-0 h-[448px] bg-gray-50 rounded-3xl justify-start items-center flex overflow-hidden">
+          <div class="grow shrink basis-0 p-16 flex-col justify-center items-start gap-10 inline-flex">
+            <div class="self-stretch h-[168px] flex-col justify-start items-start gap-8 flex">
+              <div class="self-stretch h-[88px] flex-col justify-start items-start gap-6 flex">
+                <div class="self-stretch text-[#101828] text-4xl font-medium font-['Inter'] leading-[44px]">{{ ourFaculty?.title }}</div>
+              </div>
+              <div class="px-[18px] py-3 bg-[#2970fe] rounded-[28px] shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] border-2 border-white justify-center items-center gap-1.5 inline-flex overflow-hidden">
+                <div class="px-0.5 justify-center items-center flex">
+                  <a href="{{ ourFaculty?.button?.href }}" class="text-white text-base font-semibold font-['Inter'] leading-normal">
+                    {{ ourFaculty?.button?.label }}</a>
+                </div>
               </div>
             </div>
           </div>
+          <img class="w-[480px] h-[448px] relative" src="{{ imageUrl + ourFaculty.image.data.attributes.url }}" />
         </div>
-        <img class="w-[480px] h-[448px] relative" src="/assets/images/about-banner-5.jpg" />
       </div>
     </div>
-  </div>
-</section>
+  </section>
+}
+
+@if (ourTeam) {
+  <section class="container mx-auto">
+    <div class="py-24 bg-Colors-Background-bg-primary inline-flex flex-col justify-start items-center gap-16 overflow-hidden">
+      <div class="w-full  px-8 flex flex-col justify-start items-start gap-8">
+        <div class="self-stretch flex flex-col justify-start items-center gap-8">
+          <div class="w-full max-w-[768px] flex flex-col justify-start items-center gap-5">
+            <div class="self-stretch flex flex-col justify-start items-start gap-3">
+              <div class="self-stretch text-center justify-start text-Colors-Text-text-primary-(900) text-4xl font-semibold font-['Inter'] leading-10">{{ ourTeam.title }}</div>
+            </div>
+            <div class="self-stretch text-center justify-start text-Colors-Text-text-tertiary-(600) text-xl font-normal font-['Inter'] leading-loose">{{ourTeam.description}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="w-full px-8 flex flex-col justify-start items-start gap-16">
+        <div class="self-stretch inline-flex justify-center items-start gap-8 flex-wrap content-start">
+          @if (ourTeam.team) {
+            @for (team of ourTeam.team; track $index) {
+              <div class="flex-1 min-w-60 inline-flex flex-col justify-start items-center gap-5">
+                <div class="w-24 h-24 relative rounded-full">
+                  <div class="w-24 h-24 left-0 top-0 absolute rounded-full border-[0.75px] border-Component-colors-Components-Avatars-avatar-contrast-border/10">
+                    <img src="{{ imageUrl + team.image.data.attributes.url }}" alt="">
+                  </div>
+                </div>
+                <div class="self-stretch flex flex-col justify-start items-center gap-4">
+                  <div class="self-stretch flex flex-col justify-start items-center gap-2">
+                    <div class="self-stretch flex flex-col justify-start items-center">
+                      <div class="self-stretch opacity-90 text-center justify-start text-Colors-Text-text-primary-(900) text-lg font-semibold font-['Inter'] leading-7">{{team.name}}</div>
+                      <div class="self-stretch text-center justify-start text-Colors-Text-text-brand-secondary-(700) text-base font-normal font-['Inter'] leading-normal">{{team.designation}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            }
+          }
+
+         
+          
+        </div>
+      </div>
+    </div>
+  </section>
+}

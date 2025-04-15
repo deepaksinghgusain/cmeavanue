@@ -383,7 +383,7 @@
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4">
-      @for (faculty of homepagefacultymembers.slice(0, 6); track $index) {
+      @for (faculty of homepagefacultymembers; track $index) {
       @if ($index === 0) {
       <div class="flex-1 min-w-60 inline-flex flex-col justify-start items-start gap-6">
         <img class="self-stretch h-72 relative" src="{{environmentUrl + faculty.attributes.image.data.attributes.url}}" />

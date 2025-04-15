@@ -23,6 +23,8 @@ export class AboutComponent {
   getFromCpe: any;
   getRecommendations: any;
   getQuestionsSection: any;
+  ourTeam: any;
+  ourFaculty: any;
 
   aboutFirst: any;
   portfolio: any;
@@ -60,13 +62,13 @@ export class AboutComponent {
         this.values = res?.data[0]?.attributes?.blocks.filter((res: { __component: string; }) => res.__component === 'blocks.values')[0]
         this.portfolio = res?.data[0]?.attributes?.blocks.filter((res: { __component: string; }) => res.__component === 'blocks.portfolio')[0]
         this.mission = res?.data[0]?.attributes?.blocks.filter((res: { __component: string; }) => res.__component === 'blocks.mission')[0]
-        
-        console.log(this.commitment);
-        
+        this.ourTeam = res?.data[0]?.attributes?.blocks.filter((res: { __component: string; }) => res.__component === 'blocks.our-team')[0]
+        this.ourFaculty = res?.data[0]?.attributes?.blocks.filter((res: { __component: string; }) => res.__component === 'blocks.our-faculty')[0]
+
       }
 
       this.metatagsService.addSEOTags(res?.data[0]?.attributes?.seo);
-      this.markdowndata = this.staticSection.description
+      // this.markdowndata = this.staticSection.description
     });
   }
 }

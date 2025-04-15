@@ -139,10 +139,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.unsubscribe$.add(this._instructorService.getInstructorsForHome().subscribe((res: any) => {
       
       if (res) {
-        this.homepagefacultymembers = res.data.instructors.data  
-
-        console.log(this.homepagefacultymembers);
-        
+        this.homepagefacultymembers = res.data.instructors.data;
       }
     }))
   }
