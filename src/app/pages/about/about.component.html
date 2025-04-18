@@ -285,8 +285,8 @@
       </div>
       <div class="self-stretch h-[154px] px-8 flex-col justify-start items-start gap-16 flex">
         <div class="self-stretch justify-start items-start gap-8 inline-flex">
-          @if (commitment.item) {
-          @for (item of commitment.item; track $index) {
+          @if (commitment.list) {
+          @for (item of commitment.list; track $index) {
           <div class="grow shrink basis-0 flex-col justify-start items-center gap-5 inline-flex">
             <div class="w-12 h-12 p-3 bg-white rounded-[10px]  shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] border border-[#e4e7ec] justify-center items-center inline-flex overflow-hidden">
               <div class="w-6 h-6 relative flex-col justify-start items-start flex overflow-hidden">
