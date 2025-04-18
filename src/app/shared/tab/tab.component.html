@@ -1,0 +1,33 @@
+<div class="flex-1 inline-flex flex-col justify-between items-start gap-2 w-full">
+  <div class="flex cursor-pointer self-stretch justify-between text-[#101828] text-lg font-medium font-['Inter'] leading-7" (click)="showTabContent = !showTabContent">
+    
+        {{ faq?.question }}
+    
+
+    
+        @if (!showTabContent) {
+             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="minus-circle">
+                  <path id="Icon" d="M8 12H16M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="#155EEF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </g>
+              </svg>
+        }
+
+        @else {
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="plus-circle">
+                  <path id="Icon" d="M12 8V16M8 12H16M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="#98A2B3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </g>
+            </svg>
+        }
+      
+    
+
+  </div>
+  @if (showTabContent) {
+    <div class="self-stretch justify-start">
+        <span class="text-Colors-Text-text-tertiary-(600) text-base font-normal font-['Inter'] leading-normal" [innerHTML]="faq?.answer"></span>
+      </div>
+  }
+  
+</div>

@@ -106,7 +106,7 @@ export class LoginComponent {
           // this.getCustomerDetail(res.user.id)
           if (localStorage.getItem('slug')) {
 
-            console.log("slug present")
+
             this.addToCart();
           } else {
             this.getcardCount();
@@ -155,7 +155,7 @@ export class LoginComponent {
             // SHOW EROR MESSAGE (SOMETHING WENT WRONG)
           }
         }, (err: any) => {
-          console.log(err);
+        
         }))
   }
 
@@ -207,7 +207,7 @@ export class LoginComponent {
   getCustomerDetail(userid: any) {
 
     this.cartService.getCardToken(userid).subscribe((res: any) => {
-      // console.log(res);
+   
       res.cid;
       localStorage.setItem('cid', res.cid);
     })

@@ -12,7 +12,6 @@ export class CartService {
   constructor(private http: HttpClient) { }
 
   addToCart(data: any) {
-    console.log(data);
     
     return this.http.post(`${this.baseUrl}/api/carts`, data)
   }

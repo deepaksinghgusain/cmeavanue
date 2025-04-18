@@ -13,10 +13,11 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import moment from 'moment';
 import { SeoTags } from '../../models/meta-tags';
 import { CourseCardComponent } from '../../shared/course-card/course-card.component';
+import { TabComponent } from '../../shared/tab/tab.component';
 
 @Component({
   selector: 'app-course-enrollement',
-  imports: [RouterModule, CommonModule, CourseCardComponent],
+  imports: [RouterModule, CommonModule, CourseCardComponent, TabComponent],
   templateUrl: './course-enrollement.component.html',
   styleUrl: './course-enrollement.component.css'
 })
@@ -68,7 +69,8 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
   instructor: any;
   public unsubscribe$ = new SubSink()
 
-  courseOutline: any;
+  courseOutline:any;
+  reviews:any;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: object,
@@ -133,7 +135,6 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
         }));
 
     } else {
-      console.log("server side code rendering");
 
       this.getCourseDetails(this.slug); 
 
@@ -155,9 +156,12 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
   getCourseDetails(slug: string) {
 
     this.unsubscribe$.add(this.courseService.getcoursesBySlug(slug).subscribe((res: any) => {
+      console.log(res);
+      
 
       this.coursesDetail = res.data.courses;
       this.courseId = this.coursesDetail?.data[0]?.id;
+     
 
       // this.courseData = res?.data[0]?.attributes
       
@@ -218,12 +222,17 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
   getCourseData(slug: any) {
 
     this.unsubscribe$.add(this.courseService.getcoursesBySlug(slug).subscribe((res: any) => {
+      console.log(res);
+      
 
       this.coursesDetail = res.data.courses;
       this.courseId = this.coursesDetail?.data[0]?.id;
+     
       // this.courseData = res?.data[0]?.attributes
       this.courseData = this.coursesDetail?.data[0]?.attributes;
       this.instructor = this.courseData.instructors.data[0]?.attributes;
+    
+      
       
       this.courseCategory = this.coursesDetail?.data[0]?.attributes?.category?.data?.attributes?.title;
       this.gtagservice.pushEvent('view_item',
@@ -284,9 +293,7 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
 
       // this.givingBackTabContent = res?.data[0]?.attributes?.tabs[2]?.content
       this.givingBackTabContent = this.courseData?.tabs[1]?.content
-
-      // this.faqContent = res?.data[0]?.attributes?.category?.data?.attributes?.faqs.faq[0]
-      const faqContent = this.courseData?.category.data?.attributes?.faqs.faq[0]
+     
 
       this.courseData?.instructors?.data?.forEach((element: any, index: number) => {
 
@@ -318,7 +325,7 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
           'imgurl': imageurl
         })
       });
-      // console.log('faculties', this.faculties)
+      
       this.courseTabs = this.courseData?.tabs
 
       let tabcomponent = this.courseOutline = this.courseTabs?.filter((item: { index: string; }) => item?.index === "Outline") || {};
@@ -444,7 +451,7 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
     this.courseService.GetUserSubscribedCourses(email).subscribe((res: any) => {
 
       this.userCourseData = res?.data.userCourses.data
-      console.log("res...", this.userCourseData);
+     
     })
   }
 
@@ -452,7 +459,6 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
 
   enrollNow2(selectedCourse: any, template?: any, templateExpired?: any) {
     localStorage.setItem("slug", this.slug)
-    console.log("selectedCourse", selectedCourse);
 
     // if cart does not exist then create a cart
     const courseid = selectedCourse.data[0]["id"] || 0;
@@ -495,7 +501,6 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
               "Enrollment": []
             });
 
-            console.log("Selected Course", selectedCourse);
 
             // const totalprice = selectedCourse?.price * this.seats;
             let realPrice: any;
@@ -536,7 +541,7 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
                   // SHOW EROR MESSAGE (SOMETHING WENT WRONG)
                 }
               }, (err: any) => {
-                console.log(err);
+             
               }))
           }
 
@@ -578,7 +583,7 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
           this.updateCart();
         }
       }, (error) => {
-        console.log(error);
+     
         
       })
 

@@ -89,8 +89,6 @@ export class AuthService {
   // GET USER CART DATA
   getCart(userId: any) {
     const _url = environment.apibaseurl + "/api/carts/getUserCart/" + userId;
-
-    console.log(_url);
     
     return this.http.get(_url)
   }

@@ -60,9 +60,7 @@ export class CourseCatalogComponent implements OnInit, OnDestroy {
       this.accreditedPartners = res?.data[0]?.attributes?.blocks.filter((res: { __component: string; }) => res.__component === 'blocks.accredited-partners')[0];
       this.otherCourseBanner = res?.data[0]?.attributes?.blocks.filter((res: { __component: string; }) => res.__component === 'blocks.other-course-banner')[0];
 
-      console.log(this.otherCourseBanner);
-      
-      
+          
       // this.apiSection = res?.data[0]?.attributes?.blocks.filter((res: { __component: string; }) => res.__component === 'blocks.api-section')[0];
       // this.backGroundImageUrl = environment.imageEndPoint + this.heroImageSection?.ackgroundImage?.data?.attributes?.formats?.large?.url
     }))

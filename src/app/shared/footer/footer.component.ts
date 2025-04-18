@@ -162,7 +162,7 @@ export class FooterComponent {
     this.userName = `${userName} (${nanoid()})`;
     this.userEmail = userEmail;
     this.generateChatToken().subscribe(async (res: any) => {
-      console.log(res);
+     
 
       this.chatToken = res;
       if (res != null) {
@@ -197,10 +197,10 @@ export class FooterComponent {
         if (res) {
           this.chatToken = res;
           this.client?.updateToken(this.chatToken).then(result => {
-            console.log('res', result);
+          
           }).catch(
             err => {
-              console.log('err', err);
+            
             }
           );
         }
@@ -213,8 +213,7 @@ export class FooterComponent {
   initConversationsClient(token: any) {
     return new Promise((resolve, reject) => {
       this.client = new ConversationsClient(token)
-      console.log("cliet object", this.client);
-
+     
       this.consversationData.statusString = "Connecting to Twilio..."
       this.client.on("connectionStateChanged", (state: any) => {
         switch (state) {
@@ -258,29 +257,20 @@ export class FooterComponent {
     // Try to create a new conversation and add User1 and User2
     // If it already exists, join instead
     try {
-      console.log("in try block");
+      
       this.client?.on('tokenAboutToExpire', this.handleTokenExpiration);
       const newConversation = await this.client!.createConversation({ uniqueName: conversationUniqueId, friendlyName: conversationFriendlyName })
 
-      console.log("1.5");
-      const joinedConversation = await newConversation.join().catch((err: any) => console.log(err))
+      const joinedConversation = await newConversation.join().catch((err: any) => {})
       await this.client!.user.updateFriendlyName(this.userEmail + " || " + window.location.href)
-      console.log("2");
-      // await joinedConversation!.add(userName).catch((err: any) => console.log("error: ", err))
-      await joinedConversation!.add(environment.twilioAgentIdentity).catch((err: any) => console.log("error: ", err))
-      //   await joinedConversation.add("sushant").catch((err: any) => console.log("error: ", err))
-      console.log("3");
-      // await joinedConversation.add("User2").catch((err: any) => console.log("error: ", err))
+      await joinedConversation!.add(environment.twilioAgentIdentity).catch((err: any) =>  {})
+     
       this.consversationData.activeConversation = joinedConversation
       localStorage.setItem('TWILIO_CONVERSATION_SID', newConversation.sid);
-      console.log("4");
-      console.log("active conversatiion", this.consversationData.activeConversation);
-      console.log("5");
+      
 
     } catch {
-      console.log("in catch");
       this.consversationData.activeConversation = await (this.client!.getConversationByUniqueName(conversationUniqueId))
-      console.log(this.consversationData.activeConversation);
     } finally {
       if (this.consversationData && this.consversationData.activeConversation) {
         this.consversationData.activeConversation.on("messageAdded", this.handleReceivedMessage.bind(this));
@@ -290,15 +280,11 @@ export class FooterComponent {
 
   handleReceivedMessage(message: string) {
     this.messageArray = [...this.messageArray, message]
-    console.log("messages event =====>.", message);
-    console.log("messages array =====>.", this.messageArray);
   }
 
   addConversationMessage() {
-    console.log(this.chatMessageForm.value);
     this.messageText = this.chatMessageForm.value.outgoing
-    console.log("in add conversation", this.consversationData);
-
+  
     this.consversationData.activeConversation.sendMessage(this.messageText)
       .then(() => {
         this.messageText = ""
@@ -308,9 +294,7 @@ export class FooterComponent {
   getChatMessages() {
     this.consversationData.activeConversation.getMessages()
       .then((newMessages: { items: any; }) => {
-        console.log("new messages===>", newMessages.items);
         this.messageArray = [...this.messageArray, ...newMessages.items]
-        console.log("message arrrya", this.messageArray);
         this.isChatToken = true;
       }).catch(
         (err: any) => {

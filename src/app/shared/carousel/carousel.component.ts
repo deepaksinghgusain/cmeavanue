@@ -18,7 +18,6 @@ export class CarouselComponent {
   ];
 
   constructor() {
-    console.log("slick js ");
   }
 
   slideConfig = {

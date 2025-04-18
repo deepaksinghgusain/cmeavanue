@@ -64,7 +64,6 @@ export class AboutComponent {
         this.mission = res?.data[0]?.attributes?.blocks.filter((res: { __component: string; }) => res.__component === 'blocks.mission')[0]
         this.ourTeam = res?.data[0]?.attributes?.blocks.filter((res: { __component: string; }) => res.__component === 'blocks.our-team')[0]
         this.ourFaculty = res?.data[0]?.attributes?.blocks.filter((res: { __component: string; }) => res.__component === 'blocks.our-faculty')[0]
-
       }
 
       this.metatagsService.addSEOTags(res?.data[0]?.attributes?.seo);

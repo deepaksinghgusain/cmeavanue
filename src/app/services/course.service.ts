@@ -1157,6 +1157,24 @@ export class CourseService {
               }
             }
           }
+            faqs {
+              id
+            title
+            description
+            list {
+              question
+              answer
+            }
+          
+          }
+            outline{
+          id,
+          title,
+          list {
+            value
+          }
+        }
+            
             tabs {
             title
             featureTitle

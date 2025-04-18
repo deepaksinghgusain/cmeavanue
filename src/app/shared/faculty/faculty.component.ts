@@ -28,8 +28,6 @@ export class FacultyComponent implements OnInit {
 
     if(result) {
       this.showCurrentFacultyDataPopup = result;
-      console.log(this.showCurrentFacultyDataPopup);
-      
     }
     
     this.visiblePopup = true;

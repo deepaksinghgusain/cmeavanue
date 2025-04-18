@@ -64,7 +64,6 @@ export class CommonService {
   }
 
   getHeroSection(page: string, slug: string) {
-    console.log(slug);
     const _url = environment.apibaseurl + "/api/pages?populate=deep&filters[slug][$eq]=" + slug;
 
     return this.http.get(_url)

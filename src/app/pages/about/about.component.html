@@ -324,12 +324,12 @@
     </div>
     <div class="px-8">
       <div class="flex flex-wrap gap-14">
-        @if (values.list) {
-        @for (item of values.list; track $index) {
+        @if (values?.list) {
+        @for (item of values?.list; track $index) {
         <div class="w-1/4 flex-col justify-start items-start">
           <div class="w-12 h-12 p-3 bg-white rounded-[10px] shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] border border-[#e4e7ec] justify-center items-center inline-flex overflow-hidden">
             <div class="w-6 h-6 relative flex-col justify-start items-start flex overflow-hidden">
-              <img src="{{ imageUrl + item.image.data.attributes.url }}" alt="">
+              <img src="{{ imageUrl + item.image?.data?.attributes.url }}" alt="">
             </div>
           </div>
           <div class="self-stretch flex-col justify-start items-start gap-2 flex">
