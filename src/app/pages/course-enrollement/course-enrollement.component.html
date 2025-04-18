@@ -257,7 +257,7 @@
           <div class="self-stretch inline-flex justify-start items-start gap-6">
             @if (coursesDetail?.data[0]?.attributes?.faqs.list.length > 0) {
               @for (faq of coursesDetail?.data[0]?.attributes?.faqs.list; track $index) {
-                <div id="app-tab" class="w-full" [faq]="faq" [showTabContent]="false"></div>
+                <div id="app-tab" class="w-full" [faq]="faq" [showTabContent]="$index === 0"></div>
               }
             }
           </div>
@@ -474,194 +474,112 @@
 </section>
 
 <section>
+  
   <div class="h-[945px] w-full py-12  bg-white flex-col justify-start items-center gap-[38px] inline-flex overflow-hidden">
-    <div class="self-stretch h-11 px-8 flex-col justify-start items-start gap-8 flex">
-      <div class="self-stretch h-11 flex-col justify-start items-start gap-8 flex">
-        <div class="self-stretch h-11 flex-col justify-start items-start gap-5 flex">
-          <div class="container mx-auto">
-            <div class="self-stretch h-11 flex-col justify-start items-start gap-3 flex">
-              <div class="self-stretch text-[#101828] text-4xl font-semibold font-['Inter'] leading-[44px]">Credits &
-                Accreditation </div>
+    @if (accreditedPartners) {
+      <div class="w-full py-12  bg-white flex-col justify-start items-center gap-[38px] inline-flex overflow-hidden">
+        <div class="self-stretch h-11 px-8 flex-col justify-start items-start gap-8 flex mb-8">
+          <div class="self-stretch h-11 flex-col justify-start items-start gap-8 flex">
+            <div class="self-stretch h-11 flex-col justify-start items-start gap-5 flex">
+              <div class="container mx-auto">
+                <div class="self-stretch h-11 flex-col justify-start items-start gap-3 flex">
+                  <div class="self-stretch text-[#101828] text-4xl font-semibold font-['Inter'] leading-[44px]">{{accreditedPartners?.title}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="w-full" style="background-image: url('{{ imageUrl + accreditedPartners?.bg_image?.data?.attributes?.url }}');background-size: cover;">
+          <div class="h-80 w-full px-1 flex-col justify-start items-center gap-16 flex">
+            <div class="self-stretch h-80 p-16 justify-center items-start gap-8 inline-flex">
+              @if (accreditedPartners?.list) {
+                @for (l of accreditedPartners.list; track $index) {
+                  <div class="w-[180px] h-[142px] px-6 py-8 bg-white/30 rounded-2xl border border-white/30 backdrop-blur-xl flex-col justify-start items-center gap-5 inline-flex">
+                    <img class="self-stretch grow shrink basis-0 w-[100%] h-[100%] object-scale-down" src="{{imageUrl + l?.image?.data?.attributes?.url}}" />
+                  </div>
+                }
+              }
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="w-full" style="background-image: url(/assets/images/package-banner2.jpg);background-size: cover;">
-      <div class="h-80 w-full px-1 flex-col justify-start items-center gap-16 flex">
-        <div class="self-stretch h-80 p-16 justify-center items-start gap-8 inline-flex">
-          <div class="w-[180px] h-[142px] px-6 py-8 bg-white/30 rounded-2xl border border-white/30 backdrop-blur-xl flex-col justify-start items-center gap-5 inline-flex">
-            <img class="self-stretch grow shrink basis-0 w-[100%] h-[100%] object-scale-down" src="/assets/images/package-banner3.png" />
-          </div>
-          <div class="w-[180px] h-[142px] px-6 py-8 bg-white/30 rounded-2xl border border-white/30 backdrop-blur-xl flex-col justify-start items-center gap-5 inline-flex">
-            <img class="self-stretch grow shrink basis-0 w-[100%] h-[100%] object-scale-down" src="/assets/images/package-banner4.png" />
-          </div>
-          <div class="w-[180px] h-[142px] px-6 py-8 bg-white/30 rounded-2xl border border-white/30 backdrop-blur-xl flex-col justify-start items-center gap-5 inline-flex">
-            <img class="self-stretch grow shrink basis-0 w-[100%] h-[100%] object-scale-down" src="/assets/images/package-banner5.png" />
-          </div>
-        </div>
-      </div>
-    </div>
+      }
 
-    <div class="container mx-auto">
-      <div class="self-stretch px-8 justify-between items-start gap-8 inline-flex">
-        <div class="w-[771px] py-5 flex-col justify-between items-start gap-8 inline-flex">
-          <div class="self-stretch text-[#101828] text-lg font-semibold font-['Inter'] leading-7">NASBA Sponsorship and
-            Compliance Statement</div>
-          <div class="self-stretch h-20 px-1 flex-col justify-start items-start gap-8 flex">
-            <div class="w-[794px] justify-start items-start inline-flex">
-              <div class="grow shrink basis-0 px-4 pt-6 flex-col justify-start items-center gap-5 inline-flex">
-                <div class="self-stretch justify-start items-start gap-3 inline-flex">
-                  <div class="w-7 h-7 rounded-full justify-center items-center flex overflow-hidden">
-                    <div class="w-7 h-7 relative flex-col justify-start items-start flex overflow-hidden">
-                      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g id="check-circle">
-                          <path id="Icon" d="M8.75065 14.0002L12.2507 17.5002L19.2507 10.5002M25.6673 14.0002C25.6673 20.4435 20.444 25.6668 14.0007 25.6668C7.55733 25.6668 2.33398 20.4435 2.33398 14.0002C2.33398 7.55684 7.55733 2.3335 14.0007 2.3335C20.444 2.3335 25.6673 7.55684 25.6673 14.0002Z" stroke="#7F56D9" stroke-width="2.33333" stroke-linecap="round" stroke-linejoin="round" />
-                        </g>
-                      </svg>
-                    </div>
-                  </div>
-                  <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
-                    <div class="self-stretch text-[#475467] text-lg font-normal font-['Inter'] leading-7">IRS CE
-                      Provider #: QQTMI</div>
-                  </div>
+      @if (sponsorship) {
+        <div class="container mx-auto">
+          <div class="self-stretch px-8 justify-between items-start gap-8 inline-flex">
+            <div class="w-[771px] py-5 flex-col justify-between items-start gap-8 inline-flex">
+              <div class="self-stretch text-[#101828] text-lg font-semibold font-['Inter'] leading-7">{{sponsorship.title}}</div>
+              <div class="self-stretch h-20 px-1 flex-col justify-start items-start gap-8 flex">
+                <div class="w-[794px] justify-start items-start inline-flex">
+                  
+                  @if (sponsorship.list.length > 0) {
+                    @for (list of sponsorship.list; track $index) {
+                      <div class="grow shrink basis-0 px-4 pt-6 flex-col justify-start items-center gap-5 inline-flex">
+                        <div class="self-stretch justify-start items-start gap-3 inline-flex">
+                          <div class="w-7 h-7 rounded-full justify-center items-center flex overflow-hidden">
+                            <div class="w-7 h-7 relative flex-col justify-start items-start flex overflow-hidden">
+                              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g id="check-circle">
+                                  <path id="Icon" d="M8.75065 14.0002L12.2507 17.5002L19.2507 10.5002M25.6673 14.0002C25.6673 20.4435 20.444 25.6668 14.0007 25.6668C7.55733 25.6668 2.33398 20.4435 2.33398 14.0002C2.33398 7.55684 7.55733 2.3335 14.0007 2.3335C20.444 2.3335 25.6673 7.55684 25.6673 14.0002Z" stroke="#7F56D9" stroke-width="2.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                </g>
+                              </svg>
+                            </div>
+                          </div>
+                          <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
+                            <div class="self-stretch text-[#475467] text-lg font-normal font-['Inter'] leading-7">{{list.value}}</div>
+                          </div>
+                        </div>
+                      </div>
+                    }
+                  }
+                  
                 </div>
               </div>
-              <div class="grow shrink basis-0 px-4 pt-6 flex-col justify-start items-center gap-5 inline-flex">
-                <div class="self-stretch justify-start items-start gap-3 inline-flex">
-                  <div class="w-7 h-7 rounded-full justify-center items-center flex overflow-hidden">
-                    <div class="w-7 h-7 relative flex-col justify-start items-start flex overflow-hidden">
-                      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g id="check-circle">
-                          <path id="Icon" d="M8.75065 14.0002L12.2507 17.5002L19.2507 10.5002M25.6673 14.0002C25.6673 20.4435 20.444 25.6668 14.0007 25.6668C7.55733 25.6668 2.33398 20.4435 2.33398 14.0002C2.33398 7.55684 7.55733 2.3335 14.0007 2.3335C20.444 2.3335 25.6673 7.55684 25.6673 14.0002Z" stroke="#7F56D9" stroke-width="2.33333" stroke-linecap="round" stroke-linejoin="round" />
-                        </g>
-                      </svg>
-                    </div>
-                  </div>
-                  <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
-                    <div class="self-stretch text-[#475467] text-lg font-normal font-['Inter'] leading-7">NASBA Sponsor
-                      #: 143337</div>
-                  </div>
-                </div>
-              </div>
-              <div class="grow shrink basis-0 px-4 pt-6 flex-col justify-start items-center gap-5 inline-flex">
-                <div class="self-stretch justify-start items-start gap-3 inline-flex">
-                  <div class="w-7 h-7 rounded-full justify-center items-center flex overflow-hidden">
-                    <div class="w-7 h-7 relative flex-col justify-start items-start flex overflow-hidden">
-                      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g id="check-circle">
-                          <path id="Icon" d="M8.75065 14.0002L12.2507 17.5002L19.2507 10.5002M25.6673 14.0002C25.6673 20.4435 20.444 25.6668 14.0007 25.6668C7.55733 25.6668 2.33398 20.4435 2.33398 14.0002C2.33398 7.55684 7.55733 2.3335 14.0007 2.3335C20.444 2.3335 25.6673 7.55684 25.6673 14.0002Z" stroke="#7F56D9" stroke-width="2.33333" stroke-linecap="round" stroke-linejoin="round" />
-                        </g>
-                      </svg>
-                    </div>
-                  </div>
-                  <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
-                    <div class="self-stretch text-[#475467] text-lg font-normal font-['Inter'] leading-7">IRS Course ID:
-                      QQTMI-T-00431-24-O</div>
-                  </div>
+              <div class="self-stretch h-[200px] py-4 flex-col justify-start items-start gap-5 flex">
+                <div class="self-stretch h-[168px] flex-col justify-start items-center gap-2 flex">
+                  <div class="self-stretch text-[#475467] text-lg font-normal font-['Inter'] leading-7">{{sponsorship.description}}</div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="self-stretch h-[200px] py-4 flex-col justify-start items-start gap-5 flex">
-            <div class="self-stretch h-[168px] flex-col justify-start items-center gap-2 flex">
-              <div class="self-stretch text-[#475467] text-lg font-normal font-['Inter'] leading-7">Asterid Group Inc.
-                (dba CPE Warehouse) (Sponsor Id#: 143337) is registered with the National Association of State Boards of
-                Accountancy (NASBA) as a sponsor of continuing professional education on the National Registry of CPE
-                Sponsors. State boards of accountancy have final authority on the acceptance of individual courses for
-                CPE credit. Complaints regarding registered sponsors may be submitted to the National Registry of CPE
-                Sponsors through its website: www.NASBARegistry.org.</div>
-            </div>
-          </div>
-        </div>
-        <div class="w-[446px] self-stretch px-8 flex-col justify-start items-start gap-8 inline-flex">
-          <div class="self-stretch justify-center items-start gap-8 inline-flex">
-            <div class="grow shrink basis-0 bg-white rounded-2xl shadow-[0px_4px_6px_-2px_rgba(16,24,40,0.03)] shadow-[0px_12px_16px_-4px_rgba(16,24,40,0.08)] border border-[#e4e7ec] flex-col justify-start items-start inline-flex">
-              <div class="self-stretch h-[284px] px-8 pt-8 pb-10 flex-col justify-start items-start gap-6 flex">
-                <div class="self-stretch h-[212px] flex-col justify-start items-start gap-4 flex">
-                  <div class="self-stretch justify-start items-start gap-3 inline-flex">
-                    <div class="w-6 h-6 relative bg-[#dbf9e6] rounded-full  overflow-hidden">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g id="Check icon">
-                          <path d="M0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12Z" fill="#DCFAE6" />
-                          <path id="Icon" fill-rule="evenodd" clip-rule="evenodd" d="M17.096 7.39016L9.93602 14.3002L8.03602 12.2702C7.68602 11.9402 7.13602 11.9202 6.73602 12.2002C6.34602 12.4902 6.23602 13.0002 6.47602 13.4102L8.72602 17.0702C8.94602 17.4102 9.32601 17.6202 9.75601 17.6202C10.166 17.6202 10.556 17.4102 10.776 17.0702C11.136 16.6002 18.006 8.41016 18.006 8.41016C18.906 7.49016 17.816 6.68016 17.096 7.38016V7.39016Z" fill="#079455" />
-                        </g>
-                      </svg>
-
-                    </div>
-                    <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
-                      <div class="self-stretch text-[#344054] text-lg font-semibold font-['Inter'] leading-7">2 hours
-                        Live Webinar </div>
+            @if (sponsorship.features.length > 0) {
+            <div class="w-[446px] self-stretch px-8 flex-col justify-start items-start gap-8 inline-flex">
+              <div class="self-stretch justify-center items-start gap-8 inline-flex">
+                <div class="grow shrink basis-0 bg-white rounded-2xl  shadow-[0px_12px_16px_-4px_rgba(16,24,40,0.08)] border border-[#e4e7ec] flex-col justify-start items-start inline-flex">
+                  <div class="self-stretch h-[284px] px-8 pt-8 pb-10 flex-col justify-start items-start gap-6 flex">
+                    <div class="self-stretch h-[212px] flex-col justify-start items-start gap-4 flex">
+                      
+                      
+                     @if (sponsorship.features.length > 0) {
+                      @for (list of sponsorship.features; track $index) {
+                        <div class="self-stretch justify-start items-start gap-3 inline-flex">
+                          <div class="w-6 h-6 relative bg-[#dbf9e6] rounded-full  overflow-hidden">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <g id="Check icon">
+                                <path d="M0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12Z" fill="#DCFAE6" />
+                                <path id="Icon" fill-rule="evenodd" clip-rule="evenodd" d="M17.096 7.39016L9.93602 14.3002L8.03602 12.2702C7.68602 11.9402 7.13602 11.9202 6.73602 12.2002C6.34602 12.4902 6.23602 13.0002 6.47602 13.4102L8.72602 17.0702C8.94602 17.4102 9.32601 17.6202 9.75601 17.6202C10.166 17.6202 10.556 17.4102 10.776 17.0702C11.136 16.6002 18.006 8.41016 18.006 8.41016C18.906 7.49016 17.816 6.68016 17.096 7.38016V7.39016Z" fill="#079455" />
+                              </g>
+                            </svg>
+      
+                          </div>
+                          <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
+                            <div class="self-stretch text-[#344054] text-lg font-semibold font-['Inter'] leading-7">2 hours
+                              {{list.value}} </div>
+                          </div>
+                        </div>
+                      }
+                     }                      
                     </div>
                   </div>
-                  <div class="self-stretch justify-start items-start gap-3 inline-flex">
-                    <div class="w-6 h-6 relative bg-[#dbf9e6] rounded-full  overflow-hidden">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g id="Check icon">
-                          <path d="M0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12Z" fill="#DCFAE6" />
-                          <path id="Icon" fill-rule="evenodd" clip-rule="evenodd" d="M17.096 7.39016L9.93602 14.3002L8.03602 12.2702C7.68602 11.9402 7.13602 11.9202 6.73602 12.2002C6.34602 12.4902 6.23602 13.0002 6.47602 13.4102L8.72602 17.0702C8.94602 17.4102 9.32601 17.6202 9.75601 17.6202C10.166 17.6202 10.556 17.4102 10.776 17.0702C11.136 16.6002 18.006 8.41016 18.006 8.41016C18.906 7.49016 17.816 6.68016 17.096 7.38016V7.39016Z" fill="#079455" />
-                        </g>
-                      </svg>
-
-                    </div>
-                    <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
-                      <div class="self-stretch text-[#344054] text-lg font-semibold font-['Inter'] leading-normal">2
-                        credits NASBA and IRS</div>
-                    </div>
-                  </div>
-                  <div class="self-stretch justify-start items-start gap-3 inline-flex">
-                    <div class="w-6 h-6 relative bg-[#dbf9e6] rounded-full  overflow-hidden">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g id="Check icon">
-                          <path d="M0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12Z" fill="#DCFAE6" />
-                          <path id="Icon" fill-rule="evenodd" clip-rule="evenodd" d="M17.096 7.39016L9.93602 14.3002L8.03602 12.2702C7.68602 11.9402 7.13602 11.9202 6.73602 12.2002C6.34602 12.4902 6.23602 13.0002 6.47602 13.4102L8.72602 17.0702C8.94602 17.4102 9.32601 17.6202 9.75601 17.6202C10.166 17.6202 10.556 17.4102 10.776 17.0702C11.136 16.6002 18.006 8.41016 18.006 8.41016C18.906 7.49016 17.816 6.68016 17.096 7.38016V7.39016Z" fill="#079455" />
-                        </g>
-                      </svg>
-
-                    </div>
-                    <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
-                      <div class="self-stretch text-[#344054] text-lg font-semibold font-['Inter'] leading-normal">Basic
-                        Learning level</div>
-                    </div>
-                  </div>
-                  <div class="self-stretch justify-start items-start gap-3 inline-flex">
-                    <div class="w-6 h-6 relative bg-[#dbf9e6] rounded-full  overflow-hidden">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g id="Check icon">
-                          <path d="M0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12Z" fill="#DCFAE6" />
-                          <path id="Icon" fill-rule="evenodd" clip-rule="evenodd" d="M17.096 7.39016L9.93602 14.3002L8.03602 12.2702C7.68602 11.9402 7.13602 11.9202 6.73602 12.2002C6.34602 12.4902 6.23602 13.0002 6.47602 13.4102L8.72602 17.0702C8.94602 17.4102 9.32601 17.6202 9.75601 17.6202C10.166 17.6202 10.556 17.4102 10.776 17.0702C11.136 16.6002 18.006 8.41016 18.006 8.41016C18.906 7.49016 17.816 6.68016 17.096 7.38016V7.39016Z" fill="#079455" />
-                        </g>
-                      </svg>
-
-                    </div>
-                    <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
-                      <div class="self-stretch text-[#344054] text-base font-semibold font-['Inter'] leading-normal">
-                        Delivery method Group Internet based</div>
-                    </div>
-                  </div>
-                  <div class="self-stretch justify-start items-start gap-3 inline-flex">
-                    <div class="w-6 h-6 relative bg-[#dbf9e6] rounded-full  overflow-hidden">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g id="Check icon">
-                          <path d="M0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12Z" fill="#DCFAE6" />
-                          <path id="Icon" fill-rule="evenodd" clip-rule="evenodd" d="M17.096 7.39016L9.93602 14.3002L8.03602 12.2702C7.68602 11.9402 7.13602 11.9202 6.73602 12.2002C6.34602 12.4902 6.23602 13.0002 6.47602 13.4102L8.72602 17.0702C8.94602 17.4102 9.32601 17.6202 9.75601 17.6202C10.166 17.6202 10.556 17.4102 10.776 17.0702C11.136 16.6002 18.006 8.41016 18.006 8.41016C18.906 7.49016 17.816 6.68016 17.096 7.38016V7.39016Z" fill="#079455" />
-                        </g>
-                      </svg>
-
-                    </div>
-                    <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
-                      <div class="self-stretch text-[#344054] text-lg font-semibold font-['Inter'] leading-normal">No
-                        prerequisites</div>
-                    </div>
-                  </div>
+                  <div class="self-stretch h-20 px-8 pb-8"></div>
                 </div>
               </div>
-              <div class="self-stretch h-20 px-8 pb-8"></div>
             </div>
+            }
           </div>
         </div>
-      </div>
-    </div>
+      }
+    
   </div>
 </section>
 

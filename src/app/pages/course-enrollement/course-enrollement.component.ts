@@ -69,6 +69,9 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
   instructor: any;
   public unsubscribe$ = new SubSink()
 
+  accreditedPartners:any;
+  sponsorship:any;
+
   courseOutline:any;
   reviews:any;
 
@@ -104,6 +107,7 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
 
     this.getCourseData(this.slug);
+    this.getPageData();
 
     if (isPlatformBrowser(this.platformId)) {
       
@@ -386,6 +390,16 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
       } else {
         this.relatedCourses = [];
       }
+    }))
+  }
+
+  getPageData() {
+
+    this.unsubscribe$.add(this.pageService.getPageContent('course-detail').subscribe((res: any) => {      
+      this.accreditedPartners = res?.data[0]?.attributes?.blocks.filter((res: { __component: string; }) => res.__component === 'blocks.accredited-partners')[0];
+      this.sponsorship = res?.data[0]?.attributes?.blocks.filter((res: { __component: string; }) => res.__component === 'blocks.sponsorship')[0];
+      console.log(this.sponsorship);
+      
     }))
   }
 
