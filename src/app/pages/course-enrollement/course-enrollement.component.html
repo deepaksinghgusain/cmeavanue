@@ -421,59 +421,54 @@
         </div>
       </div>
     </div>
-    <div class="self-stretch flex-col justify-start items-start gap-5 flex">
-      <div class="self-stretch h-[88px] flex-col justify-start items-start gap-5 flex">
+
+
+    @if (coursesDetail?.data[0]?.attributes?.includes) {
+      <div class="self-stretch flex-col justify-start items-start gap-5 flex">
+        <div class="self-stretch h-[88px] flex-col justify-start items-start gap-5 flex">
+          <div class="self-stretch h-[88px] flex-col justify-start items-start gap-8 flex">
+            <div class="self-stretch text-[#101828] text-lg font-semibold font-['Inter'] leading-7">
+              {{ coursesDetail?.data[0]?.attributes?.includes.title }}
+            </div>
+            <div class="self-stretch justify-start items-center gap-5 inline-flex">
+              @if (coursesDetail?.data[0]?.attributes?.includes.list.length > 0) {
+
+                @for (list of coursesDetail?.data[0]?.attributes?.includes.list; track $index) {
+                  <div class="justify-start items-center gap-2 flex">
+                    <div class="w-6 h-6 relative  overflow-hidden">
+                        <img src="{{ imageUrl + list?.image?.data?.attributes?.url }}" alt="">
+                    </div>
+                    <div class="text-[#344054] text-lg font-semibold font-['Inter'] leading-7">{{ list.title }}</div>
+                  </div>
+                }
+                
+              }
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+  
+    @if (coursesDetail?.data[0]?.attributes?.attend) {
+      <div class="self-stretch flex-col justify-start items-start gap-5 flex">
         <div class="self-stretch h-[88px] flex-col justify-start items-start gap-8 flex">
-          <div class="self-stretch text-[#101828] text-lg font-semibold font-['Inter'] leading-7">This Course includes:
+          <div class="self-stretch text-[#101828] text-lg font-semibold font-['Inter'] leading-7">
+            {{ coursesDetail?.data[0]?.attributes?.attend.title }}
           </div>
-          <div class="self-stretch justify-start items-center gap-5 inline-flex">
-            <div class="justify-start items-center gap-2 flex">
-              <div class="w-6 h-6 relative  overflow-hidden"></div>
-              <div class="text-[#344054] text-lg font-semibold font-['Inter'] leading-7">CPE Certificate</div>
-            </div>
-            <div class="justify-start items-center gap-2 flex">
-              <div class="w-6 h-6 relative  overflow-hidden"></div>
-              <div class="text-[#344054] text-base font-semibold font-['Inter'] leading-normal">Lighting fast customer
-                service</div>
-            </div>
-            <div class="justify-start items-center gap-2 flex">
-              <div class="w-6 h-6 relative  overflow-hidden"></div>
-              <div class="text-[#344054] text-base font-semibold font-['Inter'] leading-normal">Live Q&A session</div>
-            </div>
-            <div class="justify-start items-center gap-2 flex">
-              <div class="w-6 h-6 relative  overflow-hidden"></div>
-              <div class="text-[#344054] text-base font-semibold font-['Inter'] leading-normal">World class faculty
-              </div>
-            </div>
-            <div class="justify-start items-center gap-2 flex">
-              <div class="w-6 h-6 relative  overflow-hidden"></div>
-              <div class="text-[#344054] text-base font-semibold font-['Inter'] leading-normal">Upto-Date Info</div>
-            </div>
+          <div class="justify-start items-start gap-3 inline-flex">
+            @if (coursesDetail?.data[0]?.attributes?.attend.list.length > 0) {
+              @for (list of coursesDetail?.data[0]?.attributes?.attend.list; track $index) {
+                <div class="px-3 py-1 bg-gray-50 rounded-full border border-[#e4e7ec] justify-start items-center flex">
+                  <div class="text-center text-[#344054] text-sm font-medium font-['Inter'] leading-tight">{{list.value}}</div>
+                </div>
+              }
+            }
           </div>
         </div>
       </div>
-    </div>
-    <div class="self-stretch flex-col justify-start items-start gap-5 flex">
-      <div class="self-stretch h-[88px] flex-col justify-start items-start gap-8 flex">
-        <div class="self-stretch text-[#101828] text-lg font-semibold font-['Inter'] leading-7">Who Should Attend?</div>
-        <div class="justify-start items-start gap-3 inline-flex">
-          <div class="px-3 py-1 bg-gray-50 rounded-full border border-[#e4e7ec] justify-start items-center flex">
-            <div class="text-center text-[#344054] text-sm font-medium font-['Inter'] leading-tight">CPA</div>
-          </div>
-          <div class="px-3 py-1 bg-gray-50 rounded-full border border-[#e4e7ec] justify-start items-center flex">
-            <div class="text-center text-[#344054] text-sm font-medium font-['Inter'] leading-tight">EA</div>
-          </div>
-          <div class="px-3 py-1 bg-gray-50 rounded-full border border-[#e4e7ec] justify-start items-center flex">
-            <div class="text-center text-[#344054] text-sm font-medium font-['Inter'] leading-tight">Tax Practitioner
-            </div>
-          </div>
-          <div class="px-3 py-1 bg-gray-50 rounded-full border border-[#e4e7ec] justify-start items-center flex">
-            <div class="text-center text-[#344054] text-sm font-medium font-['Inter'] leading-tight">Financial Planners
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    }
+    
   </div>
 
 </section>

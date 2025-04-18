@@ -1174,6 +1174,27 @@ export class CourseService {
             value
           }
         }
+
+        includes {
+            title 
+            list {
+              image {
+                 data{
+                attributes{
+                  url
+                }
+              }
+              }
+              title
+            }
+          }
+
+           attend {
+            title
+            list {
+              value
+            }
+          }
             
             tabs {
             title
