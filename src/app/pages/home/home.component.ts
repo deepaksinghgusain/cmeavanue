@@ -71,6 +71,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   gethomePageSection() {
     this.unsubscribe$.add(this._commanService.getHomePageSection().subscribe((res: any) => {
       
+      console.log(res);
+      
+
       if (res) {
         this.rssFeed = res?.data?.attributes?.RssFeedUrl;
         this.partners = res?.data?.attributes?.blocks.filter((x: { __component: string; }) => x.__component === 'blocks.partner-section')[0];
