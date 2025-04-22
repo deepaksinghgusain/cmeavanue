@@ -23,7 +23,8 @@ export class FacultyComponent implements OnInit {
   }
 
   showPopup(id: number) {
-   
+    
+
     let result = this.facultymembers.find((value:any) => value.id === id);
 
     if(result) {

@@ -35,6 +35,8 @@ export class CommonService {
 
   getHomePageSection() {
     const _url = environment.apibaseurl + "/api/homepage?populate=deep";
+    console.log(_url);
+    
 
     return this.http.get(_url)
   }
@@ -48,6 +50,7 @@ export class CommonService {
 
     return this.apollo.watchQuery<any>({
       query: this.getCoursesList(),
+      fetchPolicy: "network-only"
     }).valueChanges;
   }
 
@@ -180,6 +183,7 @@ export class CommonService {
   getPackagesListByGql() {
     return this.apollo.watchQuery<any>({
       query: this.packageListGql(),
+      fetchPolicy: "network-only"
     }).valueChanges;
   }
 

@@ -179,13 +179,6 @@
 
 <section class="container mx-auto">
   <div class="h-9 w-full px-12 justify-start items-start gap-12 inline-flex">
-    <!-- @for (tab of courseTabs; track $index) {
-    <div [ngClass]="showTabContent===$index ? 'border-[#155dee]' : ''" class="grow shrink basis-0 h-9 px-1 pb-3 border-b-2  justify-center items-center gap-2 flex">
-      <div [ngClass]="showTabContent===$index ? 'text-[#155dee]' : 'text-[#667085]'" class="cursor-pointer text-2xl font-semibold font-['Inter'] leading-loose" (click)="openTabContent($index)">
-        {{tab?.title}}
-      </div>
-    </div>
-    } -->
     <div [ngClass]="showTabContent===0 ? 'border-b-2  border-[#155dee]' : ''" class="grow shrink basis-0 h-9 px-1 pb-3  justify-center items-center gap-2 flex">
       <div [ngClass]="showTabContent===0 ? 'text-[#155dee]' : 'text-[#667085]'" class="cursor-pointer text-2xl font-semibold font-['Inter'] leading-loose" (click)="openTabContent(0)">Course Outline</div>
     </div>
@@ -624,7 +617,7 @@
                 </div>
               </div>
               <div class="self-stretch h-[54px] flex-col justify-start items-start gap-0.5 flex">
-                <div class="self-stretch text-white text-lg font-semibold font-['Inter'] leading-7">
+                <div class="self-stretch justify-start text-Colors-Text-text-tertiary-(600) text-xl font-normal font-['Inter'] leading-loose">
                   {{ instructor?.shortDesc}}
                 </div>
                 <div class="self-stretch"></div>

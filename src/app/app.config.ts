@@ -52,6 +52,14 @@ export const appConfig: ApplicationConfig = {
     return {
       link: authLink.concat(httpLinkUri),
       cache: new InMemoryCache(),
+      defaultOptions: {
+        watchQuery: {
+          fetchPolicy: 'no-cache',
+        },
+        query: {
+          fetchPolicy: 'no-cache',
+        },
+      },
     };
   })]
 };
