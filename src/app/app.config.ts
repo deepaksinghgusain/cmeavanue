@@ -57,7 +57,7 @@ export const appConfig: ApplicationConfig = {
           fetchPolicy: 'no-cache',
         },
         query: {
-          fetchPolicy: 'no-cache',
+          fetchPolicy: 'network-only',
         },
       },
     };
