@@ -49,8 +49,7 @@ export class CommonService {
   getHomePageCoursesByGql() {
 
     return this.apollo.watchQuery<any>({
-      query: this.getCoursesList(),
-      fetchPolicy: "network-only"
+      query: this.getCoursesList()
     }).valueChanges;
   }
 
@@ -182,8 +181,7 @@ export class CommonService {
 
   getPackagesListByGql() {
     return this.apollo.watchQuery<any>({
-      query: this.packageListGql(),
-      fetchPolicy: "network-only"
+      query: this.packageListGql()
     }).valueChanges;
   }
 
