@@ -8,7 +8,6 @@ import { InstructorService } from '../../services/instructor.service';
 import { Router, RouterModule } from '@angular/router';
 import { MetatagsService } from '../../services/metatags.service';
 import { CommonService } from '../../services/common.service';
-import { CourseCardComponent } from '../../shared/course-card/course-card.component';
 import { CommonModule } from '@angular/common';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { slideConfig } from '../../models/slick.config';
@@ -16,7 +15,7 @@ import { TestimonialComponent } from '../../shared/testimonial/testimonial.compo
 
 @Component({
   selector: 'app-home',
-  imports: [CourseCardComponent, CommonModule, SlickCarouselModule, TestimonialComponent, RouterModule],
+  imports: [CommonModule, SlickCarouselModule, TestimonialComponent, RouterModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -43,6 +42,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   slickConfig: any = slideConfig;
   
   freeCourseBanner: any;
+  liveWebinarPass: any;
+
   freeCourseListing:any = [];
   data: any;
   priceCheck: any;
@@ -91,6 +92,10 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.metatagsService.addSEOTags(res.data.attributes.seo);
         this.frontPageBanner = res?.data?.attributes?.blocks.filter((x: { __component: string; }) => x.__component === 'blocks.front-page-banner')[0];  
         this.freeCourseBanner = res?.data?.attributes?.blocks.filter((x: { __component: string; }) => x.__component === 'blocks.free-course-banner')[0];  
+        this.liveWebinarPass = res?.data?.attributes?.blocks.filter((x: { __component: string; }) => x.__component === 'blocks.live-webinar-passout')[0];  
+
+        console.log(res)
+
 
         this._commanService.getlandingpageData(res)
       }

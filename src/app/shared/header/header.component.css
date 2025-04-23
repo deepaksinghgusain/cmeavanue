@@ -1,6 +1,4 @@
-::ng-deep .autocomplete-container {
-    box-shadow: none ;
-}
+
 
 datalist {
   position: absolute;

@@ -29,9 +29,10 @@
     border: none;
 }
 .autocomplete-container .input-container input {
-    border: none;
+ background-color:  inherit !important;
+ border-color: #eee !important;
 }
 
 .autocomplete-container {
     box-shadow: none !important;
-}
+} 
