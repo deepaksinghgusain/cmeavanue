@@ -43,6 +43,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   
   freeCourseBanner: any;
   liveWebinarPass: any;
+  achivements:any;
+  approval:any;
 
   freeCourseListing:any = [];
   data: any;
@@ -93,9 +95,8 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.frontPageBanner = res?.data?.attributes?.blocks.filter((x: { __component: string; }) => x.__component === 'blocks.front-page-banner')[0];  
         this.freeCourseBanner = res?.data?.attributes?.blocks.filter((x: { __component: string; }) => x.__component === 'blocks.free-course-banner')[0];  
         this.liveWebinarPass = res?.data?.attributes?.blocks.filter((x: { __component: string; }) => x.__component === 'blocks.live-webinar-passout')[0];  
-
-        console.log(res)
-
+        this.achivements = res?.data?.attributes?.blocks.filter((x: { __component: string; }) => x.__component === 'blocks.achievement')[0];  
+        this.approval = res?.data?.attributes?.blocks.filter((x: { __component: string; }) => x.__component === 'blocks.approval')[0];          
 
         this._commanService.getlandingpageData(res)
       }
