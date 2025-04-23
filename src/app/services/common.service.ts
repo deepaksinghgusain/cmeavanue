@@ -35,6 +35,7 @@ export class CommonService {
 
   getHomePageSection() {
     const _url = environment.apibaseurl + "/api/homepage?populate=deep";
+    console.log(_url);
 
     return this.http.get(_url)
   }
@@ -45,7 +46,6 @@ export class CommonService {
   }
 
   getHomePageCoursesByGql() {
-
     return this.apollo.watchQuery<any>({
       query: this.getCoursesList()
     }).valueChanges;
@@ -227,6 +227,7 @@ export class CommonService {
           id
           attributes {
             title
+            sub_title
             startDate
             endDate
             timezone
@@ -239,6 +240,13 @@ export class CommonService {
               data{
                 attributes{
                   url
+                }
+              }
+            }
+            category {
+              data {
+                attributes {
+                  title
                 }
               }
             }

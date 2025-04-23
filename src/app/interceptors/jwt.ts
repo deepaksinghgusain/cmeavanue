@@ -61,8 +61,5 @@ export default function jwtInterceptor(request: HttpRequest<any>,
         });
     }
 
-    console.log(request);
-    
-
     return next(request);
 }  

@@ -5,7 +5,7 @@ import { SubSink } from 'subsink';
 import { environment } from '../../../environments/environment';
 import { DomSanitizer, Meta, Title } from '@angular/platform-browser';
 import { InstructorService } from '../../services/instructor.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { MetatagsService } from '../../services/metatags.service';
 import { CommonService } from '../../services/common.service';
 import { CourseCardComponent } from '../../shared/course-card/course-card.component';
@@ -16,7 +16,7 @@ import { TestimonialComponent } from '../../shared/testimonial/testimonial.compo
 
 @Component({
   selector: 'app-home',
-  imports: [CourseCardComponent, CommonModule, SlickCarouselModule, TestimonialComponent],
+  imports: [CourseCardComponent, CommonModule, SlickCarouselModule, TestimonialComponent, RouterModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -42,6 +42,14 @@ export class HomeComponent implements OnInit, OnDestroy {
   frontPageBanner:any;
   slickConfig: any = slideConfig;
   
+  freeCourseBanner: any;
+  freeCourseListing:any = [];
+  data: any;
+  priceCheck: any;
+  forTaxLawCheck: any;
+  isActiveCheck: any;
+
+
   constructor(
     @Inject(PLATFORM_ID) private platformId: object,
     private meta: Meta,
@@ -69,10 +77,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   gethomePageSection() {
-    this.unsubscribe$.add(this._commanService.getHomePageSection().subscribe((res: any) => {
-      
-      console.log(res);
-      
+    this.unsubscribe$.add(this._commanService.getHomePageSection().subscribe((res: any) => {  
 
       if (res) {
         this.rssFeed = res?.data?.attributes?.RssFeedUrl;
@@ -84,7 +89,9 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.coursedata = res?.data?.attributes?.blocks.filter((x: { __component: string, Index: String }) => x.__component === 'blocks.api-section' && x.Index === 'Home>Courses')[0];
         this.InstructorData = res?.data?.attributes?.blocks.filter((x: { __component: string, Index: String }) => x.__component === 'blocks.api-section' && x.Index === 'Home>Instructor')[0];
         this.metatagsService.addSEOTags(res.data.attributes.seo);
-        this.frontPageBanner = res?.data?.attributes?.blocks.filter((x: { __component: string; }) => x.__component === 'blocks.front-page-banner')[0];   
+        this.frontPageBanner = res?.data?.attributes?.blocks.filter((x: { __component: string; }) => x.__component === 'blocks.front-page-banner')[0];  
+        this.freeCourseBanner = res?.data?.attributes?.blocks.filter((x: { __component: string; }) => x.__component === 'blocks.free-course-banner')[0];  
+
         this._commanService.getlandingpageData(res)
       }
     }));
@@ -100,37 +107,11 @@ export class HomeComponent implements OnInit, OnDestroy {
 
       if (res.data.courses.data) {
         this.homepageCourses = res?.data?.courses?.data;
-
+    
         this.homepageCourses.forEach((element: any) => {
-          let allInstructor: any = [];
-          let name = ''
-          if (element?.attributes.instructors.data.length > 1) {
-            element?.attributes.instructors.data.forEach((instructor: any) => {
-
-              name = instructor?.attributes?.firstName + " " + instructor?.attributes?.lastName
-              allInstructor.push(name)
-
-            });
-
-          } else if (element?.attributes.instructors.data.length == 1) {
-            name = (element?.attributes.instructors.data[0].attributes?.firstName || '') + " " + (element?.attributes.instructors.data[0]?.attributes?.lastName || '')
-            allInstructor.push(name)
-          } else {
-            name = ''
-            allInstructor.push(name)
+          if (element.attributes.price < 1 && this.freeCourseListing.length < 2) {
+            this.freeCourseListing.push(element.attributes)
           }
-
-          this.homeCourses.push({
-            'title': element?.attributes?.title,
-            'startDate': element?.attributes?.startDate,
-            'endDate': element?.attributes?.endDate,
-            'image': element?.attributes?.image?.data?.attributes?.url,
-            'shortDesc': element?.attributes?.shortDesc,
-            'credit': element?.attributes?.credit,
-            'slug': element?.attributes?.slug,
-            'price': element?.attributes?.price,
-            'instructors': element?.attributes?.instructors,
-          });
         });
       }
     }));
