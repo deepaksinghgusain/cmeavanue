@@ -97,7 +97,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.liveWebinarPass = res?.data?.attributes?.blocks.filter((x: { __component: string; }) => x.__component === 'blocks.live-webinar-passout')[0];  
         this.achivements = res?.data?.attributes?.blocks.filter((x: { __component: string; }) => x.__component === 'blocks.achievement')[0];  
         this.approval = res?.data?.attributes?.blocks.filter((x: { __component: string; }) => x.__component === 'blocks.approval')[0];          
-
+  
         this._commanService.getlandingpageData(res)
       }
     }));

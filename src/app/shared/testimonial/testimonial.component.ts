@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { SubSink } from 'subsink';
+import { CommonService } from '../../services/common.service';
 
 @Component({
   standalone: true,
@@ -9,9 +11,29 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
   templateUrl: './testimonial.component.html',
   styleUrl: './testimonial.component.css'
 })
-export class TestimonialComponent {
+export class TestimonialComponent implements OnInit {
+
+  testimonials: any;
+  public unsubscribe$ = new SubSink()
+
+  constructor(private _commonService: CommonService){}
+
+
+  ngOnInit(): void {
+    this.gethomePageSection();
+  }
+
+  gethomePageSection() {
+    this.unsubscribe$.add(this._commonService.getHomePageSection().subscribe((res: any) => {
+
+      if (res) {
+        this.testimonials = res?.data?.attributes?.blocks.filter((x: { __component: string; }) => x.__component === 'blocks.testimonial')[0];
+      }
+    }));
+  }
+
   slideConfig = {
-    slidesToShow: 3,
+    slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
