@@ -9,13 +9,20 @@ import { Router, RouterModule } from '@angular/router';
 import { MetatagsService } from '../../services/metatags.service';
 import { CommonService } from '../../services/common.service';
 import { CommonModule } from '@angular/common';
-import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { slideConfig } from '../../models/slick.config';
 import { TestimonialComponent } from '../../shared/testimonial/testimonial.component';
+import { NewsletterComponent } from '../../shared/newsletter/newsletter.component';
+import { GetintouchComponent } from '../../shared/getintouch/getintouch.component';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, SlickCarouselModule, TestimonialComponent, RouterModule],
+  imports: [
+    CommonModule, 
+    TestimonialComponent, 
+    RouterModule, 
+    NewsletterComponent,
+    GetintouchComponent
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -45,14 +52,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   liveWebinarPass: any;
   achivements:any;
   approval:any;
-  getInTouch: any;
 
   freeCourseListing:any = [];
   data: any;
   priceCheck: any;
   forTaxLawCheck: any;
   isActiveCheck: any;
-
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: object,
@@ -98,10 +103,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.liveWebinarPass = res?.data?.attributes?.blocks.filter((x: { __component: string; }) => x.__component === 'blocks.live-webinar-passout')[0];  
         this.achivements = res?.data?.attributes?.blocks.filter((x: { __component: string; }) => x.__component === 'blocks.achievement')[0];  
         this.approval = res?.data?.attributes?.blocks.filter((x: { __component: string; }) => x.__component === 'blocks.approval')[0];          
-        this.getInTouch = res?.data?.attributes?.blocks.filter((x: { __component: string; }) => x.__component === 'blocks.get-in-touch')[0];          
-
-        
-
+       
         this._commanService.getlandingpageData(res)
       }
     }));

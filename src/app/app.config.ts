@@ -9,6 +9,9 @@ import { HttpLink } from 'apollo-angular/http';
 import { InMemoryCache } from '@apollo/client/core';
 import { environment } from '../environments/environment';
 import jwtInterceptor from './interceptors/jwt';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideToastr } from 'ngx-toastr';
+
 
 const uri = environment.apibaseurl + '/graphql';
 
@@ -37,29 +40,31 @@ const authLink = setContext((_, { headers }: { headers?: Record<string, string> 
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideZoneChangeDetection({ eventCoalescing: true }), 
-    provideRouter(routes, inMemoryScrollingFeature), 
-    provideClientHydration(withEventReplay()), 
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes, inMemoryScrollingFeature),
+    provideClientHydration(withEventReplay()),
     provideHttpClient(withFetch(), withInterceptors([jwtInterceptor])),
+    provideAnimations(), // required animations providers
+    provideToastr(), // Toastr providers
     provideApollo(() => {
-    
+
       const httpLink = inject(HttpLink);
 
       const httpLinkUri = httpLink.create({
         uri
       });
 
-    return {
-      link: authLink.concat(httpLinkUri),
-      cache: new InMemoryCache(),
-      defaultOptions: {
-        watchQuery: {
-          fetchPolicy: 'no-cache',
+      return {
+        link: authLink.concat(httpLinkUri),
+        cache: new InMemoryCache(),
+        defaultOptions: {
+          watchQuery: {
+            fetchPolicy: 'no-cache',
+          },
+          query: {
+            fetchPolicy: 'network-only',
+          },
         },
-        query: {
-          fetchPolicy: 'network-only',
-        },
-      },
-    };
-  })]
+      };
+    })]
 };
