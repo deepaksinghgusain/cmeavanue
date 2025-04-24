@@ -1,35 +1,53 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
-import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { Component,  OnInit, ViewChild } from '@angular/core';
+import { SlickCarouselComponent, SlickCarouselModule } from 'ngx-slick-carousel';
 import { SubSink } from 'subsink';
 import { CommonService } from '../../services/common.service';
+import { TestimonialService } from '../../services/testimonial.service';
+import { FullstarComponent } from '../../services/fullstar/fullstar.component';
+import { HalfstarComponent } from '../../services/halfstar/halfstar.component';
+import { BlankstarComponent } from '../../services/blankstar/blankstar.component';
+import { environment } from '../../../environments/environment';
 
 @Component({
   standalone: true,
   selector: 'app-testimonial',
-  imports: [SlickCarouselModule, CommonModule],
+  imports: [SlickCarouselModule, CommonModule, FullstarComponent, HalfstarComponent, BlankstarComponent],
   templateUrl: './testimonial.component.html',
   styleUrl: './testimonial.component.css'
 })
 export class TestimonialComponent implements OnInit {
+  @ViewChild('slickModal') slickModal!: SlickCarouselComponent;
 
-  testimonials: any;
+  testimonials: any = [];
   public unsubscribe$ = new SubSink()
+  imageUrl = environment.imageEndPoint;
 
-  constructor(private _commonService: CommonService){}
-
+  constructor(private _commonService: CommonService, private testimonial: TestimonialService){}
 
   ngOnInit(): void {
-    this.gethomePageSection();
+    this.getTestimonials();
   }
 
-  gethomePageSection() {
-    this.unsubscribe$.add(this._commonService.getHomePageSection().subscribe((res: any) => {
+  getTestimonials() {
+    this.testimonial.getTestimonial().subscribe((res: any) => {
 
       if (res) {
-        this.testimonials = res?.data?.attributes?.blocks.filter((x: { __component: string; }) => x.__component === 'blocks.testimonial')[0];
-      }
-    }));
+        let testimonial = res.data.testimonials.data
+        
+        for (const element of testimonial) {
+          this.testimonials.push(element.attributes);
+        }
+      }         
+    })
+  }
+
+  prev() {
+    this.slickModal?.slickPrev();
+  }
+
+  next() {
+    this.slickModal?.slickNext();
   }
 
   slideConfig = {
@@ -37,7 +55,8 @@ export class TestimonialComponent implements OnInit {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
-    arrows: true,
+    arrows: false,
+    dots: false,
     responsive: [
       {
         breakpoint: 1024,
@@ -49,11 +68,4 @@ export class TestimonialComponent implements OnInit {
       }
     ]
   };
-  slides = [
-    { img: 'https://via.placeholder.com/600x300?text=Slide+1' },
-    { img: 'https://via.placeholder.com/600x300?text=Slide+2' },
-    { img: 'https://via.placeholder.com/600x300?text=Slide+3' },
-    { img: 'https://via.placeholder.com/600x300?text=Slide+4' },
-    { img: 'https://via.placeholder.com/600x300?text=Slide+5' }
-  ];
 }
