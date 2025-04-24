@@ -45,6 +45,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   liveWebinarPass: any;
   achivements:any;
   approval:any;
+  getInTouch: any;
 
   freeCourseListing:any = [];
   data: any;
@@ -97,7 +98,10 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.liveWebinarPass = res?.data?.attributes?.blocks.filter((x: { __component: string; }) => x.__component === 'blocks.live-webinar-passout')[0];  
         this.achivements = res?.data?.attributes?.blocks.filter((x: { __component: string; }) => x.__component === 'blocks.achievement')[0];  
         this.approval = res?.data?.attributes?.blocks.filter((x: { __component: string; }) => x.__component === 'blocks.approval')[0];          
-  
+        this.getInTouch = res?.data?.attributes?.blocks.filter((x: { __component: string; }) => x.__component === 'blocks.get-in-touch')[0];          
+
+        
+
         this._commanService.getlandingpageData(res)
       }
     }));
