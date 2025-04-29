@@ -62,10 +62,8 @@
                   <app-blankstar></app-blankstar>
                   }
 
-                  @if (testimonial.rating > 1 && testimonial.rating
-
-                  < 2) { <app-fullstar>
-                    </app-fullstar>
+                  @if (testimonial.rating > 1 && testimonial.rating< 2) { 
+                    <app-fullstar></app-fullstar>
                     <app-halfstar></app-halfstar>
                     <app-blankstar></app-blankstar>
                     <app-blankstar></app-blankstar>
@@ -79,8 +77,6 @@
                     <app-blankstar></app-blankstar>
                     <app-blankstar></app-blankstar>
                     }
-
-
           </div>
           <div class="self-stretch justify-start text-Colors-Text-text-primary-(900) text-1xl font-medium font-['Inter'] leading-[20px] p-4" [innerHTML]="testimonial.message"></div>
           <div class="self-stretch inline-flex justify-start items-start gap-3">
@@ -121,12 +117,11 @@
       </div>
     </div>
     
-    <div class="flex-1 h-[496px] relative">
-      <img class="w-40 h-60 left-[296px] top-0 absolute" src="https://placehold.co/160x240" />
-      <img class="w-48 h-32 left-[384px] top-[256px] absolute" src="https://placehold.co/192x128" />
-      <img class="w-48 h-32 left-0 top-[256px] absolute" src="https://placehold.co/192x128" />
-      <img class="w-40 h-60 left-[208px] top-[256px] absolute" src="https://placehold.co/160x240" />
-      <img class="w-40 h-40 left-[120px] top-[80px] absolute" src="https://placehold.co/160x160" />
-    </div>
+    @if (testimonialBanner) {
+      <div class="flex-1 relative">
+        <img class="" src="{{ imageUrl +  testimonialBanner.image.data.attributes.url }}" />
+      </div>
+    }
+    
   </div>
 </div>

@@ -22,11 +22,15 @@ export class TestimonialComponent implements OnInit {
   testimonials: any = [];
   public unsubscribe$ = new SubSink()
   imageUrl = environment.imageEndPoint;
+  images: string[] = [];
+
+  testimonialBanner:any;
 
   constructor(private _commonService: CommonService, private testimonial: TestimonialService){}
 
   ngOnInit(): void {
     this.getTestimonials();
+    this.getTestimonialPageData();
   }
 
   getTestimonials() {
@@ -37,9 +41,19 @@ export class TestimonialComponent implements OnInit {
         
         for (const element of testimonial) {
           this.testimonials.push(element.attributes);
-        }
+        }        
       }         
     })
+  }
+
+  getTestimonialPageData() {
+    this.unsubscribe$.add(this._commonService.getHomePageSection().subscribe((res: any) => {
+      if (res) {
+        this.testimonialBanner = res?.data?.attributes?.blocks.filter((x: { __component: string; }) => x.__component === 'blocks.testimonial-banner')[0];
+        console.log(this.testimonialBanner);
+        
+      }
+    }));
   }
 
   prev() {
