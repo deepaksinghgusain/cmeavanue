@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
 import { environment } from '../../environments/environment';
 
-
 const instructorsgeneral = gql
   `query {
     instructors (pagination: { limit: -1 }, filters : { IsActive: { eq: true }  } ) {

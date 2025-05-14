@@ -1,119 +1,65 @@
-<!-- <footer class="footer p-10">
-    <div class="container mx-auto">
-        <div class="flex flex-col mx-auto py-10">
-            <div class="w-auto text-center flex justify-center p-4 mb-8">
-                <img src="{{imageUrl}}{{footerData?.logo?.data?.attributes?.url}}" alt="cpe-warehouse-logo">
-            </div>
-            <ul class="flex justify-between">
-                @for (item of footerData?.FooterLinks?.links; track $index) {
-                    <li>
-                        <a href="{{item?.href}}" [target]=" item.target === null ? '_self' :item.target">{{item?.label}}</a>
-                    </li>
-                }
-            </ul> 
-        </div>
-    
-        <div class="flex justify-between border-t-2 border-gray-800 py-4">
-
-            <div>
-                <p>{{footerData?.title}}</p>
-            </div>
-    
-            <ul class="flex justify-between w-1/6">
-                <li>
-                    <a href="#">Terms</a>
-                </li>
-                <li>
-                    <a href="#">Privacy</a>
-                </li>
-                <li>
-                    <a href="#">Cookies</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</footer> -->
-
 <footer class="bg-gray-50 border-t border-gray-200">
-
+  @if (footerTop) {
   <div class="container mx-auto">
     <!-- Top Contact Section -->
     <div class="flex justify-between items-center px-8 py-6 border-b border-gray-200">
       <div>
-        <h2 class="font-semibold text-gray-800">Get In Touch</h2>
+        <h2 class="font-semibold text-gray-800">{{footerTop.title}}</h2>
         <p class="text-sm text-gray-600">
-          Our team is always here to chat from Monday to Friday
-          <span class="font-semibold text-gray-800">8am to 5pm</span> ET.
-          We are <span class="font-semibold">closed on US Holidays</span>
+          {{ footerTop.sub_title }}
         </p>
       </div>
-      <button class="bg-[#2970fe] text-white text-sm font-medium px-5 py-2 rounded-full shadow hover:bg-indigo-700">
-        Contact us
-      </button>
+      <a routerLink="{{ footerTop.button.href }}" class="bg-[#2970fe] text-white text-sm font-medium px-5 py-2 rounded-full shadow hover:bg-indigo-700">
+        {{ footerTop.button.label }}
+      </a>
     </div>
   </div>
-
+  }
 
   <!-- Footer Navigation -->
   <div class="container mx-auto">
+
+    @if (footerMiddle?.length > 0) {
     <div class="grid grid-cols-1 md:grid-cols-5 gap-8 px-8 py-10 text-sm text-gray-700">
       <!-- Column 1 -->
-      <div>
-        <h3 class="text-gray-900 font-medium mb-4">Company</h3>
-        <ul class="space-y-2">
-          <li><a href="#" class="hover:underline">About us</a></li>
-          <li><a href="#" class="hover:underline">Portfolio</a></li>
-          <li><a href="#" class="hover:underline">Faculty</a></li>
-          <li><a href="#" class="hover:underline">Accredition</a></li>
-          <li><a href="#" class="hover:underline">Our Contribution to AFA</a></li>
-        </ul>
-      </div>
+      @for (list of footerMiddle; track $index) {
+        <div>
+          <h3 class="text-gray-900 font-medium mb-4">{{ list.title }}</h3>
 
-      <!-- Column 2 -->
-      <div>
-        <h3 class="text-gray-900 font-medium mb-4">Explore</h3>
-        <ul class="space-y-2">
-          <li><a href="#" class="hover:underline">Live Webinar</a></li>
-          <li><a href="#" class="hover:underline">Self Study</a></li>
-          <li><a href="#" class="hover:underline">E-Book</a></li>
-          <li><a href="#" class="hover:underline">Free Courses</a></li>
-          <li><a href="#" class="hover:underline">Subscription</a></li>
-        </ul>
-      </div>
+          @if (list.item.length > 0) {
+            <ul class="space-y-2">
+              @for (item of list.item; track $index) {
+                <li>
+                  <a href="{{ item.href }}" class="hover:underline">
+                    @if (item.icon.data) {
+                      <img src="{{ imageUrl + item.icon?.data?.attributes?.url }}" alt="icon" class="h-5 w-5">
+                    }
 
-      <!-- Column 3 -->
-      <div>
-        <h3 class="text-gray-900 font-medium mb-4">Legal</h3>
-        <ul class="space-y-2">
-          <li><a href="#" class="hover:underline">Terms</a></li>
-          <li><a href="#" class="hover:underline">Privacy</a></li>
-          <li><a href="#" class="hover:underline">Policy</a></li>
-          <li><a href="#" class="hover:underline">Licenses</a></li>
-          <li><a href="#" class="hover:underline">Contact</a></li>
-        </ul>
-      </div>
-
-      <!-- Column 4 -->
-      <div class="md:col-span-2">
-        <h3 class="text-gray-900 font-medium mb-4">Follow us on Socials</h3>
-        <div class="flex flex-col">
-          <a href="#" class="mt-4"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" class="h-5 w-5"></a>
-          <a href="#" class="mt-4"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" class="h-5 w-5"></a>
-          <a href="#" class="mt-4"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" class="h-5 w-5"></a>
-          <a href="#" class="mt-4"><img src="https://cdn-icons-png.flaticon.com/512/3670/3670147.png" alt="X" class="h-5 w-5"></a>
+                    @else {
+                      {{ item.label }}
+                    }
+                  </a>
+                </li>
+              }
+            </ul>
+          }
         </div>
-      </div>
+      }
     </div>
+    }
 
-    <!-- Bottom Row -->
-    <div class="flex justify-between items-center px-8 py-6 border-t border-gray-200 text-sm text-gray-500">
-      <div class="flex items-center space-x-2">
-        <img src="{{imageUrl + footerData?.logo?.data?.attributes?.url}}" alt="Logo" />
+
+    @if (footerBottom) {
+      <!-- Bottom Row -->
+      <div class="flex justify-between items-center px-8 py-6 border-t border-gray-200 text-sm text-gray-500">
+        <div class="flex items-center space-x-2">
+          <img src="{{imageUrl + footerBottom?.image?.data?.attributes?.url}}" alt="Logo" />
+        </div>
+        <p>{{ footerBottom.copyright }}</p>
       </div>
-      <p>© 2077 Untitled UI. All rights reserved.</p>
-    </div>
+    }
+    
   </div>
 </footer>
-
 
 <app-twak></app-twak>
