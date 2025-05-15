@@ -501,6 +501,7 @@ export class CourseService {
               isActive
               startDate
               endDate
+              credit
                 
               price
               shortDesc

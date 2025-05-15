@@ -35,9 +35,6 @@ export class FooterComponent {
         this.footerTop = res.data.attributes.footer_top;
         this.footerMiddle = res.data.attributes.footer_middle;
         this.footerBottom = res.data.attributes.footer_bottom;
-
-        console.log(this.footerMiddle);
-        
         this.cd.detectChanges();
       }
     })

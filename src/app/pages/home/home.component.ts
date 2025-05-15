@@ -13,6 +13,7 @@ import { slideConfig } from '../../models/slick.config';
 import { TestimonialComponent } from '../../shared/testimonial/testimonial.component';
 import { NewsletterComponent } from '../../shared/newsletter/newsletter.component';
 import { GetintouchComponent } from '../../shared/getintouch/getintouch.component';
+import { LoadingComponent } from '../../shared/loading/loading.component';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +22,8 @@ import { GetintouchComponent } from '../../shared/getintouch/getintouch.componen
     TestimonialComponent, 
     RouterModule, 
     NewsletterComponent,
-    GetintouchComponent
+    GetintouchComponent,
+    LoadingComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
@@ -58,6 +60,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   priceCheck: any;
   forTaxLawCheck: any;
   isActiveCheck: any;
+  loading : boolean = false;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: object,
@@ -86,8 +89,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   gethomePageSection() {
+    this.loading = true;
     this.unsubscribe$.add(this._commanService.getHomePageSection().subscribe((res: any) => {  
 
+      this.loading = false;
       if (res) {
         this.rssFeed = res?.data?.attributes?.RssFeedUrl;
         this.partners = res?.data?.attributes?.blocks.filter((x: { __component: string; }) => x.__component === 'blocks.partner-section')[0];
