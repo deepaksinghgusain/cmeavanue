@@ -91,7 +91,7 @@
             </div>
             <div class="ml-4 mt-2">
               <div class="flex">
-        
+
                 @if (course.attributes.instructors) {
                   @for (instructor of course.attributes.instructors.data; track $index) {
                     <img class="w-8 h-8 rounded-[684px] ml[-10px]" src="{{ environmentUrl + instructor?.attributes?.image?.data?.attributes?.url }}" />
@@ -148,9 +148,10 @@
     </section>
 
     @if (courses.length) {
-      <pagination-controls (pageChange)="p = $event"></pagination-controls>
-    <!-- <div class="h-[60px] w-full pt-5 border-t border-[#e4e7ec] justify-center items-center gap-5 inline-flex">
-      <div class="grow shrink basis-0 h-9 justify-start items-center flex">
+      
+    <div class="h-[60px] w-full pt-5 border-t border-[#e4e7ec] justify-center items-center gap-5 inline-flex">
+      <pagination-controls (pageChange)="p = $event" class="pagination"></pagination-controls>
+      <!-- <div class="grow shrink basis-0 h-9 justify-start items-center flex">
         <div class="px-3 py-2 bg-white cursor-pointer rounded-lg shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] border border-[#d0d5dd] justify-center items-center gap-1 flex overflow-hidden">
           <div class="w-5 h-5 relative  overflow-hidden">
 
@@ -161,25 +162,25 @@
             </svg>
           </div>
           <div class="px-0.5 justify-center items-center flex">
-            <button (click)="goToPage(currentPage - 1)" class="text-[#344054] cursor-pointer  text-sm font-semibold font-['Inter'] leading-tight" [disabled]="currentPage === 1">Previous</button>
+            <button class="text-[#344054] cursor-pointer  text-sm font-semibold font-['Inter'] leading-tight" >Previous</button>
           </div>
         </div>
-      </div>
-      <div class="justify-start items-start gap-0.5 flex">
+      </div> -->
+      <!-- <div class="justify-start items-start gap-0.5 flex">
 
-        @for (page of pages; track $index) {
-        <div [ngClass]="currentPage === page ? 'bg-gray-50' : ''" class="w-10 h-10  rounded-lg justify-center items-center flex overflow-hidden">
+        @for (page of [1,2,3]; track $index) {
+        <div [ngClass]="1 ? 'bg-gray-50' : ''" class="w-10 h-10  rounded-lg justify-center items-center flex overflow-hidden">
           <div class="w-10 self-stretch p-3 rounded-lg justify-center items-center inline-flex">
-            <button (click)="goToPage(page)" class="text-center cursor-pointer text-[#18212f] text-sm font-medium font-['Inter'] leading-tight">{{page}}</button>
+            <button  class="text-center cursor-pointer text-[#18212f] text-sm font-medium font-['Inter'] leading-tight">{{page}}</button>
           </div>
         </div>
         }
 
-      </div>
-      <div class="grow shrink basis-0 h-9 justify-end items-center flex">
+      </div> -->
+      <!-- <div class="grow shrink basis-0 h-9 justify-end items-center flex">
         <div class="px-3 py-2 bg-white cursor-pointer rounded-lg shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] border border-[#d0d5dd] justify-center items-center gap-1 flex overflow-hidden">
           <div class="px-0.5 justify-center items-center flex">
-            <button (click)="goToPage(currentPage + 1)" class="text-[#344054] cursor-pointer text-sm font-semibold font-['Inter'] leading-tight" [disabled]="currentPage === totalPages">Next</button>
+            <button  class="text-[#344054] cursor-pointer text-sm font-semibold font-['Inter'] leading-tight" >Next</button>
           </div>
           <div class="w-5 h-5 relative  overflow-hidden">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -189,8 +190,8 @@
             </svg>
           </div>
         </div>
-      </div>
-    </div> -->
+      </div> -->
+    </div>
     }
 
     @else {

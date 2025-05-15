@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { environment } from '../../../environments/environment';
@@ -85,12 +85,11 @@ export class CourseLisitingComponent {
           value: "economics"
         },
         {
-          label: "Cinance",
+          label: "Finance",
           value: "finance"
         },
       ]
     }
   ]
 
-  constructor(private cd: ChangeDetectorRef) {}
 }

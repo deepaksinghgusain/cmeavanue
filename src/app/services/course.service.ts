@@ -53,6 +53,16 @@ const packagesonly = gql`
           slug
           discountedPrice
 
+          valid_till
+
+          category{
+            data{
+              attributes{
+                title
+              }
+            }
+          }
+
           image {
             data {
               attributes {

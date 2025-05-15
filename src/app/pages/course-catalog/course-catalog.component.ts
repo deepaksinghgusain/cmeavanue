@@ -43,14 +43,12 @@ export class CourseCatalogComponent implements OnInit, OnDestroy {
   tab: string = "live";
   loading:boolean = false;
 
-
   constructor(
     private courseService: CourseService,
     private pageService: PageService,
     private sanitizer: DomSanitizer) {
     this.imageUrl = environment.imageEndPoint;
     this.getPageData();
-    
   }
 
   ngOnInit(): void {
@@ -58,8 +56,6 @@ export class CourseCatalogComponent implements OnInit, OnDestroy {
     this.environmentUrl = environment.apibaseurl
 
     this.getLiveCourse();
-
-   
   }
 
   getPageData() {

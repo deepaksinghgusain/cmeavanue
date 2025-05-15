@@ -36,3 +36,21 @@
 .autocomplete-container {
     box-shadow: none !important;
 } 
+/* 
+nav[role='navigation'] {
+    display: block;
+    background-color: green;
+    width: 100%;
+}
+
+.ngx-pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.pagination-previous {
+    color: #344054;
+    cursor: pointer;
+    font-size: small;
+    font-weight: 600;
+} */
