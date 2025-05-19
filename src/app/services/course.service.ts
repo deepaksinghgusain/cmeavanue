@@ -1274,6 +1274,31 @@ export class CourseService {
           question
         }
       }
+      inclusion {
+        heading
+        title
+        sub_title
+        image{
+        data{
+            attributes{
+              url
+            }
+          }
+        }
+        list {
+          icon {
+            data{
+              attributes{
+                url
+              }
+            }
+          }
+          title
+          item {
+            value
+          }
+        }
+      }
       courses(filters:{isActive:{eq:true},forTaxLaw:{eq:true}},pagination: { limit: -1 }){
         data{
           id
@@ -1300,6 +1325,7 @@ export class CourseService {
                 }
               }
             }
+            
             instructors(	
               pagination: { limit: -1 }){
               data{

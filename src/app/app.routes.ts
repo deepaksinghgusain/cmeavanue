@@ -43,10 +43,9 @@ export const routes: Routes = [
         component: CheckoutComponent
     },
     {
-        path: 'package',
+        path: 'package/:slug',
         component: PackageComponent
     },
-   
     {
         path: 'testimonial',
         component: TestimonialComponent

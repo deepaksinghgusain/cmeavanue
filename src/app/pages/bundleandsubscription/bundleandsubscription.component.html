@@ -80,9 +80,9 @@
 
           </div>
           <div class="self-stretch flex-col justify-start items-start gap-2 flex">
-            <div class="self-stretch text-[#101828] text-lg font-semibold font-['Inter'] leading-7">
+            <a routerLink="/package/{{ course.attributes.slug }}" class="self-stretch text-[#101828] text-lg font-semibold font-['Inter'] leading-7">
                 {{ course.attributes.title }}
-            </div>
+            </a>
           </div>
           <div class="text-[#667085] text-base font-normal font-['Inter'] leading-normal">
             {{ course.attributes.valid_till }}
@@ -125,11 +125,11 @@
       <div class="h-80 w-full px-1 flex-col justify-start items-center gap-16 flex">
         <div class="self-stretch h-80 p-16 justify-center items-start gap-8 inline-flex">
           @if (accreditedPartners?.list) {
-          @for (l of accreditedPartners.list; track $index) {
-          <div class="w-[180px] h-[142px] px-6 py-8 bg-white/30 rounded-2xl border border-white/30 backdrop-blur-xl flex-col justify-start items-center gap-5 inline-flex">
-            <img class="self-stretch grow shrink basis-0 w-[100%] h-[100%] object-scale-down" src="{{imageUrl + l?.image?.data?.attributes?.url}}" />
-          </div>
-          }
+            @for (l of accreditedPartners.list; track $index) {
+            <div class="w-[180px] h-[142px] px-6 py-8 bg-white/30 rounded-2xl border border-white/30 backdrop-blur-xl flex-col justify-start items-center gap-5 inline-flex">
+                <img class="self-stretch grow shrink basis-0 w-[100%] h-[100%] object-scale-down" src="{{imageUrl + l?.image?.data?.attributes?.url}}" />
+            </div>
+            }
           }
         </div>
       </div>
