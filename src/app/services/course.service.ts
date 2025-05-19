@@ -1269,6 +1269,7 @@ export class CourseService {
       }
       faqs{
         title
+        sub_title
         faq{
           answer
           question

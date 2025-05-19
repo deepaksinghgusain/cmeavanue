@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: '#app-tab',
@@ -6,11 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './tab.component.html',
   styleUrl: './tab.component.css'
 })
-export class TabComponent implements OnInit {
+export class TabComponent {
   @Input() faq: any;
   @Input() showTabContent: boolean = false;
-
-  ngOnInit(): void {
-      console.log(this.showTabContent);  
-  } 
 }

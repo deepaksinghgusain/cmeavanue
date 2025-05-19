@@ -6,10 +6,11 @@ import { CartService } from '../../services/cart.service';
 import { CommonService } from '../../services/common.service';
 import { MetatagsService } from '../../services/metatags.service';
 import { SeoTags } from '../../models/meta-tags';
+import { TabComponent } from '../../shared/tab/tab.component';
 
 @Component({
   selector: 'app-package',
-  imports: [RouterModule],
+  imports: [RouterModule, TabComponent],
   templateUrl: './package.component.html',
   styleUrl: './package.component.css'
 })
@@ -45,6 +46,7 @@ export class PackageComponent implements OnInit {
 
   accreditedPartners:any;
   sponsorship:any;
+  packageContact:any;
 
   constructor(
     private courseService: CourseService,
@@ -81,6 +83,7 @@ export class PackageComponent implements OnInit {
     this.courseService.packageDetailPage().subscribe((res: any) => {
       this.accreditedPartners = res?.data[0]?.attributes?.blocks.filter((res: { __component: string; }) => res.__component === 'blocks.accredited-partners')[0];
       this.sponsorship = res?.data[0]?.attributes?.blocks.filter((res: { __component: string; }) => res.__component === 'blocks.sponsorship')[0];
+      this.packageContact = res?.data[0]?.attributes?.blocks.filter((res: { __component: string; }) => res.__component === 'blocks.package-contact')[0];
     })
   }
 
@@ -116,7 +119,10 @@ export class PackageComponent implements OnInit {
         } else {
           this.metaService.clearSEOTags();
         }
-        console.log("package Data", this.packageData);
+
+        console.log(this.packageData);
+        
+
         let name = ''
         this.packageData?.courses?.data.forEach((element: any) => {
           const facultyname = this.getInstructorName(element?.attributes?.instructors)
@@ -147,7 +153,6 @@ export class PackageComponent implements OnInit {
   getInstructorName(instructors: any) {
     const name: string[] = []
     instructors.data.forEach((element: any, index: number) => {
-
       name.push(element?.attributes?.firstName + ' ' + element?.attributes.lastName)
     })
 
@@ -173,7 +178,6 @@ export class PackageComponent implements OnInit {
     const filteredArray = this.packageData?.courses?.data.filter((element: any) => {
       const endDate = new Date(element.attributes.endDate).getTime()
       const currDate = Date.now()
-
 
       return (element.attributes?.category?.data?.attributes?.title).toLowerCase() == 'live' && endDate < currDate
     })
@@ -202,7 +206,6 @@ export class PackageComponent implements OnInit {
   priceGetter() {
     if (this.packageData.price != null && this.packageData.price != undefined && this.packageData.price >= 0) {
       this.actualPrice = this.packageData.price
-      //this.totalCoursePrice=this.packageData.price
     }
     else {
       this.actualPrice = this.totalCoursePrice

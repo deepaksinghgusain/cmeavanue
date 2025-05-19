@@ -170,16 +170,22 @@
     </div>
     <div class="grow shrink basis-0 h-9 px-1 pb-3"></div>
   </div>
-  @if (packageData.inclusion[0]) {
-    <div class="h-[1047px] py-24 bg-white flex-col justify-start items-center gap-16 inline-flex overflow-hidden">
+  @if (packageData?.inclusion[0]) {
+  <div class="h-[1047px] py-24 bg-white flex-col justify-start items-center gap-16 inline-flex overflow-hidden">
     <div class="self-stretch w-2/3 h-[190px] px-8 flex-col justify-start items-start gap-8 flex">
       <div class="self-stretch h-[190px] flex-col justify-start items-start gap-8 flex">
         <div class="self-stretch h-[190px] flex-col justify-start items-start gap-5 flex">
           <div class="self-stretch h-20 flex-col justify-start items-start gap-3 flex">
-            <div class="self-stretch text-[#6840c6] text-base font-semibold font-['Inter'] leading-normal">{{ packageData.inclusion[0].heading  }}</div>
-            <div class="self-stretch text-[#101828] text-4xl font-semibold font-['Inter'] leading-[44px]">{{ packageData.inclusion[0].title }}</div>
+            <div class="self-stretch text-[#6840c6] text-base font-semibold font-['Inter'] leading-normal">
+              {{ packageData?.inclusion[0].heading  }}
+            </div>
+            <div class="self-stretch text-[#101828] text-4xl font-semibold font-['Inter'] leading-[44px]">
+              {{ packageData?.inclusion[0].title }}
+            </div>
           </div>
-          <div class="self-stretch text-[#475467] text-xl font-normal font-['Inter'] leading-[30px]">{{ packageData.inclusion[0].sub_title  }}</div>
+          <div class="self-stretch text-[#475467] text-xl font-normal font-['Inter'] leading-[30px]">
+            {{ packageData?.inclusion[0].sub_title  }}
+          </div>
         </div>
       </div>
     </div>
@@ -187,28 +193,30 @@
       <div class="w-1/3 grow shrink basis-0 h-[604px] justify-start items-start gap-8 flex">
         <div class="grow shrink basis-0 flex-col justify-start items-start gap-12 inline-flex">
           @if (packageData.inclusion[0].list.length) {
-            @for (list of packageData.inclusion[0].list; track $index) {
-              <div class="self-stretch justify-start items-start gap-4 inline-flex">
-                <div class="w-12 h-12 p-3 bg-white rounded-[10px]  shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] border border-[#e4e7ec] justify-center items-center flex overflow-hidden">
-                  <div class="w-6 h-6 relative flex-col justify-start items-start flex overflow-hidden">
-                    <img src="{{ imageUrl + list.icon.data.attributes.url }}" alt="">
-                  </div>
+          @for (list of packageData.inclusion[0].list; track $index) {
+          <div class="self-stretch justify-start items-start gap-4 inline-flex">
+            <div class="w-12 h-12 p-3 bg-white rounded-[10px]  shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] border border-[#e4e7ec] justify-center items-center flex overflow-hidden">
+              <div class="w-6 h-6 relative flex-col justify-start items-start flex overflow-hidden">
+                <img src="{{ imageUrl + list.icon.data.attributes.url }}" alt="">
+              </div>
+            </div>
+            <div class="grow shrink basis-0 flex-col justify-start items-start gap-5 inline-flex">
+              <div class="self-stretch h-[188px] pt-2.5 flex-col justify-start items-start gap-2 flex">
+                <div class="self-stretch text-[#101828] text-xl font-semibold font-['Inter'] leading-[30px] ">
+                  {{ list.title }}
                 </div>
-                <div class="grow shrink basis-0 flex-col justify-start items-start gap-5 inline-flex">
-                  <div class="self-stretch h-[188px] pt-2.5 flex-col justify-start items-start gap-2 flex">
-                    <div class="self-stretch text-[#101828] text-xl font-semibold font-['Inter'] leading-[30px] ">{{ list.title }}</div>
-                    <div class="self-stretch">
-                      <ul class="text-[#475467] self-stretch justify-start text-Colors-Text-text-tertiary-(600) text-lg font-normal font-['Inter'] leading-7 decoration-dotted">
-                        @for (item of list.item; track $index) {
-                          <li>{{item.value}}</li>
-                        }
-                      </ul>
+                <div class="self-stretch">
+                  <ul class="text-[#475467] self-stretch justify-start text-Colors-Text-text-tertiary-(600) text-lg font-normal font-['Inter'] leading-7 decoration-dotted">
+                    @for (item of list.item; track $index) {
+                    <li>{{item.value}}</li>
+                    }
+                  </ul>
 
-                    </div>
-                  </div>
                 </div>
               </div>
-            }
+            </div>
+          </div>
+          }
           }
         </div>
       </div>
@@ -240,88 +248,90 @@
       <div class="h-80 w-full px-1 flex-col justify-start items-center gap-16 flex">
         <div class="self-stretch h-80 p-16 justify-center items-start gap-8 inline-flex">
           @if (accreditedPartners.list.length > 0) {
-            @for (list of accreditedPartners.list; track $index) {
-            <div class="w-[180px] h-[142px] px-6 py-8 bg-white/30 rounded-2xl border border-white/30 backdrop-blur-xl flex-col justify-start items-center gap-5 inline-flex">
-              <img class="self-stretch grow shrink basis-0 w-[100%] h-[100%] object-scale-down" src="{{ imageUrl + list.image.data.attributes.url }}" />
-            </div>
-            }
+          @for (list of accreditedPartners.list; track $index) {
+          <div class="w-[180px] h-[142px] px-6 py-8 bg-white/30 rounded-2xl border border-white/30 backdrop-blur-xl flex-col justify-start items-center gap-5 inline-flex">
+            <img class="self-stretch grow shrink basis-0 w-[100%] h-[100%] object-scale-down" src="{{ imageUrl + list.image.data.attributes.url }}" />
+          </div>
+          }
           }
         </div>
       </div>
     </div>
 
     @if (sponsorship) {
-      <div class="container mx-auto">
-        <div class="self-stretch px-8 justify-between items-start gap-8 inline-flex">
-          <div class="w-[771px] py-5 flex-col justify-between items-start gap-8 inline-flex">
-            <div class="self-stretch text-[#101828] text-lg font-semibold font-['Inter'] leading-7">{{sponsorship.title}}</div>
-            <div class="self-stretch h-20 px-1 flex-col justify-start items-start gap-8 flex">
-              <div class="w-[794px] justify-start items-start inline-flex">
-                
-                @if (sponsorship.list.length > 0) {
-                  @for (list of sponsorship.list; track $index) {
-                    <div class="grow shrink basis-0 px-4 pt-6 flex-col justify-start items-center gap-5 inline-flex">
-                      <div class="self-stretch justify-start items-start gap-3 inline-flex">
-                        <div class="w-7 h-7 rounded-full justify-center items-center flex overflow-hidden">
-                          <div class="w-7 h-7 relative flex-col justify-start items-start flex overflow-hidden">
-                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <g id="check-circle">
-                                <path id="Icon" d="M8.75065 14.0002L12.2507 17.5002L19.2507 10.5002M25.6673 14.0002C25.6673 20.4435 20.444 25.6668 14.0007 25.6668C7.55733 25.6668 2.33398 20.4435 2.33398 14.0002C2.33398 7.55684 7.55733 2.3335 14.0007 2.3335C20.444 2.3335 25.6673 7.55684 25.6673 14.0002Z" stroke="#7F56D9" stroke-width="2.33333" stroke-linecap="round" stroke-linejoin="round" />
-                              </g>
-                            </svg>
-                          </div>
-                        </div>
-                        <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
-                          <div class="self-stretch text-[#475467] text-lg font-normal font-['Inter'] leading-7">{{list.value}}</div>
-                        </div>
-                      </div>
-                    </div>
-                  }
-                }
-                
-              </div>
-            </div>
-            <div class="self-stretch h-[200px] py-4 flex-col justify-start items-start gap-5 flex">
-              <div class="self-stretch h-[168px] flex-col justify-start items-center gap-2 flex">
-                <div class="self-stretch text-[#475467] text-lg font-normal font-['Inter'] leading-7">{{sponsorship.description}}</div>
-              </div>
-            </div>
-          </div>
-          <div class="w-[446px] self-stretch px-8 flex-col justify-start items-start gap-8 inline-flex">
-            <div class="self-stretch justify-center items-start gap-8 inline-flex">
-              <div class="grow shrink basis-0 bg-white rounded-2xl  border border-[#e4e7ec] flex-col justify-start items-start inline-flex">
-                <div class="self-stretch h-[284px] px-8 pt-8 pb-10 flex-col justify-start items-start gap-6 flex">
-                  <div class="self-stretch h-[212px] flex-col justify-start items-start gap-4 flex">
-                    
-                    @if (sponsorship.features.length > 0) {
-                      @for (feature of sponsorship.features; track $index) {
-                        <div class="self-stretch justify-start items-start gap-3 inline-flex">
-                      <div class="w-6 h-6 relative bg-[#dbf9e6] rounded-full  overflow-hidden">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <g id="Check icon">
-                            <path d="M0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12Z" fill="#DCFAE6" />
-                            <path id="Icon" fill-rule="evenodd" clip-rule="evenodd" d="M17.096 7.39016L9.93602 14.3002L8.03602 12.2702C7.68602 11.9402 7.13602 11.9202 6.73602 12.2002C6.34602 12.4902 6.23602 13.0002 6.47602 13.4102L8.72602 17.0702C8.94602 17.4102 9.32601 17.6202 9.75601 17.6202C10.166 17.6202 10.556 17.4102 10.776 17.0702C11.136 16.6002 18.006 8.41016 18.006 8.41016C18.906 7.49016 17.816 6.68016 17.096 7.38016V7.39016Z" fill="#079455" />
-                          </g>
-                        </svg>
+    <div class="container mx-auto">
+      <div class="self-stretch px-8 justify-between items-start gap-8 inline-flex">
+        <div class="w-[771px] py-5 flex-col justify-between items-start gap-8 inline-flex">
+          <div class="self-stretch text-[#101828] text-lg font-semibold font-['Inter'] leading-7">{{sponsorship.title}}</div>
+          <div class="self-stretch h-20 px-1 flex-col justify-start items-start gap-8 flex">
+            <div class="w-[794px] justify-start items-start inline-flex">
 
-                      </div>
-                      <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
-                        <div class="self-stretch text-[#344054] text-lg font-semibold font-['Inter'] leading-7">{{ feature.value }} </div>
-                      </div>
+              @if (sponsorship.list.length > 0) {
+              @for (list of sponsorship.list; track $index) {
+              <div class="grow shrink basis-0 px-4 pt-6 flex-col justify-start items-center gap-5 inline-flex">
+                <div class="self-stretch justify-start items-start gap-3 inline-flex">
+                  <div class="w-7 h-7 rounded-full justify-center items-center flex overflow-hidden">
+                    <div class="w-7 h-7 relative flex-col justify-start items-start flex overflow-hidden">
+                      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="check-circle">
+                          <path id="Icon" d="M8.75065 14.0002L12.2507 17.5002L19.2507 10.5002M25.6673 14.0002C25.6673 20.4435 20.444 25.6668 14.0007 25.6668C7.55733 25.6668 2.33398 20.4435 2.33398 14.0002C2.33398 7.55684 7.55733 2.3335 14.0007 2.3335C20.444 2.3335 25.6673 7.55684 25.6673 14.0002Z" stroke="#7F56D9" stroke-width="2.33333" stroke-linecap="round" stroke-linejoin="round" />
+                        </g>
+                      </svg>
                     </div>
-                      }
-                    }
-                    
+                  </div>
+                  <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
+                    <div class="self-stretch text-[#475467] text-lg font-normal font-['Inter'] leading-7">{{list.value}}</div>
                   </div>
                 </div>
-                <div class="self-stretch h-20 px-8 pb-8"></div>
               </div>
+              }
+              }
+
+            </div>
+          </div>
+          <div class="self-stretch h-[200px] py-4 flex-col justify-start items-start gap-5 flex">
+            <div class="self-stretch h-[168px] flex-col justify-start items-center gap-2 flex">
+              <div class="self-stretch text-[#475467] text-lg font-normal font-['Inter'] leading-7">{{sponsorship.description}}</div>
+            </div>
+          </div>
+        </div>
+        <div class="w-[446px] self-stretch px-8 flex-col justify-start items-start gap-8 inline-flex">
+          <div class="self-stretch justify-center items-start gap-8 inline-flex">
+            <div class="grow shrink basis-0 bg-white rounded-2xl  border border-[#e4e7ec] flex-col justify-start items-start inline-flex">
+              <div class="self-stretch h-[284px] px-8 pt-8 pb-10 flex-col justify-start items-start gap-6 flex">
+                <div class="self-stretch h-[212px] flex-col justify-start items-start gap-4 flex">
+
+                  @if (sponsorship.features.length > 0) {
+                  @for (feature of sponsorship.features; track $index) {
+                  <div class="self-stretch justify-start items-start gap-3 inline-flex">
+                    <div class="w-6 h-6 relative bg-[#dbf9e6] rounded-full  overflow-hidden">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="Check icon">
+                          <path d="M0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12Z" fill="#DCFAE6" />
+                          <path id="Icon" fill-rule="evenodd" clip-rule="evenodd" d="M17.096 7.39016L9.93602 14.3002L8.03602 12.2702C7.68602 11.9402 7.13602 11.9202 6.73602 12.2002C6.34602 12.4902 6.23602 13.0002 6.47602 13.4102L8.72602 17.0702C8.94602 17.4102 9.32601 17.6202 9.75601 17.6202C10.166 17.6202 10.556 17.4102 10.776 17.0702C11.136 16.6002 18.006 8.41016 18.006 8.41016C18.906 7.49016 17.816 6.68016 17.096 7.38016V7.39016Z" fill="#079455" />
+                        </g>
+                      </svg>
+
+                    </div>
+                    <div class="grow shrink basis-0 flex-col justify-start items-start inline-flex">
+                      <div class="self-stretch text-[#344054] text-lg font-semibold font-['Inter'] leading-7">
+                        {{ feature.value }}
+                      </div>
+                    </div>
+                  </div>
+                  }
+                  }
+
+                </div>
+              </div>
+              <div class="self-stretch h-20 px-8 pb-8"></div>
             </div>
           </div>
         </div>
       </div>
+    </div>
     }
-    
+
   </div>
 </section>
 }
@@ -342,7 +352,7 @@
     </div>
     <div class="self-stretch h-[530px] px-8 flex-col justify-start items-start gap-8 flex">
       <div class="self-stretch justify-center items-start gap-8 inline-flex">
-        <div class="grow shrink basis-0 bg-white rounded-2xl shadow-[0px_4px_6px_-2px_rgba(16,24,40,0.03)] shadow-[0px_12px_16px_-4px_rgba(16,24,40,0.08)] border border-[#e4e7ec] flex-col justify-start items-start inline-flex">
+        <div class="grow shrink basis-0 bg-white rounded-2xl  shadow-[0px_12px_16px_-4px_rgba(16,24,40,0.08)] border border-[#e4e7ec] flex-col justify-start items-start inline-flex">
           <div class="self-stretch h-[174px] px-8 pt-10 flex-col justify-start items-start gap-4 flex">
             <div class="w-[152px] h-[54px] relative">
               <div class="left-[58.50px] top-[-1px] absolute text-[#dc2590] text-sm font-semibold font-['Inter'] leading-tight">Most popular!</div>
@@ -431,7 +441,7 @@
           </div>
           <div class="self-stretch h-20 px-8 pb-8 flex-col justify-start items-start gap-6 flex">
             <div class="flex-col justify-start items-start gap-3 flex">
-              <div class="px-[18px] py-3 bg-[#2970fe] rounded-[28px] shadow-[0px_1px_2px_0px_rgba(16,24,40,0.05)] shadow-[inset_0px_-2px_0px_0px_rgba(16,24,40,0.05)] shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] border-2 border-white justify-center items-center gap-1.5 inline-flex overflow-hidden">
+              <div class="px-[18px] py-3 bg-[#2970fe] rounded-[28px] shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] border-2 border-white justify-center items-center gap-1.5 inline-flex overflow-hidden">
                 <div class="px-0.5 justify-center items-center flex">
                   <div class="text-white text-base font-semibold font-['Inter'] leading-normal">Enroll now</div>
                 </div>
@@ -443,154 +453,75 @@
     </div>
   </div>
 </section>
+
+@if (packageData?.faqs) {
 <section class="container mx-auto">
-  <div class="h-[1220px] pb-24 bg-white flex-col justify-start items-center gap-16 inline-flex overflow-hidden">
+  <div class="w-full py-10 bg-white flex-col justify-start items-center gap-16 inline-flex overflow-hidden">
     <div class="self-stretch h-[94px] px-8 flex-col justify-start items-start gap-8 flex">
       <div class="self-stretch h-[94px] flex-col justify-start items-center gap-8 flex">
         <div class="self-stretch h-[94px] flex-col justify-start items-center gap-5 flex">
-          <div class="self-stretch text-center text-[#101828] text-4xl font-semibold font-['Inter'] leading-[44px]">Frequently asked questions</div>
-          <div class="self-stretch text-center text-[#475467] text-xl font-normal font-['Inter'] leading-[30px]">Everything you need to know about the product and billing.</div>
+          <div class="self-stretch text-center text-[#101828] text-4xl font-semibold font-['Inter'] leading-[44px]">{{packageData.faqs.title}}</div>
+          <div class="self-stretch text-center text-[#475467] text-xl font-normal font-['Inter'] leading-[30px]">{{packageData.faqs?.sub_title}}</div>
         </div>
       </div>
     </div>
 
-    <div class="self-stretch h-[600px] px-8 flex-col justify-start items-center gap-16 flex">
-      <div class="self-stretch h-[600px] flex-col justify-start items-start gap-8 flex">
-        <div class="self-stretch h-[180px] flex-col justify-start items-center flex">
-          <div class="self-stretch justify-start items-start gap-6 inline-flex">
-            <div class="grow shrink basis-0 flex-col justify-start items-start gap-2 inline-flex">
-              <div class="self-stretch text-[#101828] text-lg font-medium font-['Inter'] leading-7">I can’t find my CPE Certificate. What should I do?</div>
-              <div class="self-stretch"><span class="text-[#475467] text-base font-normal font-['Inter'] leading-normal">Every learner has access to their learners portal, via our website, where certificates are kept for ease of access. Please log into the learners portal with the details that were provided to you upon registration. If you are not able to find your login details, you can reset your password. We also email certificates to all learners after each course. Check your inbox (incl. spam folder). If something seems amiss, and neither options are available, please email us at "</span><span class="text-[#475467] text-base font-normal font-['Inter'] underline leading-normal">cpe&#64;cpewarehouse.com</span><span class="text-[#475467] text-base font-normal font-['Inter'] leading-normal">"</span></div>
-            </div>
-            <div class="pt-0.5 flex-col justify-start items-start inline-flex">
-              <div class="w-6 h-6 relative  overflow-hidden">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <g id="minus-circle">
-                    <path id="Icon" d="M8 12H16M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="#98A2B3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                  </g>
-                </svg>
+    <div class="self-stretch w-full px-8 flex-col justify-start items-center gap-16 flex">
+      <div class="self-stretch w-full flex-col justify-start items-start gap-8 flex">
+
+        @if (packageData?.faqs.faq.length > 0) {
+          @for (faq of packageData?.faqs.faq; track $index) {
+            <div id="app-tab" class="w-full" [faq]="faq"></div>
+          }
+        }
+      </div>
+    </div>
+
+    @if (packageContact) {
+      <div class="self-stretch h-[306px] px-8 flex-col justify-start items-start gap-8 flex">
+        <div class="self-stretch h-[306px] px-8 pt-8 pb-10 bg-gray-50 rounded-2xl flex-col justify-start items-center gap-8 flex">
+          <div class="w-[120px] h-14 relative">
+            @if (packageContact?.images.length > 0) {
+              <div class="w-12 h-12 left-0 top-[8px] absolute rounded-full border border-white justify-center items-center inline-flex">
+                <div class="w-12 h-12 relative rounded-full border border-black/10">
+                  <img src="{{ imageUrl + packageContact?.images[0]?.image?.data?.attributes.url }}" alt="">
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
-        <div class="self-stretch h-[52px] pt-6 border-t border-[#e4e7ec] flex-col justify-start items-center flex">
-          <div class="self-stretch justify-start items-start gap-6 inline-flex">
-            <div class="grow shrink basis-0 flex-col justify-start items-start gap-2 inline-flex">
-              <div class="self-stretch text-[#101828] text-lg font-medium font-['Inter'] leading-7">I can’t find my CPE Certificate. What should I do?</div>
-            </div>
-            <div class="pt-0.5 flex-col justify-start items-start inline-flex">
-              <div class="w-6 h-6 relative  overflow-hidden">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <g id="plus-circle">
-                    <path id="Icon" d="M12 8V16M8 12H16M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="#98A2B3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                  </g>
-                </svg>
+              <div class="w-12 h-12 left-[72px] top-[8px] absolute rounded-full border border-white justify-center items-center inline-flex">
+                <div class="w-12 h-12 relative rounded-full border border-black/10">
+                  <img src="{{ imageUrl + packageContact?.images[1]?.image?.data?.attributes.url }}" alt="">
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
-        <div class="self-stretch h-[52px] pt-6 border-t border-[#e4e7ec] flex-col justify-start items-center flex">
-          <div class="self-stretch justify-start items-start gap-6 inline-flex">
-            <div class="grow shrink basis-0 flex-col justify-start items-start gap-2 inline-flex">
-              <div class="self-stretch text-[#101828] text-lg font-medium font-['Inter'] leading-7">I couldn’t attend, can you send me the recording?</div>
-            </div>
-            <div class="pt-0.5 flex-col justify-start items-start inline-flex">
-              <div class="w-6 h-6 relative  overflow-hidden">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <g id="plus-circle">
-                    <path id="Icon" d="M12 8V16M8 12H16M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="#98A2B3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                  </g>
-                </svg>
+              <div class="w-14 h-14 left-[32px] top-0 absolute rounded-full border border-white justify-center items-center inline-flex">
+                <div class="w-14 h-14 relative rounded-full border border-black/10">
+                  <img src="{{ imageUrl + packageContact?.images[2]?.image?.data?.attributes.url }}" alt="">
+                </div>
               </div>
-            </div>
+            }
+            
           </div>
-        </div>
-        <div class="self-stretch h-[52px] pt-6 border-t border-[#e4e7ec] flex-col justify-start items-center flex">
-          <div class="self-stretch justify-start items-start gap-6 inline-flex">
-            <div class="grow shrink basis-0 flex-col justify-start items-start gap-2 inline-flex">
-              <div class="self-stretch text-[#101828] text-lg font-medium font-['Inter'] leading-7">Can I mail you a cheque as payment?</div>
-            </div>
-            <div class="pt-0.5 flex-col justify-start items-start inline-flex">
-              <div class="w-6 h-6 relative  overflow-hidden">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <g id="plus-circle">
-                    <path id="Icon" d="M12 8V16M8 12H16M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="#98A2B3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                  </g>
-                </svg>
-              </div>
-            </div>
+          <div class="self-stretch h-[66px] flex-col justify-start items-center gap-2 flex">
+            <div class="self-stretch text-center text-[#101828] text-xl font-semibold font-['Inter'] leading-[30px]">{{ packageContact.title }}</div>
+            <div class="self-stretch text-center text-[#475467] text-lg font-normal font-['Inter'] leading-7">{{ packageContact.sub_title }} </div>
           </div>
-        </div>
-        <div class="self-stretch h-[52px] pt-6 border-t border-[#e4e7ec] flex-col justify-start items-center flex">
-          <div class="self-stretch justify-start items-start gap-6 inline-flex">
-            <div class="grow shrink basis-0 flex-col justify-start items-start gap-2 inline-flex">
-              <div class="self-stretch text-[#101828] text-lg font-medium font-['Inter'] leading-7">I need a refund. What are my options?</div>
-            </div>
-            <div class="pt-0.5 flex-col justify-start items-start inline-flex">
-              <div class="w-6 h-6 relative  overflow-hidden">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <g id="plus-circle">
-                    <path id="Icon" d="M12 8V16M8 12H16M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="#98A2B3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                  </g>
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="self-stretch h-[52px] pt-6 border-t border-[#e4e7ec] flex-col justify-start items-center flex">
-          <div class="self-stretch justify-start items-start gap-6 inline-flex">
-            <div class="grow shrink basis-0 flex-col justify-start items-start gap-2 inline-flex">
-              <div class="self-stretch text-[#101828] text-lg font-medium font-['Inter'] leading-7">My discount code didn’t work!</div>
-            </div>
-            <div class="pt-0.5 flex-col justify-start items-start inline-flex">
-              <div class="w-6 h-6 relative  overflow-hidden">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <g id="plus-circle">
-                    <path id="Icon" d="M12 8V16M8 12H16M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="#98A2B3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                  </g>
-                </svg>
+          <div class="justify-start items-start gap-3 inline-flex">
+            <div class="px-[18px] py-3 bg-[#2970fe] rounded-[28px] shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] border-2 border-white justify-center items-center gap-1.5 flex overflow-hidden">
+              <div class="px-0.5 justify-center items-center flex">
+                <a routerLink="{{ packageContact.button.href }}" class="text-white text-base font-semibold font-['Inter'] leading-normal">
+                  {{ packageContact.button.label }}
+                </a>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="self-stretch h-[306px] px-8 flex-col justify-start items-start gap-8 flex">
-      <div class="self-stretch h-[306px] px-8 pt-8 pb-10 bg-gray-50 rounded-2xl flex-col justify-start items-center gap-8 flex">
-        <div class="w-[120px] h-14 relative">
-          <div class="w-12 h-12 left-0 top-[8px] absolute rounded-full border border-white justify-center items-center inline-flex">
-            <div class="w-12 h-12 relative rounded-full border border-black/10">
-              <img src="/assets/images/profile-1.png" alt="">
-            </div>
-          </div>
-          <div class="w-12 h-12 left-[72px] top-[8px] absolute rounded-full border border-white justify-center items-center inline-flex">
-            <div class="w-12 h-12 relative rounded-full border border-black/10">
-              <img src="/assets/images/profile-2.png" alt="">
-            </div>
-          </div>
-          <div class="w-14 h-14 left-[32px] top-0 absolute rounded-full border border-white justify-center items-center inline-flex">
-            <div class="w-14 h-14 relative rounded-full border border-black/10">
-              <img src="/assets/images/profile-3.png" alt="">
-            </div>
-          </div>
-        </div>
-        <div class="self-stretch h-[66px] flex-col justify-start items-center gap-2 flex">
-          <div class="self-stretch text-center text-[#101828] text-xl font-semibold font-['Inter'] leading-[30px]">Still have questions?</div>
-          <div class="self-stretch text-center text-[#475467] text-lg font-normal font-['Inter'] leading-7">Speak to one of our success managers. </div>
-        </div>
-        <div class="justify-start items-start gap-3 inline-flex">
-          <div class="px-[18px] py-3 bg-[#2970fe] rounded-[28px] shadow-[inset_0px_0px_0px_1px_rgba(16,24,40,0.18)] border-2 border-white justify-center items-center gap-1.5 flex overflow-hidden">
-            <div class="px-0.5 justify-center items-center flex">
-              <div class="text-white text-base font-semibold font-['Inter'] leading-normal">Contact us</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    }
+    
   </div>
 </section>
+}
 
-<section class="bg-[#f9fafb] py-24">
+<section class="bg-[#f9fafb] py-10">
   <div class="container mx-auto">
     <div class="self-stretch h-[94px] mb-12 flex-col justify-start items-start gap-8 flex">
       <div class="self-stretch h-[94px] flex-col justify-start items-center gap-8 flex">
