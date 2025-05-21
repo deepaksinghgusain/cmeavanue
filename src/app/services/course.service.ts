@@ -462,6 +462,7 @@ export class CourseService {
   getAllCourses(title?: any) {
     let search = title || '';
 
+
     if (search !== '') {
       return this.apollo.watchQuery<any>({
         query: this.getCoursesWithTitleGql(true, true, search),
@@ -576,6 +577,8 @@ export class CourseService {
     title: string
 
   ) {
+
+    
     return gql`query{
       courses( 
         
@@ -839,7 +842,7 @@ export class CourseService {
                     },
                     {
                         category: {
-                            title: {ne: "Live"}
+                            title: {eq: "Live"}
                         }
                     }],
   

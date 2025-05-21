@@ -236,6 +236,18 @@
   </div>
   }
 
+  @if (showTabContent === 1) {
+      <div class="w-full py-24 bg-Colors-Background-bg-primary inline-flex flex-col justify-start items-center gap-16 overflow-hidden text-[#475467]">
+        <div class="w-full  px-8 inline-flex justify-start items-start gap-16 flex-wrap content-start">
+          <div class="flex-1 inline-flex flex-col justify-start items-start gap-8">
+            <div class="w-full flex flex-col justify-start items-start gap-5" [innerHTML]="sanitize(creditAndInfo.content)">
+              
+            </div>
+          </div>
+        </div>
+      </div>
+  }
+
   @if (showTabContent === 2) {
   <div class="w-full py-24 bg-Colors-Background-bg-primary inline-flex flex-col justify-start items-center gap-16 overflow-hidden text-[#475467]">
     <div class="w-full  px-8 inline-flex justify-start items-start gap-16 flex-wrap content-start">
@@ -415,7 +427,6 @@
       </div>
     </div>
 
-
     @if (coursesDetail?.data[0]?.attributes?.includes) {
       <div class="self-stretch flex-col justify-start items-start gap-5 flex">
         <div class="self-stretch h-[88px] flex-col justify-start items-start gap-5 flex">
@@ -542,7 +553,6 @@
                   <div class="self-stretch h-[284px] px-8 pt-8 pb-10 flex-col justify-start items-start gap-6 flex">
                     <div class="self-stretch h-[212px] flex-col justify-start items-start gap-4 flex">
                       
-                      
                      @if (sponsorship.features.length > 0) {
                       @for (list of sponsorship.features; track $index) {
                         <div class="self-stretch justify-start items-start gap-3 inline-flex">
@@ -572,7 +582,6 @@
           </div>
         </div>
       }
-    
   </div>
 </section>
 

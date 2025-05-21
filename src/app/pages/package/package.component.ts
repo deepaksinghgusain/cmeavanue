@@ -81,9 +81,15 @@ export class PackageComponent implements OnInit {
 
   getPackagePage() {
     this.courseService.packageDetailPage().subscribe((res: any) => {
+      console.log(res);
+            
+      this.heroImageSection = res?.data[0]?.attributes?.blocks.filter((res: { __component: string; }) => res.__component === 'blocks.hero-image-with-button')[0];
       this.accreditedPartners = res?.data[0]?.attributes?.blocks.filter((res: { __component: string; }) => res.__component === 'blocks.accredited-partners')[0];
       this.sponsorship = res?.data[0]?.attributes?.blocks.filter((res: { __component: string; }) => res.__component === 'blocks.sponsorship')[0];
       this.packageContact = res?.data[0]?.attributes?.blocks.filter((res: { __component: string; }) => res.__component === 'blocks.package-contact')[0];
+
+      console.log(this.heroImageSection);
+      
     })
   }
 
@@ -119,9 +125,6 @@ export class PackageComponent implements OnInit {
         } else {
           this.metaService.clearSEOTags();
         }
-
-        console.log(this.packageData);
-        
 
         let name = ''
         this.packageData?.courses?.data.forEach((element: any) => {

@@ -74,6 +74,7 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
 
   courseOutline:any;
   reviews:any;
+  creditAndInfo:any;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: object,
@@ -160,14 +161,9 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
   getCourseDetails(slug: string) {
 
     this.unsubscribe$.add(this.courseService.getcoursesBySlug(slug).subscribe((res: any) => {
-      console.log(res);
       
-
       this.coursesDetail = res.data.courses;
       this.courseId = this.coursesDetail?.data[0]?.id;
-     
-
-      // this.courseData = res?.data[0]?.attributes
       
       this.courseData = this.coursesDetail?.data[0]?.attributes;
       if (this.courseData) {
@@ -226,17 +222,12 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
   getCourseData(slug: any) {
 
     this.unsubscribe$.add(this.courseService.getcoursesBySlug(slug).subscribe((res: any) => {
-      console.log(res);
-      
 
       this.coursesDetail = res.data.courses;
       this.courseId = this.coursesDetail?.data[0]?.id;
      
-      // this.courseData = res?.data[0]?.attributes
       this.courseData = this.coursesDetail?.data[0]?.attributes;
       this.instructor = this.courseData.instructors.data[0]?.attributes;
-    
-      
       
       this.courseCategory = this.coursesDetail?.data[0]?.attributes?.category?.data?.attributes?.title;
       this.gtagservice.pushEvent('view_item',
@@ -290,15 +281,10 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
         this.getCountDown(this.courseData.startDate)
       }
 
-
-      // this.courseTabContent = res?.data[0]?.attributes?.tabs[0]?.content
       this.courseTabContent = this.courseData?.tabs[0]?.content
       
-
-      // this.givingBackTabContent = res?.data[0]?.attributes?.tabs[2]?.content
       this.givingBackTabContent = this.courseData?.tabs[1]?.content
      
-
       this.courseData?.instructors?.data?.forEach((element: any, index: number) => {
 
         let facultyTitle = '';
@@ -323,7 +309,6 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
         biodata = element?.attributes?.bioData
 
         this.faculties.push({
-
           'title': facultyTitle,
           'bio': biodata,
           'imgurl': imageurl
@@ -332,7 +317,11 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
       
       this.courseTabs = this.courseData?.tabs
 
+      
+      
       let tabcomponent = this.courseOutline = this.courseTabs?.filter((item: { index: string; }) => item?.index === "Outline") || {};
+
+      this.creditAndInfo = this.courseTabs?.find((item:any) => item?.index === "Other") || {};
 
       if (tabcomponent != undefined || tabcomponent != null && tabcomponent[0]?.image != null || tabcomponent[0]?.image != undefined) {
         if (tabcomponent[0]?.image["data"] != null)
@@ -344,6 +333,7 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
         this.tabImageUrl = this.imageUrl + this.courseData?.image?.data?.attributes?.url;
 
       this.keywords = this.courseData?.keywords === null ? '' : this.courseData?.keywords?.split(',') || '';
+
       if (this.keywords != '')
         this.getAllRelatedCourses()
     }))
@@ -356,14 +346,18 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
       
       // related course :-
       const coursesArray = res.data.courses.data;
+      
       if (this.keywords) {
         this.keywords?.forEach((element: any) => {
-          const filteredResult = coursesArray.filter((item: any) =>
 
-            (item?.attributes?.title?.toString().toLowerCase().includes(element.toString().toLowerCase()))
+          
+          const filteredResult = coursesArray.filter((item: any) => {
+           return  (item?.attributes?.title?.toString().toLowerCase().includes(element.toString().toLowerCase()))
             && (item.attributes?.category?.data?.attributes?.title == this.courseCategory)
+          }
           )
 
+         
           filteredResult.forEach((element: any, index: number) => {
             const facultyname = this.getInstructorName(element?.attributes?.instructors)
             this.relatedCourses.push({
@@ -377,16 +371,17 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
               'price': element?.attributes?.price,
               'instructors': element?.attributes?.instructors,
             })
-          })
+          })          
 
           if (filteredResult) {
 
             // removing duplicate array
             this.relatedCourses = this.relatedCourses.filter((item: any, index: number) =>
-              this.relatedCourses.indexOf(item) === index)
+            this.relatedCourses.indexOf(item) === index)
             this.relatedCourses = this.relatedCourses.filter((item: any) => item.id != this.courseId)
           }
         });
+
       } else {
         this.relatedCourses = [];
       }
@@ -398,8 +393,6 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
     this.unsubscribe$.add(this.pageService.getPageContent('course-detail').subscribe((res: any) => {      
       this.accreditedPartners = res?.data[0]?.attributes?.blocks.filter((res: { __component: string; }) => res.__component === 'blocks.accredited-partners')[0];
       this.sponsorship = res?.data[0]?.attributes?.blocks.filter((res: { __component: string; }) => res.__component === 'blocks.sponsorship')[0];
-      console.log(this.sponsorship);
-      
     }))
   }
 
@@ -430,7 +423,6 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
     }
     return
   }
-
 
   openTabContent(index: any) {
     this.showTabContent = index

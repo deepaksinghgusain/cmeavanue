@@ -63,7 +63,7 @@
             <div class="justify-start items-start gap-3 flex">
               <div class="h-[52px] px-[18px] py-3 bg-[#2970fe] rounded-[28px] border-2 border-white justify-center items-center gap-1.5 flex overflow-hidden">
                 <div class="px-0.5 justify-center items-center flex">
-                  <div class="text-white text-lg font-semibold font-['Inter'] leading-7">Enroll now</div>
+                  <a routerLink="{{ heroImageSection?.button[0].href }}" class="text-white text-lg font-semibold font-['Inter'] leading-7">{{ heroImageSection?.button[0].label }}</a>
                 </div>
               </div>
             </div>
@@ -73,7 +73,9 @@
           <div class="self-stretch h-[30px] flex-col justify-start items-start gap-8 flex">
             <div class="self-stretch justify-start items-center gap-5 inline-flex">
               <div class="justify-start items-center gap-2 flex">
-                <div><span class="text-[#475467] text-xl font-normal font-['Inter'] leading-[30px]">Question? </span><span class="text-[#db6803] text-xl font-bold font-['Inter'] leading-[30px]">Contact us</span></div>
+                <div><span class="text-[#475467] text-xl font-normal font-['Inter'] leading-[30px]">{{ heroImageSection?.qoute }} </span><span class="text-[#db6803] text-xl font-bold font-['Inter'] leading-[30px]">
+                  <a routerLink="{{ heroImageSection?.link.href }}">{{ heroImageSection?.link.label }}</a>
+                </span></div>
                 <div class="w-6 h-6 relative  overflow-hidden"></div>
               </div>
               <div></div>
@@ -81,11 +83,11 @@
           </div>
         </div>
       </div>
-      <div class="w-[400px] h-[442px] bg-white rounded-xl shadow-[0px_8px_8px_-4px_rgba(16,24,40,0.03)] shadow-[0px_20px_24px_-4px_rgba(16,24,40,0.08)] flex-col justify-start items-end inline-flex overflow-hidden">
+      <div class="w-[400px] h-[442px] bg-white rounded-xl shadow-[0px_20px_24px_-4px_rgba(16,24,40,0.08)] flex-col justify-start items-end inline-flex overflow-hidden">
         <div class="self-stretch h-[147px] px-6 pt-6 flex-col justify-start items-center gap-5 flex">
           <div class="pr-[9px] pb-1 justify-start items-center inline-flex overflow-hidden">
             <div class="w-[343px] h-[119px] border border-[#175cd3]">
-              <video src="/assets/videos/package-banner.mp4"></video>
+              <img src="{{imageUrl + heroImageSection?.backgroundImage?.data?.attributes.url }}">
             </div>
           </div>
         </div>
