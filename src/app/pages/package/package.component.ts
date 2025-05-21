@@ -7,10 +7,11 @@ import { CommonService } from '../../services/common.service';
 import { MetatagsService } from '../../services/metatags.service';
 import { SeoTags } from '../../models/meta-tags';
 import { TabComponent } from '../../shared/tab/tab.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-package',
-  imports: [RouterModule, TabComponent],
+  imports: [RouterModule, TabComponent, CommonModule],
   templateUrl: './package.component.html',
   styleUrl: './package.component.css'
 })
@@ -48,6 +49,8 @@ export class PackageComponent implements OnInit {
   sponsorship:any;
   packageContact:any;
 
+  showTabContent: any = 0;
+
   constructor(
     private courseService: CourseService,
     private activatedRoute: ActivatedRoute,
@@ -81,16 +84,16 @@ export class PackageComponent implements OnInit {
 
   getPackagePage() {
     this.courseService.packageDetailPage().subscribe((res: any) => {
-      console.log(res);
-            
       this.heroImageSection = res?.data[0]?.attributes?.blocks.filter((res: { __component: string; }) => res.__component === 'blocks.hero-image-with-button')[0];
       this.accreditedPartners = res?.data[0]?.attributes?.blocks.filter((res: { __component: string; }) => res.__component === 'blocks.accredited-partners')[0];
       this.sponsorship = res?.data[0]?.attributes?.blocks.filter((res: { __component: string; }) => res.__component === 'blocks.sponsorship')[0];
       this.packageContact = res?.data[0]?.attributes?.blocks.filter((res: { __component: string; }) => res.__component === 'blocks.package-contact')[0];
-
-      console.log(this.heroImageSection);
-      
     })
+  }
+
+  
+  openTabContent(index: any) {
+    this.showTabContent = index
   }
 
   getPackageGql(slug: string) {
@@ -98,6 +101,8 @@ export class PackageComponent implements OnInit {
     this.courseService.getPackageDetailbByGql(slug).subscribe((res: any) => {
       if (res?.data?.packages?.data[0]) {
         this.packageData = res.data.packages.data[0].attributes;
+        console.log(this.packageData);
+        
         if (this.packageData) {
           const seoObj: Partial<SeoTags> = {
             metaTitle: this.packageData.title,

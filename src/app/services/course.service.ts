@@ -1278,6 +1278,14 @@ export class CourseService {
           question
         }
       }
+      key_features {
+        value
+      }
+
+      keywords
+
+      cpe_info
+
       inclusion {
         heading
         title

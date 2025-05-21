@@ -88,8 +88,16 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
     private _commannService: CommonService,
     private metaService: MetatagsService,
   ) {
+    
+  }
+
+  ngOnInit(): void {
+
     this.activatedRoute.params.subscribe(params => {
-      this.slug = this.activatedRoute.snapshot.params['slug']
+      this.slug = params['slug']
+
+      this.getCourseData(this.slug);
+      
 
       this.getCoursePageData()
       this.cartData = {
@@ -103,11 +111,8 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
         }
       }
     })
-  }
 
-  ngOnInit(): void {
-
-    this.getCourseData(this.slug);
+    
     this.getPageData();
 
     if (isPlatformBrowser(this.platformId)) {
@@ -356,7 +361,6 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
             && (item.attributes?.category?.data?.attributes?.title == this.courseCategory)
           }
           )
-
          
           filteredResult.forEach((element: any, index: number) => {
             const facultyname = this.getInstructorName(element?.attributes?.instructors)
