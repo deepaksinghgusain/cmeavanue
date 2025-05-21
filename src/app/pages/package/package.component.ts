@@ -8,10 +8,12 @@ import { MetatagsService } from '../../services/metatags.service';
 import { SeoTags } from '../../models/meta-tags';
 import { TabComponent } from '../../shared/tab/tab.component';
 import { CommonModule } from '@angular/common';
+import { SubSink } from 'subsink';
+import { CourseCardComponent } from '../../shared/course-card/course-card.component';
 
 @Component({
   selector: 'app-package',
-  imports: [RouterModule, TabComponent, CommonModule],
+  imports: [RouterModule, TabComponent, CommonModule, CourseCardComponent],
   templateUrl: './package.component.html',
   styleUrl: './package.component.css'
 })
@@ -29,8 +31,7 @@ export class PackageComponent implements OnInit {
   heroImageSection: any
   backGroundImageUrl: any
   packageOutline: any;
-  faq: any
-  courseId: any;
+  faq: any;
   totalCoursePrice: any = 0;
   courseCount: number = 0;
   showCourseIncluded: any = true
@@ -50,7 +51,10 @@ export class PackageComponent implements OnInit {
   packageContact:any;
 
   showTabContent: any = 0;
-
+  relatedBlock: any;
+  relatedCourses: any = [];
+  public unsubscribe$ = new SubSink()
+  
   constructor(
     private courseService: CourseService,
     private activatedRoute: ActivatedRoute,
@@ -88,7 +92,51 @@ export class PackageComponent implements OnInit {
       this.accreditedPartners = res?.data[0]?.attributes?.blocks.filter((res: { __component: string; }) => res.__component === 'blocks.accredited-partners')[0];
       this.sponsorship = res?.data[0]?.attributes?.blocks.filter((res: { __component: string; }) => res.__component === 'blocks.sponsorship')[0];
       this.packageContact = res?.data[0]?.attributes?.blocks.filter((res: { __component: string; }) => res.__component === 'blocks.package-contact')[0];
+      this.relatedBlock = res?.data[0]?.attributes?.blocks.filter((res: { __component: string; }) => res.__component === 'blocks.related-block')[0];      
     })
+  }
+
+  getAllRelatedCourses(keywords: string[]) {
+    this.relatedCourses = []
+    this.unsubscribe$.add(this.courseService.getAllCourses().subscribe((res: any) => {
+      console.log(res);
+      
+      
+      // related course :-
+      const coursesArray = res.data.courses.data;
+      
+      if (keywords) {
+        keywords?.forEach((element: any) => {          
+          const filteredResult = coursesArray.filter((item: any) => (item?.attributes?.title?.toString().toLowerCase().includes(element.toString().toLowerCase())))
+          
+
+          filteredResult.forEach((element: any, index: number) => {
+            const facultyname = this.getInstructorName(element?.attributes?.instructors)
+            this.relatedCourses.push({
+              'title': element?.attributes?.title,
+              'startDate': element?.attributes?.startDate,
+              'endDate': element?.attributes?.endDate,
+              'image': element?.attributes?.image?.data?.attributes?.url,
+              'shortDesc': element?.attributes?.shortDesc,
+              'credit': element?.attributes?.credit,
+              'slug': element?.attributes?.slug,
+              'price': element?.attributes?.price,
+              'instructors': element?.attributes?.instructors,
+            })
+          })     
+          
+          
+          if (filteredResult) {
+            // removing duplicate array
+            this.relatedCourses = this.relatedCourses.filter((item: any, index: number) => this.relatedCourses.indexOf(item) === index)
+          }
+
+        });
+
+      } else {
+        this.relatedCourses = [];
+      }
+    }))
   }
 
   
@@ -101,7 +149,12 @@ export class PackageComponent implements OnInit {
     this.courseService.getPackageDetailbByGql(slug).subscribe((res: any) => {
       if (res?.data?.packages?.data[0]) {
         this.packageData = res.data.packages.data[0].attributes;
-        console.log(this.packageData);
+
+        if(this.packageData.keywords) {
+          let keywordsArray = this.packageData.keywords.split(",");
+
+          this.getAllRelatedCourses(keywordsArray)
+        }
         
         if (this.packageData) {
           const seoObj: Partial<SeoTags> = {
