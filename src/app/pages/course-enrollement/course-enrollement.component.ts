@@ -75,6 +75,7 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
   courseOutline:any;
   reviews:any;
   creditAndInfo:any;
+  relatedBlock:any;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: object,
@@ -156,10 +157,11 @@ export class CourseEnrollementComponent implements OnInit, OnDestroy {
   getCoursePageData() {
 
     this.unsubscribe$.add(this.pageService.getCourseDetailPage().subscribe((res: any) => {
-
       this.heroImageSection = res?.data[0]?.attributes?.blocks.filter((res: { __component: string; }) => res.__component === 'blocks.hero-image-with-button')[0];
       this.apiSection = res?.data[0]?.attributes?.blocks.filter((res: { __component: string; }) => res.__component === 'blocks.api-section')[0];
       this.backGroundImageUrl = environment.imageEndPoint + this.heroImageSection?.ackgroundImage?.data?.attributes?.formats?.large?.url
+      this.relatedBlock = res?.data[0]?.attributes?.blocks.filter((res: { __component: string; }) => res.__component === 'blocks.related-block')[0];      
+    
     }))
   }
 

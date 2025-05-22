@@ -644,6 +644,7 @@
   </div>
 </section>
 
+@if (relatedBlock) {
 <section class="bg-[#f9fafb] py-24">
   <div class="container mx-auto">
     <div class="self-stretch h-[94px] mb-12 flex-col justify-start items-start gap-8 flex">
@@ -651,10 +652,9 @@
         <div class="self-stretch h-[94px] flex-col justify-start items-center gap-5 flex">
           <div class="self-stretch h-11 flex-col justify-start items-start gap-3 flex">
             <div class="self-stretch text-left text-[#101828] text-4xl font-semibold font-['Inter'] leading-[44px]">
-              Related Courses</div>
+              {{relatedBlock.title}}</div>
           </div>
-          <div class="self-stretch text-left text-[#475467] text-xl font-normal font-['Inter'] leading-[30px]">Check our
-            suggestions below</div>
+          <div class="self-stretch text-left text-[#475467] text-xl font-normal font-['Inter'] leading-[30px]">{{relatedBlock.sub_title}}</div>
         </div>
       </div>
     </div>
@@ -666,3 +666,4 @@
     </div>
   </div>
 </section>
+}

@@ -513,6 +513,7 @@ export class CourseService {
               startDate
               endDate
               credit
+              fieldOfStudy
                 
               price
               shortDesc
@@ -1148,6 +1149,7 @@ export class CourseService {
               }
           	}
           }
+          fieldOfStudy
           keywords
           slug
           redirection_Link

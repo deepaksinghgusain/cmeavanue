@@ -31,7 +31,8 @@ export class PackageComponent implements OnInit {
   heroImageSection: any
   backGroundImageUrl: any
   packageOutline: any;
-  faq: any;
+  faq: any
+  courseId: any;
   totalCoursePrice: any = 0;
   courseCount: number = 0;
   showCourseIncluded: any = true
@@ -99,16 +100,13 @@ export class PackageComponent implements OnInit {
   getAllRelatedCourses(keywords: string[]) {
     this.relatedCourses = []
     this.unsubscribe$.add(this.courseService.getAllCourses().subscribe((res: any) => {
-      console.log(res);
-      
-      
+     
       // related course :-
       const coursesArray = res.data.courses.data;
       
       if (keywords) {
         keywords?.forEach((element: any) => {          
           const filteredResult = coursesArray.filter((item: any) => (item?.attributes?.title?.toString().toLowerCase().includes(element.toString().toLowerCase())))
-          
 
           filteredResult.forEach((element: any, index: number) => {
             const facultyname = this.getInstructorName(element?.attributes?.instructors)
@@ -128,9 +126,14 @@ export class PackageComponent implements OnInit {
           
           if (filteredResult) {
             // removing duplicate array
+            
             this.relatedCourses = this.relatedCourses.filter((item: any, index: number) => this.relatedCourses.indexOf(item) === index)
+
+            if(this.courseId)
+              this.relatedCourses = this.relatedCourses.filter((item: any) => item.id != this.courseId)
           }
 
+          
         });
 
       } else {
